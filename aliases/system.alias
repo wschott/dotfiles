@@ -1,0 +1,37 @@
+# dotfiles
+#
+# OS Aliases
+
+# Directory Changing Aliases
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+# File Listing Aliases
+alias ls="ls -hF" # overwrite default ls # G = color
+alias l="ls"
+alias ll="ls -l" # as list
+alias la="ls -A" # everything
+alias lla="ls -lA" # everything as list
+
+# File Handling Aliases
+alias mkdir="mkdir -p -v"
+alias cp="cp -i" # prompt before overwriting
+alias mv="mv -i" # prompt before overwriting
+alias rm="rm -i" # prompt before deleting
+
+
+# Mac OS X Aliases
+
+alias m="mate"
+alias e="mate"
+alias et="mate ."
+alias etb="mate . &"
+
+# dsrm: removes all .DS_Store file from the current dir and below
+alias dsrm="find . -type f -name .DS_Store -print0 | xargs -0 rm"
+
+# Open a manpage in Preview, which can be saved to PDF
+pman() {
+	man -t $1 | open -f -a /Applications/Preview.app
+}

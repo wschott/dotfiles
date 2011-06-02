@@ -1,0 +1,8 @@
+# dotfiles
+#
+# Private Aliases Sample
+
+# Path Aliases
+alias cdc="cd ~/code/"
+alias cdp="cd ~/Projects/"
+alias cds="cd ~/Sites/"

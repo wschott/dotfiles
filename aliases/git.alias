@@ -1,0 +1,24 @@
+# dotfiles
+#
+# Git Aliases
+
+alias g="git"
+alias gsvn="git svn"
+alias ga="git add"
+alias grm="git rm"
+alias gmv="git mv"
+alias gc="git commit"
+alias gcm="git commit -m"
+alias gst="git status"
+alias gsts="git status --short"
+alias gd="git diff | mate"
+
+alias gl="git log --summary | less"
+alias gm="git merge"
+alias gb="git branch"
+alias gba="git branch -a"
+alias gc="git commit -v"
+alias gca="git commit -v -a"
+alias gd="git diff | mate"
+alias gl="git pull"
+alias gp="git push"
