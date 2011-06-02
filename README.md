@@ -15,4 +15,4 @@ Fire up your terminal and type the following in it:
 
 ## Contact ##
 
-Feel free to contact me: Waldemar Schott <code AT waldemarschott.com>
+Feel free to contact me: code AT waldemarschott.com
