@@ -44,9 +44,9 @@ alias v="vim"
 
 # Mac OS X Aliases
 alias m="mate"
-alias e="mate"
-alias et="mate ."
-alias etb="mate . &"
+alias e="$EDITOR"
+alias et="$EDITOR ."
+alias etb="$EDITOR . &"
 
 # dsrm: removes all .DS_Store file from the current dir and below
 alias dsrm="find . -type f -name .DS_Store -print0 | xargs -0 rm"

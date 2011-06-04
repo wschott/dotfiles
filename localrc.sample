@@ -1,8 +1,14 @@
 # dotfiles
 #
-# Private Aliases Sample
+# Private Aliases
+
+# overwrite default editor
+export EDITOR="mate"
 
 # Path Aliases
 alias cdc="cd ~/code/"
 alias cdp="cd ~/Projects/"
 alias cds="cd ~/Sites/"
+
+
+################################### PRIVATE ####################################

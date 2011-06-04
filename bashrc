@@ -6,7 +6,7 @@
 PS1='\w$(__git_ps1 " (%s)") $ ' # \u@\h
 
 # Set default editor
-export EDITOR="mate"
+export EDITOR="vim"
 
 # Expand default PATH
 PATH="/usr/local/bin:/usr/local/sbin:$PATH"
@@ -21,6 +21,14 @@ export PATH
 # Set colors
 export CLICOLOR=1
 
+
+# Import private .localrc
+# It's important to import .localrc before other aliases in order to overwrite the default editor
+if [ -f ~/.localrc ]; then
+	. ~/.localrc
+fi
+
+
 # Import alias files
 for script in ~/.dotfiles/aliases/*.alias; do
 	source $script
@@ -33,8 +41,3 @@ done
 
 # sudo Auto Completion
 complete -cf sudo
-
-# Import private .localrc
-if [ -f ~/.localrc ]; then
-	. ~/.localrc
-fi
