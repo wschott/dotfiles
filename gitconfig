@@ -3,12 +3,18 @@
 	email = code@waldemarschott.com
 [color]
 	ui = auto
-[alias]
-	ci = commit
-	co = checkout
-	st = status
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 [core]
 	quotepath = false
 	editor = mate -w
 	excludesfile = ~/.gitignore
+[alias]
+	a = add
+	c = commit -m
+	ci = commit
+	co = checkout
+	d = diff | mate
+	l = log --graph --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %Cblue<%an>%Creset %C(yellow)%d%Creset' --abbrev-commit --date=relative
+	pl = pull
+	ps = push
+	st = status --short --branch
+	stl = status

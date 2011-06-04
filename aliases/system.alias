@@ -2,6 +2,24 @@
 #
 # OS Aliases
 
+# Helper
+alias s="source"
+alias c="clear"			# OSX Terminal.app ⌘ -K clears everything
+alias h="history 25"
+alias df="df -h"
+
+alias clean="rm -f *.~*"
+
+# Performance
+alias topc="top -o cpu"
+alias topm="top -o vsize"
+
+# File Aliases
+alias hosts="$EDITOR /etc/hosts"
+alias ebash="$EDITOR ~/.dotfiles"
+alias rbash="source ~/.bashrc"
+alias erbash="$EDITOR ~/.dotfiles && source ~/.bashrc"
+
 # Directory Changing Aliases
 alias ..="cd .."
 alias ...="cd ../.."
@@ -20,9 +38,11 @@ alias cp="cp -i" # prompt before overwriting
 alias mv="mv -i" # prompt before overwriting
 alias rm="rm -i" # prompt before deleting
 
+# Application Aliases
+alias v="vim"
+
 
 # Mac OS X Aliases
-
 alias m="mate"
 alias e="mate"
 alias et="mate ."
@@ -31,7 +51,10 @@ alias etb="mate . &"
 # dsrm: removes all .DS_Store file from the current dir and below
 alias dsrm="find . -type f -name .DS_Store -print0 | xargs -0 rm"
 
-# Open a manpage in Preview, which can be saved to PDF
-pman() {
+# Open a manpage in Preview.app, which can be saved to PDF
+function pman() {
 	man -t $1 | open -f -a /Applications/Preview.app
 }
+
+# from: https://github.com/holman/dotfiles/blob/master/system/keys.zsh
+alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"

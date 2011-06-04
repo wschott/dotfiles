@@ -5,14 +5,14 @@
 # dotfiles Installer
 
 # Move this directory to ~/.dotfiles if ~/.dotfiles doesn't exist
-rootdir=`dirname $0`
+ROOTDIR=$(dirname $0)
 
 if [ ! -d ~/.dotfiles ]; then
-	mv $rootdir ~/.dotfiles
+	mv $ROOTDIR ~/.dotfiles
 fi
 
 # Symlink every dotfile
-for file in bash_profile bashrc vimrc gitconfig gitignore; do
+for file in bash_profile bashrc gitconfig gitignore vimrc; do
 	if [ -f ~/.$file ]; then
 		rm ~/.$file
 	fi
@@ -31,4 +31,4 @@ if [ $updatelocalrc == "y" ]; then
 	ln -sn ~/.dotfiles/localrc.sample ~/.localrc
 fi
 
-echo "Setup: done"
+echo "Installation: done"
