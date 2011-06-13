@@ -23,3 +23,21 @@ function ex() {
 		echo "'$1' is not a valid file"
 	fi
 }
+
+# zip folders recursively by default
+alias zip="zip -r"
+
+# backup files by zipping them, eg: backup archivename file1 dir1 file2 file3 dir2
+function backup() {
+	NOW=$(date +"%Y-%m-%d_%H-%M-%S")
+	ZIPFILE="$1-$NOW"
+	echo $ZIPFILE
+	# remove first argument (= archive name)
+	shift 1
+	zip $ZIPFILE "$@"
+}
+
+# make a folder & jump there right now
+function mkcd() {
+	mkdir -p "$1" && cd "$1"
+}

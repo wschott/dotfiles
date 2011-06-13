@@ -12,7 +12,8 @@
 	c = commit -m
 	ci = commit
 	co = checkout
-	d = diff | mate
+	d = !git diff | $EDITOR -
+	dc = !git diff --cached | $EDITOR -
 	l = log --graph --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %Cblue<%an>%Creset %C(yellow)%d%Creset' --abbrev-commit --date=relative
 	pl = pull
 	ps = push

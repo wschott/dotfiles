@@ -24,6 +24,7 @@ alias erbash="$EDITOR ~/.dotfiles && source ~/.bashrc"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
+alias cdd="cd -"
 
 # File Listing Aliases
 alias ls="ls -hF" # overwrite default ls # G = color
@@ -43,6 +44,8 @@ alias v="vim"
 
 
 # Mac OS X Aliases
+alias o="open ." # opens this folder in Finder.app
+
 alias m="mate"
 alias e="$EDITOR"
 alias et="$EDITOR ."
