@@ -1,0 +1,12 @@
+# dotfiles
+#
+# inputrc overwrites default bash shortcuts
+#
+# possible commands:
+#   http://www.gnu.org/software/bash/manual/bashref.html#Bindable-Readline-Commands
+#
+# /via http://stackoverflow.com/questions/81272/mac-os-x-terminal-move-cursor-word-by-word/87778#87778
+
+
+"\C-b": backward-word
+"\C-f": forward-word

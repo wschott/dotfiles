@@ -12,7 +12,7 @@ if [ ! -d ~/.dotfiles ]; then
 fi
 
 # Symlink every dotfile
-for file in bash_profile bashrc gitconfig gitignore vimrc; do
+for file in bash_profile bashrc gitconfig gitignore inputrc vimrc; do
 	if [ -f ~/.$file ]; then
 		rm ~/.$file
 	fi

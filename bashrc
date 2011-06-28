@@ -41,3 +41,6 @@ done
 
 # sudo Auto Completion
 complete -cf sudo
+
+# overwrite default bash shortcuts
+export INPUTRC=~/.inputrc
