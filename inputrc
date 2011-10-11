@@ -10,3 +10,10 @@
 
 "\C-b": backward-word
 "\C-f": forward-word
+
+# from: https://github.com/mathiasbynens/dotfiles/blob/master/.inputrc
+# Make Tab autocomplete regardless of filename case
+set completion-ignore-case on
+
+# Append a slash when autocompleting symbolic links to directories
+set mark-symlinked-directories on

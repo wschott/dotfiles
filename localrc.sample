@@ -9,6 +9,7 @@ export EDITOR="mate"
 alias cdc="cd ~/code/"
 alias cdp="cd ~/Projects/"
 alias cds="cd ~/Sites/"
+alias cdd="cd ~/Dropbox/"
 
 
 ################################### PRIVATE ####################################

@@ -2,6 +2,12 @@
 #
 # OS Aliases
 
+# History
+export HISTSIZE=4096
+export HISTFILESIZE=$HISTSIZE
+export HISTCONTROL=ignoredups
+export HISTIGNORE="ls:ls *"
+
 # Helper
 alias s="source"
 alias c="clear"			# OSX Terminal.app ⌘ -K clears everything
@@ -24,14 +30,15 @@ alias erbash="$EDITOR ~/.dotfiles && source ~/.bashrc"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
-alias cdd="cd -"
+alias back="cd -"
 
 # File Listing Aliases
-alias ls="ls -hF" # overwrite default ls # G = color
+alias ls="ls -FhG" # overwrite default ls # G === "export CLICOLOR=1"
 alias l="ls"
 alias ll="ls -l" # as list
 alias la="ls -A" # everything
 alias lla="ls -lA" # everything as list
+alias lsd='ls -l | grep "^d"' # only folders
 
 # File Handling Aliases
 alias mkdir="mkdir -p -v"

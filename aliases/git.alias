@@ -15,7 +15,8 @@ alias gmv="git mv"
 # alias gca="git commit -v -a"
 
 # "alias gxyz" is the same as "git xyz" (configured in ~/.gitconfig) or even "g xyz" (which is defined above)
-alias ga="git add"
+alias ga="git add -A"
+alias gaa="git add -A && git status --short --branch"
 alias gc="git commit -m"
 alias gci="git commit"
 alias gco="git checkout"
