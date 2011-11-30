@@ -5,12 +5,13 @@
 	ui = auto
 [core]
 	quotepath = false
-	editor = mate -w
+#	editor = mate -w
+	editor = vim
 	excludesfile = ~/.gitignore
 [alias]
 	a = add -A
 	aa = !git add -A && git status --short --branch
-	c = commit -m
+	c = commit
 	d = !git diff | $EDITOR -
 	dc = !git diff --cached | $EDITOR -
 	l = log --graph --pretty=format1 --abbrev-commit --date=relative
