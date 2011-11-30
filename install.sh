@@ -28,14 +28,16 @@ _installation() {
 			# current file starts with a dot
 			short=${long:1}
 		fi
-		
+
+		local s=''
 		if [[ -f ~/$long || -d ~/$long ]]; then
 			# backup if user has this file
+			s=" | backup at: ~/.dotfiles-backup-$NOW-symlinks/$long"
 			mkdir -p ~/.dotfiles-backup-$NOW-symlinks/
 			mv ~/$long ~/.dotfiles-backup-$NOW-symlinks/$long
 		fi
-		
-		echo "  symlink: ~/$long | backup at: ~/.dotfiles-backup-$NOW-symlinks/$long"
+
+		echo "  symlink: ~/${long}${s}"
 		ln -s ~/.dotfiles/$short ~/$long
 	done
 
