@@ -81,6 +81,7 @@ by running:
 ## VIM plugins
 
 - [PyFlakes](https://github.com/kevinw/pyflakes-vim) checks code for errors
+- [vim git](https://github.com/tpope/vim-git)
 
 
 ## Thanks to...
