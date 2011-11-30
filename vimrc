@@ -108,13 +108,13 @@ vnoremap <C-y> 5<C-y>
 "nnoremap <space> za			" Space will toggle folds
 
 " insert a pair of quotes/braces
-inoremap ' ''<Left>
-inoremap " ""<Left>
-inoremap ( ()<Left>
-inoremap < <><Left>
-inoremap { {}<Left>
-inoremap [ []<Left>
-inoremap ( ()<Left>
+" inoremap ' ''<Left>
+" inoremap " ""<Left>
+" inoremap ( ()<Left>
+" inoremap < <><Left>
+" inoremap { {}<Left>
+" inoremap [ []<Left>
+" inoremap ( ()<Left>
 
 " quickly add a comma/semi colon, colon at the end of the string
 "inoremap ,, <END>,

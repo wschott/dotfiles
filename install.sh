@@ -3,7 +3,7 @@
 # assumes ~/.dotfiles is *ours*
 
 # specify files to symlink ---------------------------------------------------
-FILES='.bash_profile .bash_prompt .bashrc .gitconfig .gitignore .inputrc .vim .vimrc bin'
+FILES='.bash_profile .bashrc .gitconfig .gitignore .inputrc .vim .vimrc bin'
 
 
 # global vars ----------------------------------------------------------------

@@ -1,6 +1,6 @@
 # Set command prompt to '~/working/directory (git-branch)(svn-branch) $'
 # export PS1='\w$(scm_ps1) $ ' # \u@\h
-export PS1='\w$(scm_ps1) $ '
+export PS1='\u@\h \[\e[1;34m\]\w\[\e[m\]\[\e[0;35m\]$(scm_ps1)\[\e[m\] \[\e[0;31m\]\$\[\e[m\] '
 
 
 # combines SVN & Git branch information for prompt
@@ -16,10 +16,10 @@ scm_ps1() {
 	else
 		s="$(__git_ps1 " (%s)")"
 		if [[ "$s" != '' ]]; then
-			s="$s[#$(parse_git_rev)]"
-			if [[ $(is_git_dirty) ]]; then
-				s="$s[*]"
-			fi
+			# s="$s[#$(parse_git_rev)]"
+			# if [[ $(is_git_dirty) ]]; then
+			#	s="$s[*]"
+			# fi
 			s="$s$(parse_git_dirty)$(parse_git_ahead)"
 		fi
 	fi
@@ -32,27 +32,35 @@ parse_git_rev() {
 }
 
 # /via https://github.com/sjl/oh-my-zsh/blob/master/lib/git.zsh
-parse_git_dirty () {
-	gitstat=$(git status 2>/dev/null | grep '\(# Untracked\|# Changes\|# Changed but not updated:\)')
+parse_git_dirty() {
+	local gitstat=$(git status 2>/dev/null | grep '\(# Untracked\|# Changes\|# Changed but not updated:\)')
+	local s=''
 
-	if [[ $(echo ${gitstat} | grep -c "^# Changes to be committed:$") > 0 ]]; then
-		echo -n ' | [dirty:*]'
+	if [[ $(echo ${gitstat} | grep -c "# Changes to be committed:") > 0 ]]; then
+		s="${s}+"
 	fi
 
-	if [[ $(echo ${gitstat} | grep -c "^\(# Untracked files:\|# Changed but not updated:\|# Changes not staged for commit:\)$") > 0 ]]; then
-		echo -n ' | [dirty:?]'
+	if [[ $(echo ${gitstat} | grep -c "\(# Untracked files:\|# Changed but not updated:\|# Changes not staged for commit:\)") > 0 ]]; then
+		s="${s}?"
 	fi
 
 	if [[ $(echo ${gitstat} | grep -v '^$' | wc -l | tr -d ' ') == 0 ]]; then
-		echo -n ' | [dirty:]'
+		s="${s}"
+	fi
+	
+	if [[ $s != '' ]]; then
+		echo -n "[$s]"
+	else
+		echo -n ''
 	fi
 }
 
 # Checks if there are commits ahead from remote
 # /via https://github.com/sjl/oh-my-zsh/blob/master/lib/git.zsh
 parse_git_ahead() {
-	if [[ $(echo "$(git log origin/$(__git_ps1 "%s")..HEAD 2> /dev/null)" | grep '^commit' &> /dev/null)  ]]; then
-		echo ' | [ahead]'
+	# if [[ $(echo "$(git status --short --branch 2> /dev/null)" | grep 'ahead' 2> /dev/null) != '' ]]; then
+	if [[ $(echo "$(git log origin/$(__git_ps1 "%s")..HEAD 2> /dev/null)" | grep '^commit' 2> /dev/null) != '' ]]; then
+		echo '[ahead]'
 	fi
 }
 

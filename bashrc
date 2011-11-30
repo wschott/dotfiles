@@ -1,6 +1,12 @@
-export PS1='\u@\h \w $ '			# default prompt
-if [ -f ~/.bash_prompt ]; then
-	source ~/.bash_prompt			# setup custom prompt if exists
+if [[ -z "$PS1" ]]; then
+	return
+fi
+
+# Set default prompt -----------------------------------------------------
+export PS1='\[\e[0;31m\]\u@\h\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[0;31m\]\$\[\e[m\] '
+
+if [ -f ~/.dotfiles/bash_prompt ]; then
+	source ~/.dotfiles/bash_prompt			# setup custom prompt if exists
 fi
 
 # PATHs --------------------------------------------------------------------
