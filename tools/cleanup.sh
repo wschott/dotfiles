@@ -2,7 +2,7 @@
 
 # remove all symlinks to these dotfiles
 
-FILES='.bash_profile .bash_prompt .bashrc .gitconfig .gitignore .inputrc .vim .vimrc bin'
+FILES='.bash_profile .bashrc .gitconfig .gitignore .inputrc .vim .vimrc bin'
 
 for file in $FILES; do
 	# is file a symlink?
