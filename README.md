@@ -9,7 +9,7 @@ My bash configuration files with a couple of useful aliases.
 
 Fire up your terminal and type the following in it:
 
-	curl https://raw.github.com/wschott/dotfiles/master/install.sh
+	curl https://raw.github.com/wschott/dotfiles/master/install.sh | sh
 
 Don't worry, all your old files will be backed up!
 
