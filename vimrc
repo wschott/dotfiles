@@ -45,6 +45,7 @@ set sidescrolloff=5					" keep at least 5 columns left/right of cursor
 set foldmethod=marker				" folding
 set splitbelow						" split new windows below current window
 set splitright						" split new windows on the right side of current window
+set laststatus=2					" always show the statusline, even if there is only one window
 syntax on							" syntax highlighting
 
 " Statusline -----------------------------------------------------------------
