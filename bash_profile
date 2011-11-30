@@ -1,8 +1,4 @@
-# dotfiles
-#
-# Fallback to .bashrc
-
-# Import .bashrc
-if [ -f ~/.bashrc ]; then
-	. ~/.bashrc
+# Fallback to .bashrc --------------------------------------------------------
+if [[ -f ~/.bashrc ]]; then
+	source ~/.bashrc
 fi

@@ -1,6 +1,9 @@
 .DS_Store
-.*.swp
+*.swp
 .svn
+
 target/
+*.pyc
+
 *localrc*
 !localrc.sample

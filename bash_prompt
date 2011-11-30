@@ -1,0 +1,92 @@
+# Set command prompt to '~/working/directory (git-branch)(svn-branch) $'
+# export PS1='\w$(scm_ps1) $ ' # \u@\h
+export PS1='\w$(scm_ps1) $ '
+
+
+# combines SVN & Git branch information for prompt
+# /via http://www.codeography.com/2009/05/26/speedy-bash-prompt-git-and-subversion-integration.html
+scm_ps1() {
+	local s=
+	if [[ -d ".svn" ]]; then
+		s=" (svn::$(parse_svn_branch))"
+		s="$s[#$(parse_svn_rev)]"
+		if [[ "$s" != '' && $(is_svn_dirty) ]]; then
+			s="$s[*]"
+		fi
+	else
+		s="$(__git_ps1 " (%s)")"
+		if [[ "$s" != '' ]]; then
+			s="$s[#$(parse_git_rev)]"
+			if [[ $(is_git_dirty) ]]; then
+				s="$s[*]"
+			fi
+			s="$s$(parse_git_dirty)$(parse_git_ahead)"
+		fi
+	fi
+	echo -n "$s"
+}
+
+# Git info for prompt --------------------------------------------------------
+parse_git_rev() {
+	git rev-parse --short HEAD 2> /dev/null
+}
+
+# /via https://github.com/sjl/oh-my-zsh/blob/master/lib/git.zsh
+parse_git_dirty () {
+	gitstat=$(git status 2>/dev/null | grep '\(# Untracked\|# Changes\|# Changed but not updated:\)')
+
+	if [[ $(echo ${gitstat} | grep -c "^# Changes to be committed:$") > 0 ]]; then
+		echo -n ' | [dirty:*]'
+	fi
+
+	if [[ $(echo ${gitstat} | grep -c "^\(# Untracked files:\|# Changed but not updated:\|# Changes not staged for commit:\)$") > 0 ]]; then
+		echo -n ' | [dirty:?]'
+	fi
+
+	if [[ $(echo ${gitstat} | grep -v '^$' | wc -l | tr -d ' ') == 0 ]]; then
+		echo -n ' | [dirty:]'
+	fi
+}
+
+# Checks if there are commits ahead from remote
+# /via https://github.com/sjl/oh-my-zsh/blob/master/lib/git.zsh
+parse_git_ahead() {
+	if [[ $(echo "$(git log origin/$(__git_ps1 "%s")..HEAD 2> /dev/null)" | grep '^commit' &> /dev/null)  ]]; then
+		echo ' | [ahead]'
+	fi
+}
+
+
+# checks whether current git repository is modified or not -------------------
+# /via https://github.com/gf3/dotfiles/blob/master/.bash_prompt
+is_git_dirty() {
+	local not_dirty='nothing to commit (working directory clean)'
+	local status=$(git status 2> /dev/null | tail -n1)
+	if [[ $status != $not_dirty ]]; then
+		echo 1
+	fi
+}
+
+
+# SVN info for prompt --------------------------------------------------------
+# /via https://github.com/sontek/dotfiles/blob/master/_bashrc
+parse_svn_branch() {
+	parse_svn_url | sed -e 's#^'"$(parse_svn_repository_root)"'##g' | awk -F / '{print $1 "/" $2}'
+}
+parse_svn_url() {
+	svn info 2>/dev/null | sed -ne 's#^URL: ##p'
+}
+parse_svn_repository_root() {
+	svn info 2>/dev/null | sed -ne 's#^Repository Root: ##p'
+}
+parse_svn_rev() {
+	svn info 2> /dev/null | sed -n 's#^Revision: ##p'
+}
+
+# /via https://github.com/sjl/oh-my-zsh/blob/master/plugins/svn/svn.plugin.zsh
+is_svn_dirty() {
+	local status=$(svn status | grep -E '^\s*[ACDIM!?L]' 2>/dev/null)
+	if [[ $status ]]; then
+		echo 1
+	fi
+}
