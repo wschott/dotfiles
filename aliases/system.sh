@@ -38,7 +38,7 @@ alias l.='ls -lAd .*'			# only files/folders starting with a . (dot)
 
 # File Handling aliases ------------------------------------------------------
 alias mkdir='mkdir -p -v'		# make directory tree
-# alias md='mkdir -p'			# make directory tree
+alias md='mkdir -p'			# make directory tree
 alias rm='rm -i'				# prompt before deleting
 # alias cp='cp -i'				# prompt before overwriting
 # alias mv='mv -i'				# prompt before overwriting

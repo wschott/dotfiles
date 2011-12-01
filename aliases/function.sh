@@ -40,7 +40,7 @@ backup() {
 }
 
 # make a folder & jump there right now ---------------------------------------
-md() {
+mcd() {
 	mkdir -p "$1" && cd "$1"
 }
 
@@ -56,7 +56,7 @@ cl() {
 }
 
 # show path the pretty way ---------------------------------------------------
-path() {
+showPath() {
     old=$IFS
     IFS=':'
     printf '%s\n' $PATH

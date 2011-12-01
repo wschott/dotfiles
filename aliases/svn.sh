@@ -1,9 +1,11 @@
 # Subversion -----------------------------------------------------------------
+export SVN_EDITOR='vim'
+
 alias s='svn'
 alias smv='svn move'
 alias srm='svn delete'
 alias sa='svn add'
-alias sc='svn commit -m'
+alias sc='svn commit'
 alias sco='svn checkout'
 # alias sd='svn diff -r'
 alias sd="svn diff | $EDITOR -"
