@@ -20,6 +20,7 @@ alias gco='git checkout'
 alias gitclean='find . -name .git -exec rm -rf {} \;'
 alias gsvn='git svn'
 alias gi='git init && printf ".DS_Store\n*.swp\n" >> .gitignore && git add .gitignore && gst'
+alias gunstage='git reset HEAD --'
 alias guncommit='git reset --soft HEAD^'	# Undo your last commit, but don't throw away your changes
 alias grmold="git status | grep deleted | awk '{print $3}' | xargs git rm"
 alias gwho='git shortlog -s -n --no-merges'

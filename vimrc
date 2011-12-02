@@ -18,7 +18,7 @@ set textwidth=79					" wrap text on this column
 set showmatch						" show matching brackets
 set number							" show line numbers
 set relativenumber					" show relative line number (current line is still in status bar)
-set cursorline						" highlight current line
+"set cursorline						" highlight current line
 set backspace=eol,start,indent		" allow backspacing over EOL, ...
 set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:·,extends:❯,precedes:❮	" set style of invisible characters
 "set list!							" show invisible characters

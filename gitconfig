@@ -25,6 +25,7 @@
 	m = merge
 	co = checkout
 	i = !git init && printf ".DS_Store\n*.swp\n" >> .gitignore && git add .gitignore && gst
+	unstage = reset HEAD --
 	uncommit = reset --soft HEAD^
 	rmold = !git status | grep deleted | awk '{print $3}' | xargs git rm
 	who = shortlog -s -n --no-merges
