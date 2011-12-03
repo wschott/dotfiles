@@ -9,4 +9,7 @@
 	url = git://github.com/tpope/vim-git.git
 [submodule "vim/bundle/pydoc.vim"]
 	path = vim/bundle/pydoc.vim
-	url = git://github.com/sjl/pydoc.vim.git
+	url = git://github.com/fs111/pydoc.vim.git
+[submodule "vim/bundle/vim-markdown"]
+	path = vim/bundle/vim-markdown
+	url = git://github.com/tpope/vim-markdown.git
