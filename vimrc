@@ -42,7 +42,7 @@ set backupdir=~/.vim/backup			" Directory for swp files
 set directory=~/.vim/backup			" Directory for swp files
 set scrolloff=5						" keep at least 5 lines above/below cursor
 set sidescrolloff=5					" keep at least 5 columns left/right of cursor
-set foldmethod=marker				" folding
+"set foldmethod=marker				" folding
 set splitbelow						" split new windows below current window
 set splitright						" split new windows on the right side of current window
 set laststatus=2					" always show the statusline, even if there is only one window
@@ -92,8 +92,10 @@ noremap <C-l> <C-w>l		" go to split right
 nnoremap * *<C-o>			" Don't move on *
 " nnoremap * *<C-o>zz		" Don't move on * & center view
 nnoremap Q gqap				" reformat paragraph
+"nnoremap Q gqip				" reformat paragraph
 vnoremap Q gq				" reformat paragraph
 map Y y$					" yank from cursor to $
+map D d$					" delete from cursor to $
 nmap n nzz					" search next & center view
 nmap N Nzz					" search previous & center view
 nmap > >>					" one-key indentation
@@ -191,10 +193,6 @@ if has("mac")
 	" imap <D-[> <C-O><<
 endif
 
-" same when jumping around
-" nnoremap g; g;zz
-" nnoremap g, g,zz
-
 " /via https://bitbucket.org/sjl/dotfiles/src/b5e60ade957d/vim/.vimrc
 " Split/Join {{{
 "
@@ -232,6 +230,9 @@ map <leader>ve :tabedit ~/.vimrc<CR>	" edit .vimrc
 map <leader>vu :source ~/.vimrc<CR>		" update current vim settings
 
 
+nmap <leader>cd :cd%:p:h<CR>			" change directory to that of current file
+
+
 " /via https://github.com/gf3/dotfiles/blob/master/.vimrc
 " Indent/unident block (,]) (,[)
 " nnoremap <leader>] >i{<CR>
@@ -240,15 +241,33 @@ map <leader>vu :source ~/.vimrc<CR>		" update current vim settings
 
 " /via https://github.com/gf3/dotfiles/blob/master/.vimrc
 " Buffer navigation (,,) (,]) (,[) (,ls)
-" map <Leader>, <C-^>
-" :map <Leader>] :bnext<CR>
-" :map <Leader>[ :bprev<CR>
-map <Leader>ls :buffers<CR>
+" map <leader>, <C-^>
+" :map <leader>] :bnext<CR>
+" :map <leader>[ :bprev<CR>
+map <leader>ls :buffers<CR>
 
+
+" toggle paste mode
+" /via http://www.jukie.net/~bart/conf/vimrc
+nmap <leader>pp :set paste!<cr>
+
+" word swapping
+" /via http://www.jukie.net/~bart/conf/vimrc
+nmap <silent> gw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<cr><c-o><c-l>
+" char swapping
+" /via http://www.jukie.net/~bart/conf/vimrc
+nmap <silent> gc xph
+
+" Substitute
+nnoremap <leader>s :%s//<left>
+
+" find merge conflict markers
+" /via http://www.jukie.net/~bart/conf/vimrc
+map <leader>fc /\v^[<=>]{7}( .*\|$)<CR>
 
 " /via https://github.com/gf3/dotfiles/blob/master/.vimrc
 " Search and replace word under cursor (,*)
-:nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
+nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
 
 
 " /via https://github.com/gf3/dotfiles/blob/master/.vimrc
@@ -286,10 +305,6 @@ filetype plugin indent on
 " Strip trailing whitespace
 map <leader>S :%s/\s\+$//gc<CR>:let @/=''<CR>
 
-" Map <leader>cd to change to the directory of the file being edited
-" /via https://github.com/mileszs/dotfiles/blob/master/vimrc
-map <leader>cd :cd %:p:h<CR>
-
 " Highlight trailing whitespace characters and tabs not used for indention
 " /via https://github.com/mileszs/dotfiles/blob/master/vimrc
 " highlight WhitespaceErrors ctermbg=Red guibg=Red
@@ -306,7 +321,7 @@ if has('gui_running')
 	let g:solarized_termcolors=256
 	colorscheme solarized
 else
-	color molokai
+	"color molokai
 endif
 
 " Auto Commands ---------------------------------------------------------- {{{
@@ -318,32 +333,16 @@ autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
 " Remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 
-" Restore cursor position to where it was before
-" /via http://stackoverflow.com/questions/164847/what-is-in-your-vimrc/171558#171558
-augroup JumpCursorOnEdit
-	au!
-	autocmd BufReadPost *
-				\ if expand("<afile>:p:h") !=? $TEMP |
-				\	if line("'\"") > 1 && line("'\"") <= line("$") |
-				\	  let JumpCursorOnEdit_foo = line("'\"") |
-				\	  let b:doopenfold = 1 |
-				\	  if (foldlevel(JumpCursorOnEdit_foo) > foldlevel(JumpCursorOnEdit_foo - 1)) |
-				\		  let JumpCursorOnEdit_foo = JumpCursorOnEdit_foo - 1 |
-				\		  let b:doopenfold = 2 |
-				\	  endif |
-				\	  exe JumpCursorOnEdit_foo |
-				\	endif |
-				\ endif
-	" Need to postpone using "zv" until after reading the modelines.
-	autocmd BufWinEnter *
-				\ if exists("b:doopenfold") |
-				\	exe "normal zv" |
-				\	if(b:doopenfold > 1) |
-				\		exe  "+".1 |
-				\	endif |
-				\	unlet b:doopenfold |
-				\ endif
-augroup END
+" jump to last line edited in a given file (based on .viminfo)
+" /via http://www.jukie.net/~bart/conf/vimrc
+autocmd BufReadPost *
+        \ if line("'\"") > 0|
+        \       if line("'\"") <= line("$")|
+        \               exe("norm '\"")|
+        \       else|
+        \               exe "norm $"|
+        \       endif|
+        \ endif
 " }}}
 
 
@@ -368,7 +367,44 @@ autocmd BufWritePre *.py normal m`:%s/\s\+$//e``
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 " launch autocompletion by typing a . (dot) (for python code useful)
 " /via http://vim.wikia.com/wiki/VimTip1548
-imap <silent> <buffer> . .<C-X><C-O>
-imap <silent> <expr> <buffer> <CR> pumvisible() ? "<CR><C-R>=(col('.')-1&&match(getline(line('.')), '\\.',
-      \ col('.')-2) == col('.')-2)?\"\<lt>C-X>\<lt>C-O>\":\"\"<CR>"
-	  \ : "<CR>"
+"imap <silent> <buffer> . .<C-X><C-O>
+"imap <silent> <expr> <buffer> <CR> pumvisible() ? "<CR><C-R>=(col('.')-1&&match(getline(line('.')), '\\.',
+"      \ col('.')-2) == col('.')-2)?\"\<lt>C-X>\<lt>C-O>\":\"\"<CR>"
+"      \ : "<CR>"
+
+
+
+
+
+" Fugitive --------------------------------------------------------------- {{{
+" /via https://bitbucket.org/sjl/dotfiles/src/b5e60ade957d/vim/.vimrc
+nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gw :Gwrite<cr>
+nnoremap <leader>ga :Gadd<cr>
+nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gco :Gcheckout<cr>
+nnoremap <leader>gci :Gcommit<cr>
+nnoremap <leader>gm :Gmove<cr>
+nnoremap <leader>gr :Gremove<cr>
+
+autocmd BufNewFile,BufRead .git/index setlocal nolist
+" }}}
+
+" Pydoc ------------------------------------------------------------------ {{{
+let g:pydoc_perform_mappings = 0
+
+au FileType python noremap <buffer> <leader>ds :call ShowPyDoc('<C-R><C-W>', 1)<CR>
+au FileType python noremap <buffer> <leader>dS :call ShowPyDoc('<C-R><C-A>', 1)<CR>
+" }}}
+
+" " Execute the tests
+" " /via https://github.com/nureineide/dotvim/blob/master/vimrc
+" map <silent>tf <Esc>:Pytest file<CR>
+" map <silent>tc <Esc>:Pytest class<CR>
+" map <silent>tm <Esc>:Pytest method<CR>
+" " cycle through test errors
+" nmap <silent>tn <Esc>:Pytest next<CR>
+" nmap <silent>tp <Esc>:Pytest previous<CR>
+" nmap <silent>te <Esc>:Pytest error<CR>
+" nmap <silent>tee <Esc>:Pytest end<CR>
