@@ -23,6 +23,7 @@ export EDITOR='vim'					# set default editor
 export INPUTRC=~/.inputrc			# overwrite default bash shortcuts
 shopt -s cmdhist					# save multi-line commands in history as single line
 shopt -s checkwinsize				# after each command & update LINES & COLUMNS
+setterm -blength
 complete -cf sudo					# sudo auto completion
 
 
