@@ -27,8 +27,16 @@ alias back='cd -'				# jump to last working directory
 # A = all files & folders except . & ..
 # F = display extra info for items: / (folders), * (executable), @ (symlink)
 # h = human file sizes
-# G = enable colors
-alias ls='ls -AFhG'				# overwrite default ls
+
+if [[ $(uname) == 'Darwin' ]]; then
+	# G = enable colors
+	#export CLICOLOR=1
+	alias ls='ls -AFhG'				# overwrite default ls
+else
+	#alias ls="ls -AFh --color=auto"	# overwrite default ls
+	alias ls="ls -AFh $LS_OPTIONS"	# overwrite default ls
+fi
+
 alias l='ls -lA'
 alias ll='ls -l'				# as list
 alias la='ls -A'				# everything

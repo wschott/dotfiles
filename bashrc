@@ -9,6 +9,10 @@ if [ -f ~/.dotfiles/bash_prompt ]; then
 	source ~/.dotfiles/bash_prompt			# setup custom prompt if exists
 fi
 
+if [[ $(uname) != 'Darwin' ]]; then
+	setterm -blength						# turn beeps off on a non OSX OS
+fi
+
 # PATHs --------------------------------------------------------------------
 export PATH="/usr/local/bin:$PATH"	# expand default PATH
 export PATH="/usr/local/sbin:$PATH"	# expand default PATH
@@ -23,7 +27,6 @@ export EDITOR='vim'					# set default editor
 export INPUTRC=~/.inputrc			# overwrite default bash shortcuts
 shopt -s cmdhist					# save multi-line commands in history as single line
 shopt -s checkwinsize				# after each command & update LINES & COLUMNS
-setterm -blength
 complete -cf sudo					# sudo auto completion
 
 
