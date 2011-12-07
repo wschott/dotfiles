@@ -45,6 +45,10 @@ _installation() {
 	if [[ ! -f ~/.localrc ]]; then
 		cp ~/.dotfiles/localrc.sample ~/.localrc
 	fi
+	# copy .local.vimrc sample file if user has none
+	if [[ ! -f ~/.local.vimrc ]]; then
+		cp ~/.dotfiles/local.vimrc.sample ~/.local.vimrc
+	fi
 }
 
 # Installation steps ---------------------------------------------------------

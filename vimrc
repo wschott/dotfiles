@@ -17,7 +17,6 @@ set smartindent						" turn on smart indenting
 set textwidth=79					" wrap text on this column
 set showmatch						" show matching brackets
 set number							" show line numbers
-set relativenumber					" show relative line number (current line is still in status bar)
 "set cursorline						" highlight current line
 set backspace=eol,start,indent		" allow backspacing over EOL, ...
 set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:·,extends:❯,precedes:❮	" set style of invisible characters
@@ -408,3 +407,10 @@ au FileType python noremap <buffer> <leader>dS :call ShowPyDoc('<C-R><C-A>', 1)<
 " nmap <silent>tp <Esc>:Pytest previous<CR>
 " nmap <silent>te <Esc>:Pytest error<CR>
 " nmap <silent>tee <Esc>:Pytest end<CR>
+
+
+" import local vimrc file ----------------------------------------------------
+let $LOCAL_VIMRC = $HOME."/.local.vimrc"
+if filereadable($LOCAL_VIMRC)
+	source $LOCAL_VIMRC
+endif
