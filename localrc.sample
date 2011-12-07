@@ -1,8 +1,14 @@
-# Private Aliases
+# Private
 
-# export EDITOR='mate'						# overwrite default editor
+# Options --------------------------------------------------------------------
+USE_GIT_PROMPT=1							# show GIT repo info? [0|1]
+USE_SVN_PROMPT=0							# show SVN repo info? [0|1]
 
-# Path Aliases
+# Default editor -------------------------------------------------------------
+#export EDITOR='mate'						# overwrite default editor
+#alias vim='mvim'							# set vim to MacVim on Mac OS X
+
+## Path Aliases --------------------------------------------------------------
 # alias c='cd ~/code/'
 # alias p='cd ~/Projects/'
 # alias s='cd ~/Sites/'

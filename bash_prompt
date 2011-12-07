@@ -1,29 +1,52 @@
 # Set command prompt to '~/working/directory (git-branch)(svn-branch) $'
 # export PS1='\w$(scm_ps1) $ ' # \u@\h
-export PS1='\u@\h \[\e[1;34m\]\w\[\e[m\]\[\e[0;35m\]$(scm_ps1)\[\e[m\] \[\e[0;31m\]\$\[\e[m\] '
+export PS1='\u@\h \[\e[1;34m\]\w\[\e[m\]\[\e[0;35m\]$(ps1_scm)\[\e[m\] \[\e[0;31m\]\$\[\e[m\] '
 
 
 # combines SVN & Git branch information for prompt
 # /via http://www.codeography.com/2009/05/26/speedy-bash-prompt-git-and-subversion-integration.html
-scm_ps1() {
+ps1_scm() {
+	local s=
+	if [[ $USE_SVN_PROMPT == 1 && -d ".svn" ]]; then
+		s="$(ps1_svn)"
+	elif [[ $USE_GIT_PROMPT == 1 ]]; then
+		s="$(ps1_git)"
+	fi
+	#if [[ "$s" == '' ]]; then
+	#	echo -n ''
+	#else
+	#	echo -n " $s"
+	#fi
+	if [[ "$s" != '' ]]; then
+		s=" $s"
+	fi
+	echo -n "$s"
+}
+
+# show GIT repo info
+ps1_git() {
+	local s="$(__git_ps1 "(%s)")"
+	if [[ "$s" != '' ]]; then
+		# s="$s[#$(parse_git_rev)]"
+		# if [[ $(is_git_dirty) ]]; then
+		#	s="$s[*]"
+		# fi
+		s="$s$(parse_git_dirty)$(parse_git_ahead)"
+	fi
+	echo "$s"
+}
+
+# show SVN repo info
+ps1_svn() {
 	local s=
 	if [[ -d ".svn" ]]; then
-		s=" (svn::$(parse_svn_branch))"
+		s="(svn::$(parse_svn_branch))"
 		s="$s[#$(parse_svn_rev)]"
 		if [[ "$s" != '' && $(is_svn_dirty) ]]; then
 			s="$s[*]"
 		fi
-	else
-		s="$(__git_ps1 " (%s)")"
-		if [[ "$s" != '' ]]; then
-			# s="$s[#$(parse_git_rev)]"
-			# if [[ $(is_git_dirty) ]]; then
-			#	s="$s[*]"
-			# fi
-			s="$s$(parse_git_dirty)$(parse_git_ahead)"
-		fi
 	fi
-	echo -n "$s"
+	echo "$s"
 }
 
 # Git info for prompt --------------------------------------------------------
@@ -47,7 +70,7 @@ parse_git_dirty() {
 	if [[ $(echo ${gitstat} | grep -v '^$' | wc -l | tr -d ' ') == 0 ]]; then
 		s="${s}"
 	fi
-	
+
 	if [[ $s != '' ]]; then
 		echo -n "[$s]"
 	else
