@@ -1,5 +1,15 @@
 # Set command prompt to '~/working/directory (git-branch)(svn-branch) $'
 # export PS1='\w$(scm_ps1) $ ' # \u@\h
+
+export GIT_PS1_SHOWDIRTYSTATE=1			# *=unstaged, +=staged
+export GIT_PS1_SHOWSTASHSTATE=1			# $=something stashed
+export GIT_PS1_SHOWUNTRACKEDFILES=1		# %=untracked file(s)
+export GIT_PS1_SHOWUPSTREAM="verbose"	# <=behind, >=ahead, <>=divergent
+
+help_git_prompt() {
+	echo "unstaged (*), staged (+), stashed ($), untracked (%), behind (<), ahead (>), divergent (<>)"
+}
+
 export PS1='\u@\h \[\e[1;34m\]\w\[\e[m\]\[\e[0;35m\]$(ps1_scm)\[\e[m\] \[\e[0;31m\]\$\[\e[m\] '
 
 
@@ -10,7 +20,8 @@ ps1_scm() {
 	if [[ $USE_SVN_PROMPT == 1 && -d ".svn" ]]; then
 		s="$(ps1_svn)"
 	elif [[ $USE_GIT_PROMPT == 1 ]]; then
-		s="$(ps1_git)"
+		#s="$(ps1_git)"
+		s="$(__git_ps1 "(%s)")"
 	fi
 	#if [[ "$s" == '' ]]; then
 	#	echo -n ''
@@ -26,13 +37,13 @@ ps1_scm() {
 # show GIT repo info
 ps1_git() {
 	local s="$(__git_ps1 "(%s)")"
-	if [[ "$s" != '' ]]; then
+	#if [[ "$s" != '' ]]; then
 		# s="$s[#$(parse_git_rev)]"
 		# if [[ $(is_git_dirty) ]]; then
 		#	s="$s[*]"
 		# fi
-		s="$s$(parse_git_dirty)$(parse_git_ahead)"
-	fi
+		#s="$s$(parse_git_dirty)$(parse_git_ahead)"
+	#fi
 	echo "$s"
 }
 
