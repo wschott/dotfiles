@@ -34,8 +34,8 @@ backup() {
 		# remove first argument (= archive name)
 		shift 1
 	fi
-	ZIPFILE=$(echo $ZIPFILE | tr '/' '_')
-	zip $ZIPFILE "$@"
+	ZIPFILE=$(echo "$ZIPFILE" | tr '/' '_' | tr ' ' '\ ' )
+	zip "$ZIPFILE" "$@"
 	echo "backup filename: ${ZIPFILE}"
 }
 
