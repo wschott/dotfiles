@@ -7,3 +7,6 @@ target/
 
 *localrc*
 !localrc.sample
+
+*local.vimrc*
+!local.vimrc.sample

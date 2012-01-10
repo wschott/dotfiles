@@ -353,6 +353,7 @@ set ofu=syntaxcomplete#Complete
 " smart indenting for python files (indent one more <TAB> after def foobar():)
 autocmd FileType python setlocal
 \   shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+\   nowrap
 \   formatoptions+=croq " c+r+o+q
 \   cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 \   complete+=k~/.vim/syntax/python.vim isk+=.,(
