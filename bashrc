@@ -21,7 +21,7 @@ export PATH="~/bin:$PATH"			# add users ~/bin to PATH
 export HISTSIZE=65536				# longer shell history
 export HISTFILESIZE=65536			# even longer history file (for lookups)
 export HISTCONTROL=ignoredups		# ignore duplicates if typed more than once
-export HISTIGNORE='l:cd ..'			# these commands won't be added to the history
+export HISTIGNORE='l:ll:cd:cd ..:cd ../..:..:...'	# these commands won't be added to the history
 # Misc -----------------------------------------------------------------------
 export EDITOR='vim'					# set default editor
 export INPUTRC=~/.inputrc			# overwrite default bash shortcuts

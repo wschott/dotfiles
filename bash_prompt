@@ -4,7 +4,7 @@
 export GIT_PS1_SHOWDIRTYSTATE=1			# *=unstaged, +=staged
 export GIT_PS1_SHOWSTASHSTATE=1			# $=something stashed
 export GIT_PS1_SHOWUNTRACKEDFILES=1		# %=untracked file(s)
-export GIT_PS1_SHOWUPSTREAM="verbose"	# <=behind, >=ahead, <>=divergent
+export GIT_PS1_SHOWUPSTREAM='verbose'	# <=behind, >=ahead, <>=divergent
 
 help_git_prompt() {
 	echo "unstaged (*), staged (+), stashed ($), untracked (%), behind (<), ahead (>), divergent (<>)"

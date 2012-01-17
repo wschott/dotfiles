@@ -37,16 +37,16 @@ else
 	alias ls="ls -AFh $LS_OPTIONS"	# overwrite default ls
 fi
 
-alias l='ls -lA'
-alias ll='ls -l'				# as list
+alias l='ls -A'					# everything
+alias l1='ls -A -1'				# as list w/o details
+alias ll='ls -lA'				# as list w/ details
 alias la='ls -A'				# everything
-alias lla='ls -lA'				# everything as list
 alias lsd='ls -lA | grep "^d"'	# only folders
 alias l.='ls -lAd .*'			# only files/folders starting with a . (dot)
 
 # File Handling aliases ------------------------------------------------------
 alias mkdir='mkdir -p -v'		# make directory tree
-alias md='mkdir -p'			# make directory tree
+alias md='mkdir -p'				# make directory tree
 alias rm='rm -i'				# prompt before deleting
 # alias cp='cp -i'				# prompt before overwriting
 # alias mv='mv -i'				# prompt before overwriting
