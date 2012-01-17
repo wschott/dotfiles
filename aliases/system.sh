@@ -37,8 +37,7 @@ else
 	alias ls="ls -AFh $LS_OPTIONS"	# overwrite default ls
 fi
 
-alias l='ls -A'					# everything
-alias l1='ls -A -1'				# as list w/o details
+alias l='ls -A -1'				# as list w/o details
 alias ll='ls -lA'				# as list w/ details
 alias la='ls -A'				# everything
 alias lsd='ls -lA | grep "^d"'	# only folders
