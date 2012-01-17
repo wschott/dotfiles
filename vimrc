@@ -30,13 +30,13 @@ set ignorecase						" case-insensitive…
 set smartcase						" …unless phrase includes uppercase
 set gdefault						" add g flag to search/replace by default
 set vb t_vb=						" turn beeps off
-set visualbell						" visual beeps
+"set visualbell						" visual beeps
 set wrap							" turn wrapping on
 "set nowrap							" turn wrapping off
 set linebreak						" wrap only on word boundaries
 set wildmenu						" : menu has tab completion
 set wildmode=list:longest			" behave like in shell: show options
-set wildignore+=.DS_Store,*.o,*.obj,*.pyc,*.png,*.jpg,.git
+set wildignore+=.DS_Store,*.o,*.obj,*.pyc,*.png,*.jpg,.git,.aux
 set backupdir=~/.vim/backup			" Directory for swp files
 set directory=~/.vim/backup			" Directory for swp files
 set scrolloff=5						" keep at least 5 lines above/below cursor
