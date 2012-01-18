@@ -9,21 +9,21 @@ My bash configuration files with a couple of useful aliases.
 
 Fire up your terminal and type the following in it:
 
-	curl https://raw.github.com/wschott/dotfiles/master/install.sh | sh
+    curl https://raw.github.com/wschott/dotfiles/master/install.sh | sh
 
 Don't worry, all your old files will be backed up!
 
 ### Manual way
 
-	git clone git://github.com/wschott/dotfiles.git ~/.dotfiles
-	~/.dotfiles/install.sh
+    git clone git://github.com/wschott/dotfiles.git ~/.dotfiles
+    ~/.dotfiles/install.sh
 
 
 ## Update every now and then
 
 by running:
 
-	~/.dotfiles/install.sh
+    ~/.dotfiles/install.sh
 
 
 ## VIM Mappings

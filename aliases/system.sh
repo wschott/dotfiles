@@ -1,17 +1,17 @@
 # Helper ---------------------------------------------------------------------
-alias h='history 25'					# show last 25 commands
-alias df='df -h'						# human sizes
-alias e="$EDITOR"						# edit
-alias et="$EDITOR ."					# edit this
-alias etb="$EDITOR . &"					# edit this in background
+alias h='history 25'                    # show last 25 commands
+alias df='df -h'                        # human sizes
+alias e="$EDITOR"                       # edit
+alias et="$EDITOR ."                    # edit this
+alias etb="$EDITOR . &"                 # edit this in background
 # alias clean='rm -f *.~*'
 
 
 # File aliases ---------------------------------------------------------------
-alias hosts="sudo $EDITOR /etc/hosts"	# edit /etc/hosts
-alias ebash="$EDITOR ~/.dotfiles"		# edit these files
-alias rbash='source ~/.bashrc'			# reload these files
-alias erbash="$EDITOR ~/.dotfiles && source ~/.bashrc"	# edit & reload these files
+alias hosts="sudo $EDITOR /etc/hosts"   # edit /etc/hosts
+alias ebash="$EDITOR ~/.dotfiles"       # edit these files
+alias rbash='source ~/.bashrc'          # reload these files
+alias erbash="$EDITOR ~/.dotfiles && source ~/.bashrc"  # edit & reload these files
 
 
 # Directory Changing aliases -------------------------------------------------
@@ -19,7 +19,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
-alias back='cd -'				# jump to last working directory
+alias back='cd -'               # jump to last working directory
 
 
 # File Listing aliases -------------------------------------------------------
@@ -28,36 +28,36 @@ alias back='cd -'				# jump to last working directory
 # h = human file sizes
 
 if [[ $(uname) == 'Darwin' ]]; then
-	# G = enable colors
-	#export CLICOLOR=1
-	alias ls='ls -AFhG'				# overwrite default ls
+    # G = enable colors
+    #export CLICOLOR=1
+    alias ls='ls -AFhG'             # overwrite default ls
 else
-	#alias ls="ls -AFh --color=auto"	# overwrite default ls
-	alias ls="ls -AFh $LS_OPTIONS"	# overwrite default ls
+    #alias ls="ls -AFh --color=auto"    # overwrite default ls
+    alias ls="ls -AFh $LS_OPTIONS"  # overwrite default ls
 fi
 
-alias l='ls -A -1'				# as list w/o details
-alias ll='ls -lA'				# as list w/ details
-alias la='ls -A'				# everything
-alias lsd='ls -lA | grep "^d"'	# only folders
-alias l.='ls -lAd .*'			# only files/folders starting with a . (dot)
+alias l='ls -A -1'              # as list w/o details
+alias ll='ls -lA'               # as list w/ details
+alias la='ls -A'                # everything
+alias lsd='ls -lA | grep "^d"'  # only folders
+alias l.='ls -lAd .*'           # only files/folders starting with a . (dot)
 
 # File Handling aliases ------------------------------------------------------
-alias mkdir='mkdir -p -v'		# make directory tree
-alias md='mkdir -p'				# make directory tree
-alias rm='rm -i'				# prompt before deleting
-# alias cp='cp -i'				# prompt before overwriting
-# alias mv='mv -i'				# prompt before overwriting
+alias mkdir='mkdir -p -v'       # make directory tree
+alias md='mkdir -p'             # make directory tree
+alias rm='rm -i'                # prompt before deleting
+# alias cp='cp -i'              # prompt before overwriting
+# alias mv='mv -i'              # prompt before overwriting
 
 
 # Application aliases --------------------------------------------------------
-alias nano='vim'				# get rid of nano
-alias vi='vim'					# get rid of vi
+alias nano='vim'                # get rid of nano
+alias vi='vim'                  # get rid of vi
 alias v='vim'
 
 
 # Mac OS X aliases -----------------------------------------------------------
-alias o='open .' 				# open this folder in Finder.app
+alias o='open .'                # open this folder in Finder.app
 
 # Show/hide hidden files in Finder
 # /via https://github.com/mathiasbynens/dotfiles/blob/master/.aliases
@@ -66,10 +66,10 @@ alias hide='defaults write com.apple.Finder AppleShowAllFiles -bool false && kil
 
 
 # System monitoring ----------------------------------------------------------
-alias topc='top -o cpu'					# sort top by cpu usage
-alias topm='top -o rsize'				# sort top by memory usage
-alias topcpu='ps aux | sort -k3,3n | tail -10'		# top 10 cpu processes
-alias topmem='ps aux | sort -k4,4n | tail -10'		# top 10 memory processes
+alias topc='top -o cpu'                 # sort top by cpu usage
+alias topm='top -o rsize'               # sort top by memory usage
+alias topcpu='ps aux | sort -k3,3n | tail -10'      # top 10 cpu processes
+alias topmem='ps aux | sort -k4,4n | tail -10'      # top 10 memory processes
 # alias apache_process='ps -ef | grep apache | grep -v grep | wc -l'
 
 

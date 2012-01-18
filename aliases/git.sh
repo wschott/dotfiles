@@ -4,9 +4,9 @@ alias gmv='git mv'
 alias grm='git rm'
 alias ga='git add -A'
 alias gaa='git add -A && git status --short --branch'
-alias gc='git commit'	# -v = verbose
-alias gd="git diff | $EDITOR -"				# What's changed but not yet added?
-alias gdc="git diff --cached | $EDITOR -"	# What's added but not yet committed?
+alias gc='git commit'   # -v = verbose
+alias gd="git diff | $EDITOR -"             # What's changed but not yet added?
+alias gdc="git diff --cached | $EDITOR -"   # What's added but not yet committed?
 alias gl="git log --graph --pretty=format1 --abbrev-commit --date=relative"
 alias gpl='git pull'
 alias gps='git push'
@@ -21,7 +21,7 @@ alias gitclean='find . -name .git -exec rm -rf {} \;'
 alias gsvn='git svn'
 alias gi='git init && printf ".DS_Store\n*.swp\n" >> .gitignore && git add .gitignore && gst'
 alias gunstage='git reset HEAD --'
-alias guncommit='git reset --soft HEAD^'	# Undo your last commit, but don't throw away your changes
+alias guncommit='git reset --soft HEAD^'    # Undo your last commit, but don't throw away your changes
 alias grmold="git status | grep deleted | awk '{print $3}' | xargs git rm"
 alias gwho='git shortlog -s -n --no-merges'
 alias gstandup='git shortlog --since=yesterday'

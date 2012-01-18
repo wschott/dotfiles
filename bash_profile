@@ -1,8 +1,8 @@
 if [[ -z "$PS1" ]]; then
-	return
+    return
 fi
 
 # Fallback to .bashrc --------------------------------------------------------
 if [[ -f ~/.bashrc ]]; then
-	source ~/.bashrc
+    source ~/.bashrc
 fi

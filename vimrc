@@ -2,50 +2,50 @@
 call pathogen#infect()
 
 " VIM settings ---------------------------------------------------------------
-set nocompatible					" turn vi compatibility off
-set encoding=utf-8					" UTF-8 encoding
-set t_Co=256						" 256 colors
-set history=1000					" command line history
-set undolevels=1000					" undo history
-set tabstop=4						" tab display width
-set softtabstop=4					" tab width
-set shiftwidth=4					" <TAB> indents this width
-set expandtab						" tabs -> spaces
-set smarttab						" make <TAB> and <BS> smarter
-set autoindent						" turn on auto indenting (match prev line)
-set smartindent						" turn on smart indenting
-set textwidth=79					" wrap text on this column
-set showmatch						" show matching brackets
-set number							" show line numbers
-"set cursorline						" highlight current line
-set backspace=eol,start,indent		" allow backspacing over EOL, ...
-set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:·,extends:❯,precedes:❮	" set style of invisible characters
-"set list!							" show invisible characters
-set ruler							" show status line
-set showcmd							" display incomplete commands
-set showmode						" show current mode
-set hlsearch						" highlight search results
-set incsearch						" search-as-you-type
-set ignorecase						" case-insensitive…
-set smartcase						" …unless phrase includes uppercase
-set gdefault						" add g flag to search/replace by default
-set vb t_vb=						" turn beeps off
-"set visualbell						" visual beeps
-set wrap							" turn wrapping on
-"set nowrap							" turn wrapping off
-set linebreak						" wrap only on word boundaries
-set wildmenu						" : menu has tab completion
-set wildmode=list:longest			" behave like in shell: show options
+set nocompatible                    " turn vi compatibility off
+set encoding=utf-8                  " UTF-8 encoding
+set t_Co=256                        " 256 colors
+set history=1000                    " command line history
+set undolevels=1000                 " undo history
+set tabstop=4                       " tab display width
+set softtabstop=4                   " tab width
+set shiftwidth=4                    " <TAB> indents this width
+set expandtab                       " tabs -> spaces
+set smarttab                        " make <TAB> and <BS> smarter
+set autoindent                      " turn on auto indenting (match prev line)
+set smartindent                     " turn on smart indenting
+set textwidth=79                    " wrap text on this column
+set showmatch                       " show matching brackets
+set number                          " show line numbers
+"set cursorline                     " highlight current line
+set backspace=eol,start,indent      " allow backspacing over EOL, ...
+set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:·,extends:❯,precedes:❮ " set style of invisible characters
+"set list!                          " show invisible characters
+set ruler                           " show status line
+set showcmd                         " display incomplete commands
+set showmode                        " show current mode
+set hlsearch                        " highlight search results
+set incsearch                       " search-as-you-type
+set ignorecase                      " case-insensitive…
+set smartcase                       " …unless phrase includes uppercase
+set gdefault                        " add g flag to search/replace by default
+set vb t_vb=                        " turn beeps off
+"set visualbell                     " visual beeps
+set wrap                            " turn wrapping on
+"set nowrap                         " turn wrapping off
+set linebreak                       " wrap only on word boundaries
+set wildmenu                        " : menu has tab completion
+set wildmode=list:longest           " behave like in shell: show options
 set wildignore+=.DS_Store,*.o,*.obj,*.pyc,*.png,*.jpg,.git,.aux
-set backupdir=~/.vim/backup			" Directory for swp files
-set directory=~/.vim/backup			" Directory for swp files
-set scrolloff=5						" keep at least 5 lines above/below cursor
-set sidescrolloff=5					" keep at least 5 columns left/right of cursor
-"set foldmethod=marker				" folding
-set splitbelow						" split new windows below current window
-set splitright						" split new windows on the right side of current window
-set laststatus=2					" always show the statusline, even if there is only one window
-syntax on							" syntax highlighting
+set backupdir=~/.vim/backup         " Directory for swp files
+set directory=~/.vim/backup         " Directory for swp files
+set scrolloff=5                     " keep at least 5 lines above/below cursor
+set sidescrolloff=5                 " keep at least 5 columns left/right of cursor
+"set foldmethod=marker              " folding
+set splitbelow                      " split new windows below current window
+set splitright                      " split new windows on the right side of current window
+set laststatus=2                    " always show the statusline, even if there is only one window
+syntax on                           " syntax highlighting
 
 " Statusline -----------------------------------------------------------------
 " %< truncation point
@@ -67,7 +67,7 @@ set statusline=%#warningmsg#%*%<\ %F\ %m%r%y\ %=%-14.(%l,%c%V%)\ %P\ %v
 
 " Mouse ----------------------------------------------------------------------
 if has('mouse')
-	set mouse=a				" enable mouse in all modes
+    set mouse=a             " enable mouse in all modes
 endif
 
 " Shortcuts ------------------------------------------------------------------
@@ -77,37 +77,37 @@ endif
 " Swap ; and :  Convenient.
 "nnoremap ; :
 "nnoremap : ;
-inoremap jk <ESC>			" exit to normal mode the easy way
-nnoremap j gj				" move by screen line instead file line
-nnoremap k gk				" move by screen line instead file line
-vnoremap j gj				" move by screen line instead file line
-vnoremap k gk				" move by screen line instead file line
-nnoremap H ^				" jump to start of line (instead of top of screen)
-nnoremap L g_				" jump to end of line (instead of bottom of screen)
-noremap <C-h> <C-w>h		" go to split left
-noremap <C-j> <C-w>j		" go to split below
-noremap <C-k> <C-w>k		" go to split above
-noremap <C-l> <C-w>l		" go to split right
-nnoremap * *<C-o>			" Don't move on *
-" nnoremap * *<C-o>zz		" Don't move on * & center view
-nnoremap Q gqap				" reformat paragraph
-"nnoremap Q gqip				" reformat paragraph
-vnoremap Q gq				" reformat paragraph
-map Y y$					" yank from cursor to $
-map D d$					" delete from cursor to $
-nmap n nzz					" search next & center view
-nmap N Nzz					" search previous & center view
-nmap > >>					" one-key indentation
-nmap < <<					" one-key indentation
-nnoremap <silent> zj o<ESC>	" insert a newline below
-nnoremap <silent> zk O<ESC>	" insert a newline above
+inoremap jk <ESC>           " exit to normal mode the easy way
+nnoremap j gj               " move by screen line instead file line
+nnoremap k gk               " move by screen line instead file line
+vnoremap j gj               " move by screen line instead file line
+vnoremap k gk               " move by screen line instead file line
+nnoremap H ^                " jump to start of line (instead of top of screen)
+nnoremap L g_               " jump to end of line (instead of bottom of screen)
+noremap <C-h> <C-w>h        " go to split left
+noremap <C-j> <C-w>j        " go to split below
+noremap <C-k> <C-w>k        " go to split above
+noremap <C-l> <C-w>l        " go to split right
+nnoremap * *<C-o>           " Don't move on *
+" nnoremap * *<C-o>zz       " Don't move on * & center view
+nnoremap Q gqap             " reformat paragraph
+"nnoremap Q gqip                " reformat paragraph
+vnoremap Q gq               " reformat paragraph
+map Y y$                    " yank from cursor to $
+map D d$                    " delete from cursor to $
+nmap n nzz                  " search next & center view
+nmap N Nzz                  " search previous & center view
+nmap > >>                   " one-key indentation
+nmap < <<                   " one-key indentation
+nnoremap <silent> zj o<ESC> " insert a newline below
+nnoremap <silent> zk O<ESC> " insert a newline above
 inoremap <Left> <NOP>
 inoremap <Right> <NOP>
-nnoremap <C-e> 5<C-e>		" faster scrolling
+nnoremap <C-e> 5<C-e>       " faster scrolling
 nnoremap <C-y> 5<C-y>
 vnoremap <C-e> 5<C-e>
 vnoremap <C-y> 5<C-y>
-"nnoremap <space> za			" Space will toggle folds
+"nnoremap <space> za            " Space will toggle folds
 
 " insert a pair of quotes/braces
 " inoremap ' ''<Left>
@@ -123,50 +123,50 @@ vnoremap <C-y> 5<C-y>
 inoremap ;; <END>;
 inoremap :: <END>:
 
-command! W w				" Remap :W to :w
+command! W w                " Remap :W to :w
 
 " Tab navigation
-nmap tp			:tabprevious<CR>		" tp
-nmap tn			:tabnext<CR>			" tn
-nmap <C-S-tab>	:tabprevious<CR>		" CTRL-SHIFT-TAB
-nmap <C-tab>	:tabnext<CR>			" CTRL-TAB
-vmap <C-S-tab>	<C-o>:tabprevious<CR>
-vmap <C-tab>	<C-o>:tabnext<CR>
-imap <C-S-tab>	<C-o>:tabprevious<CR>
-imap <C-tab>	<C-o>:tabnext<CR>
+nmap tp         :tabprevious<CR>        " tp
+nmap tn         :tabnext<CR>            " tn
+nmap <C-S-tab>  :tabprevious<CR>        " CTRL-SHIFT-TAB
+nmap <C-tab>    :tabnext<CR>            " CTRL-TAB
+vmap <C-S-tab>  <C-o>:tabprevious<CR>
+vmap <C-tab>    <C-o>:tabnext<CR>
+imap <C-S-tab>  <C-o>:tabprevious<CR>
+imap <C-tab>    <C-o>:tabnext<CR>
 
 " /via https://github.com/holman/dotfiles/blob/master/vim/gvimrc.symlink
 if has("mac")
-	nmap <D-k> :tabprevious<CR>				" CMD-J
-	nmap <D-j> :tabnext<CR>					" CMD-K
-	map  <D-[> :tabprevious<CR>				" CMD-[
-	map  <D-]> :tabnext<CR>					" CMD-]
-	imap <D-[> <C-O>:tabprevious<CR>
-	imap <D-]> <C-O>:tabnext<CR>
+    nmap <D-k> :tabprevious<CR>             " CMD-J
+    nmap <D-j> :tabnext<CR>                 " CMD-K
+    map  <D-[> :tabprevious<CR>             " CMD-[
+    map  <D-]> :tabnext<CR>                 " CMD-]
+    imap <D-[> <C-O>:tabprevious<CR>
+    imap <D-]> <C-O>:tabnext<CR>
 
-	" CMD-# switches to tab #
-	nmap <D-1> 1gt
-	nmap <D-2> 2gt
-	nmap <D-3> 3gt
-	nmap <D-4> 4gt
-	nmap <D-5> 5gt
-	nmap <D-6> 6gt
-	nmap <D-7> 7gt
-	nmap <D-8> 8gt
-	nmap <D-9> 9gt
+    " CMD-# switches to tab #
+    nmap <D-1> 1gt
+    nmap <D-2> 2gt
+    nmap <D-3> 3gt
+    nmap <D-4> 4gt
+    nmap <D-5> 5gt
+    nmap <D-6> 6gt
+    nmap <D-7> 7gt
+    nmap <D-8> 8gt
+    nmap <D-9> 9gt
 endif
 
 " edit file in new tab
 nmap te :tabedit
 
-nmap + <C-W>>								" faster split resizing (+,-)
+nmap + <C-W>>                               " faster split resizing (+,-)
 nmap - <C-W><
 nmap <leader>+ 50<C-W>>
 nmap <leader>- 50<C-W><
 nmap ;+ <C-W>+
 nmap ;- <C-W>-
 
-nnoremap _md :set ft=markdown<CR>			" Easy filetype switching
+nnoremap _md :set ft=markdown<CR>           " Easy filetype switching
 
 " Moving lines up or down
 "nnoremap ;j mz:m+<CR>`z==
@@ -179,17 +179,17 @@ nnoremap _md :set ft=markdown<CR>			" Easy filetype switching
 " /via https://github.com/challendy/vim_bash_setup/blob/master/vim_setup/keybindings.gui.vim
 " OSX: Specific keybindings
 if has("mac")
-	set go-=T									" remove ugly toolbar
+    set go-=T                                   " remove ugly toolbar
 
-	" TextMateLikeIndent: bind CMD-] to shift right
-	" nmap <D-]> >>
-	" vmap <D-]> >>
-	" imap <D-]> <C-O>>>
+    " TextMateLikeIndent: bind CMD-] to shift right
+    " nmap <D-]> >>
+    " vmap <D-]> >>
+    " imap <D-]> <C-O>>>
 
-	" TextMateLikeDeindent: bind CMD-[ to shift left
-	" nmap <D-[> <<
-	" vmap <D-[> <<
-	" imap <D-[> <C-O><<
+    " TextMateLikeDeindent: bind CMD-[ to shift left
+    " nmap <D-[> <<
+    " vmap <D-[> <<
+    " imap <D-[> <C-O><<
 endif
 
 " /via https://bitbucket.org/sjl/dotfiles/src/b5e60ade957d/vim/.vimrc
@@ -216,19 +216,19 @@ nnoremap K h/[^ ]<cr>"zd$jyyP^v$h"zpJk:s/\v +$//<cr>:noh<cr>j^
 
 
 " Leader ---------------------------------------------------------------------
-let mapleader=','						" start macros with ,
-nmap <leader>inv :set list!<CR>			" toggle invisibles
-map <leader>t :tabnew %<CR>				" duplicate current tab
-map <leader>d :e %:h/<CR>				" open directory of current file in current tab
-map <leader>dt :tabnew %:h/<CR>			" open directory of current file in new tab
-map <silent> <leader><leader> <ESC>:noh<CR>	" clear last search
+let mapleader=','                       " start macros with ,
+nmap <leader>inv :set list!<CR>         " toggle invisibles
+map <leader>t :tabnew %<CR>             " duplicate current tab
+map <leader>d :e %:h/<CR>               " open directory of current file in current tab
+map <leader>dt :tabnew %:h/<CR>         " open directory of current file in new tab
+map <silent> <leader><leader> <ESC>:noh<CR> " clear last search
 
 
-map <leader>ve :tabedit ~/.vimrc<CR>	" edit .vimrc
-map <leader>vu :source ~/.vimrc<CR>		" update current vim settings
+map <leader>ve :tabedit ~/.vimrc<CR>    " edit .vimrc
+map <leader>vu :source ~/.vimrc<CR>     " update current vim settings
 
 
-nmap <leader>cd :cd%:p:h<CR>			" change directory to that of current file
+nmap <leader>cd :cd%:p:h<CR>            " change directory to that of current file
 
 
 " /via https://github.com/gf3/dotfiles/blob/master/.vimrc
@@ -288,10 +288,10 @@ map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 " Create a split on the given side.
 " /via https://github.com/henrik/dotfiles/blob/master/vimrc
 " From http://technotales.wordpress.com/2010/04/29/vim-splits-a-guide-to-doing-exactly-what-you-want/ via joakimk.
-nmap <leader><left>		:leftabove  vsp<CR>
-nmap <leader><right>	:rightbelow vsp<CR>
-nmap <leader><up>		:leftabove  sp<CR>
-nmap <leader><down>		:rightbelow sp<CR>
+nmap <leader><left>     :leftabove  vsp<CR>
+nmap <leader><right>    :rightbelow vsp<CR>
+nmap <leader><up>       :leftabove  sp<CR>
+nmap <leader><down>     :rightbelow sp<CR>
 
 
 " Enable filetype plugin & indention files detection -------------------------
@@ -314,12 +314,12 @@ let g:pyref_mapping = 'K'
 
 " Color ----------------------------------------------------------------------
 if has('gui_running')
-	"set guifont=Monaco:h11
-	set background=light
-	let g:solarized_termcolors=256
-	colorscheme solarized
+    "set guifont=Monaco:h11
+    set background=light
+    let g:solarized_termcolors=256
+    colorscheme solarized
 else
-	"color molokai
+    "color molokai
 endif
 
 " Auto Commands --------------------------------------------------------------
@@ -409,5 +409,5 @@ au FileType python noremap <buffer> <leader>dS :call ShowPyDoc('<C-R><C-A>', 1)<
 " import local vimrc file ----------------------------------------------------
 let $LOCAL_VIMRC = $HOME."/.local.vimrc"
 if filereadable($LOCAL_VIMRC)
-	source $LOCAL_VIMRC
+    source $LOCAL_VIMRC
 endif

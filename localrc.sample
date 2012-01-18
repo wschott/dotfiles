@@ -1,19 +1,21 @@
 # Private
 
 # Options --------------------------------------------------------------------
-USE_GIT_PROMPT=1							# show GIT repo info? [0|1]
-USE_SVN_PROMPT=0							# show SVN repo info? [0|1]
+USE_GIT_PROMPT=1                            # show GIT repo info? [0|1]
+USE_SVN_PROMPT=0                            # show SVN repo info? [0|1]
 
 # Default editor -------------------------------------------------------------
-#export EDITOR='mate'						# overwrite default editor
-#alias vim='mvim'							# set vim to MacVim on Mac OS X
+#export EDITOR='mate'                       # overwrite default editor
+#alias vim='mvim'                           # set vim to MacVim on Mac OS X
 
-## Path Aliases --------------------------------------------------------------
 # open either a given folder or the current in Sublime Text
 subl() {
     command subl -n ${1:-"."}
 }
 # export EDITOR='subl'
+
+
+# Path Aliases ---------------------------------------------------------------
 # alias p='cd ~/Projects/'
 # alias s='cd ~/Sites/'
 # alias d='cd ~/Dropbox/'
@@ -22,4 +24,4 @@ subl() {
 export PROJECTS="$HOME/code"
 
 
-################################### PRIVATE ##################################
+################################## PRIVATE ###################################

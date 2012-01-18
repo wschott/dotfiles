@@ -1,36 +1,36 @@
 [user]
-	name = Waldemar Schott
-	email = code@waldemarschott.com
+    name = Waldemar Schott
+    email = code@waldemarschott.com
 [color]
-	ui = auto
+    ui = auto
 [core]
-	quotepath = false
-#	editor = mate -w
-	editor = vim
-	excludesfile = ~/.gitignore
+    quotepath = false
+#   editor = mate -w
+    editor = vim
+    excludesfile = ~/.gitignore
 [alias]
-	a = add -A
-	aa = !git add -A && git status --short --branch
-	c = commit
-	d = !git diff | $EDITOR -
-	dc = !git diff --cached | $EDITOR -
-	l = log --graph --pretty=format1 --abbrev-commit --date=relative
-	l2 = log --graph --pretty=format2 --abbrev-commit --date=relative
-	pl = pull
-	ps = push
-	st = status --short --branch
-	# stl = status
-	b = branch
-	ba = branch -a
-	m = merge
-	co = checkout
-	i = !git init && printf ".DS_Store\n*.swp\n" >> .gitignore && git add .gitignore && gst
-	unstage = reset HEAD --
-	uncommit = reset --soft HEAD^
-	rmold = !git status | grep deleted | awk '{print $3}' | xargs git rm
-	who = shortlog -s -n --no-merges
-	standup = shortlog --since=yesterday
-	today = shortlog --since=midnight
+    a = add -A
+    aa = !git add -A && git status --short --branch
+    c = commit
+    d = !git diff | $EDITOR -
+    dc = !git diff --cached | $EDITOR -
+    l = log --graph --pretty=format1 --abbrev-commit --date=relative
+    l2 = log --graph --pretty=format2 --abbrev-commit --date=relative
+    pl = pull
+    ps = push
+    st = status --short --branch
+    # stl = status
+    b = branch
+    ba = branch -a
+    m = merge
+    co = checkout
+    i = !git init && printf ".DS_Store\n*.swp\n" >> .gitignore && git add .gitignore && gst
+    unstage = reset HEAD --
+    uncommit = reset --soft HEAD^
+    rmold = !git status | grep deleted | awk '{print $3}' | xargs git rm
+    who = shortlog -s -n --no-merges
+    standup = shortlog --since=yesterday
+    today = shortlog --since=midnight
 [pretty]
-	format1 = %C(red)%h%C(reset) - %s %C(green)(%cr) %C(blue)<%an>%C(reset) %C(bold yellow)%d%C(reset)
-	format2 = %C(yellow)%h%C(reset) %s %C(bold black)(%an, %ar)%C(reset)%C(bold blue)%d%C(reset)
+    format1 = %C(red)%h%C(reset) - %s %C(green)(%cr) %C(blue)<%an>%C(reset) %C(bold yellow)%d%C(reset)
+    format2 = %C(yellow)%h%C(reset) %s %C(bold black)(%an, %ar)%C(reset)%C(bold blue)%d%C(reset)
