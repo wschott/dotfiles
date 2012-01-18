@@ -1,5 +1,4 @@
 # Helper ---------------------------------------------------------------------
-alias c='clear'							# clear scrollback
 alias h='history 25'					# show last 25 commands
 alias df='df -h'						# human sizes
 alias e="$EDITOR"						# edit
@@ -81,13 +80,6 @@ alias grep='grep --color'
 # dsrm: removes all .DS_Store file from the current dir and below
 alias rmds='find . -type f -name ".DS_Store" -print0 | xargs -0 rm'
 alias rmpyc='find . -type f -name "*.pyc" -print0 | xargs -0 rm'
-
-
-# auto completion for ~/code/ subdirectories
-complete -C ~/.dotfiles/completion/project_completion -o default c
-
-# changing directory to code project
-c() { cd ~/code/"$1"; }
 
 
 # /via https://github.com/holman/dotfiles/blob/master/system/keys.zsh

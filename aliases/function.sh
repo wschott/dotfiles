@@ -49,6 +49,14 @@ hf() {
 	grep "$@" ~/.bash_history
 }
 
+# cd to $PROJECTS (i.e. ~/code) subdirectories -------------------------------
+c() {
+	cd "${PROJECTS}/${1}";
+}
+
+# auto completion for $PROJECTS (i.e. ~/code) subdirectories
+complete -C ~/.dotfiles/completion/project_completion -o default c
+
 # jump to directory and list all files ---------------------------------------
 cl() {
 	cd "$1"

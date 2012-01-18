@@ -9,7 +9,6 @@ USE_SVN_PROMPT=0							# show SVN repo info? [0|1]
 #alias vim='mvim'							# set vim to MacVim on Mac OS X
 
 ## Path Aliases --------------------------------------------------------------
-# alias c='cd ~/code/'
 # open either a given folder or the current in Sublime Text
 subl() {
     command subl -n ${1:-"."}
@@ -18,6 +17,9 @@ subl() {
 # alias p='cd ~/Projects/'
 # alias s='cd ~/Sites/'
 # alias d='cd ~/Dropbox/'
+
+# your project folder that we can `c [tab]` to
+export PROJECTS="$HOME/code"
 
 
 ################################### PRIVATE ##################################
