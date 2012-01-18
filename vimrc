@@ -72,9 +72,9 @@ endif
 
 " Shortcuts ------------------------------------------------------------------
 " easier command typing
-"nnoremap ; :
-"vnoremap ; :
-" Swap ; and :  Convenient.
+nnoremap ; :
+vnoremap ; :
+" Swap ; and :
 "nnoremap ; :
 "nnoremap : ;
 inoremap jk <ESC>           " exit to normal mode the easy way
@@ -90,19 +90,20 @@ noremap <C-k> <C-w>k        " go to split above
 noremap <C-l> <C-w>l        " go to split right
 nnoremap * *<C-o>           " Don't move on *
 " nnoremap * *<C-o>zz       " Don't move on * & center view
+" jump between brackets with <TAB>
+nnoremap <tab> %
+vnoremap <tab> %
 nnoremap Q gqap             " reformat paragraph
 "nnoremap Q gqip                " reformat paragraph
 vnoremap Q gq               " reformat paragraph
 map Y y$                    " yank from cursor to $
 map D d$                    " delete from cursor to $
-nmap n nzz                  " search next & center view
-nmap N Nzz                  " search previous & center view
+"nmap n nzz                  " search next & center view
+"nmap N Nzz                  " search previous & center view
 nmap > >>                   " one-key indentation
 nmap < <<                   " one-key indentation
 nnoremap <silent> zj o<ESC> " insert a newline below
 nnoremap <silent> zk O<ESC> " insert a newline above
-inoremap <Left> <NOP>
-inoremap <Right> <NOP>
 nnoremap <C-e> 5<C-e>       " faster scrolling
 nnoremap <C-y> 5<C-y>
 vnoremap <C-e> 5<C-e>
@@ -270,14 +271,14 @@ nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
 
 " /via https://github.com/gf3/dotfiles/blob/master/.vimrc
 " Strip trailing whitespace (,ss)
-function! StripWhitespace ()
-    let save_cursor = getpos(".")
-    let old_query = getreg('/')
-    :%s/\s\+$//e
-    call setpos('.', save_cursor)
-    call setreg('/', old_query)
-endfunction
-noremap <leader>ss :call StripWhitespace ()<CR>
+"function! StripWhitespace ()
+"    let save_cursor = getpos(".")
+"    let old_query = getreg('/')
+"    :%s/\s\+$//e
+"    call setpos('.', save_cursor)
+"    call setreg('/', old_query)
+"endfunction
+"noremap <leader>ss :call StripWhitespace ()<CR>
 
 
 
@@ -301,7 +302,7 @@ filetype plugin indent on
 " Functions ------------------------------------------------------------------
 
 " Strip trailing whitespace
-map <leader>S :%s/\s\+$//gc<CR>:let @/=''<CR>
+map <leader>W :%s/\s\+$//gc<CR>:let @/=''<CR>
 
 " Highlight trailing whitespace characters and tabs not used for indention
 " /via https://github.com/mileszs/dotfiles/blob/master/vimrc
@@ -341,12 +342,16 @@ autocmd BufReadPost *
         \               exe "norm $"|
         \       endif|
         \ endif
-" }}}
 
 
 " enable autocompletion
 set ofu=syntaxcomplete#Complete
 
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+inoremap <C-space> <C-x><C-o>
 
 " Python ---------------------------------------------------------------------
 " smart indenting for python files (indent one more <TAB> after def foobar():)
