@@ -45,7 +45,7 @@ mcd() {
 }
 
 # search the history file ----------------------------------------------------
-hf() {
+fhistory() {
 	grep "$@" ~/.bash_history
 }
 
@@ -69,7 +69,7 @@ cl() {
 }
 
 # show path the pretty way ---------------------------------------------------
-showPath() {
+showpath() {
     old=$IFS
     IFS=':'
     printf '%s\n' $PATH
