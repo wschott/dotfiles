@@ -78,10 +78,10 @@ endif
 "nnoremap ; :
 "nnoremap : ;
 inoremap jk <ESC>           " exit to normal mode the easy way
-nnoremap j gj               " move by screen line instead file line
-nnoremap k gk               " move by screen line instead file line
-vnoremap j gj               " move by screen line instead file line
-vnoremap k gk               " move by screen line instead file line
+" nnoremap j gj               " move by screen line instead file line
+" nnoremap k gk               " move by screen line instead file line
+" vnoremap j gj               " move by screen line instead file line
+" vnoremap k gk               " move by screen line instead file line
 nnoremap H ^                " jump to start of line (instead of top of screen)
 nnoremap L g_               " jump to end of line (instead of bottom of screen)
 noremap <C-h> <C-w>h        " go to split left
