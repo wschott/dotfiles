@@ -10,7 +10,7 @@ set undolevels=1000					" undo history
 set tabstop=4						" tab display width
 set softtabstop=4					" tab width
 set shiftwidth=4					" <TAB> indents this width
-"set expandtab						" tabs -> spaces
+set expandtab						" tabs -> spaces
 set smarttab						" make <TAB> and <BS> smarter
 set autoindent						" turn on auto indenting (match prev line)
 set smartindent						" turn on smart indenting
@@ -212,7 +212,6 @@ endif
 " Especially useful for adding items in the middle of long lists/tuples in Python
 " while maintaining a sane text width.
 nnoremap K h/[^ ]<cr>"zd$jyyP^v$h"zpJk:s/\v +$//<cr>:noh<cr>j^
-" }}}
 
 
 
@@ -295,7 +294,7 @@ nmap <leader><up>		:leftabove  sp<CR>
 nmap <leader><down>		:rightbelow sp<CR>
 
 
-" Enable filetype plugin & indention files detection ------------------------
+" Enable filetype plugin & indention files detection -------------------------
 filetype plugin indent on
 
 
@@ -323,7 +322,7 @@ else
 	"color molokai
 endif
 
-" Auto Commands ---------------------------------------------------------- {{{
+" Auto Commands --------------------------------------------------------------
 " /via http://stackoverflow.com/questions/164847/what-is-in-your-vimrc/171558#171558
 
 " Automatically cd into the directory that the file is in
@@ -376,7 +375,7 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 
 
 
-" Fugitive --------------------------------------------------------------- {{{
+" Fugitive -------------------------------------------------------------------
 " /via https://bitbucket.org/sjl/dotfiles/src/b5e60ade957d/vim/.vimrc
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gs :Gstatus<cr>
@@ -389,14 +388,11 @@ nnoremap <leader>gm :Gmove<cr>
 nnoremap <leader>gr :Gremove<cr>
 
 autocmd BufNewFile,BufRead .git/index setlocal nolist
-" }}}
 
-" Pydoc ------------------------------------------------------------------ {{{
+" Pydoc ----------------------------------------------------------------------
 let g:pydoc_perform_mappings = 0
-
 au FileType python noremap <buffer> <leader>ds :call ShowPyDoc('<C-R><C-W>', 1)<CR>
 au FileType python noremap <buffer> <leader>dS :call ShowPyDoc('<C-R><C-A>', 1)<CR>
-" }}}
 
 " " Execute the tests
 " " /via https://github.com/nureineide/dotvim/blob/master/vimrc
