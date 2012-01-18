@@ -3,10 +3,10 @@ alias py='python'
 alias i='ipython'
 
 # virtualenvwrapper support --------------------------------------------------
-export WORK_ON='~/.virtualenvs'
-export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
-if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then
-    source /usr/local/bin/virtualenvwrapper.sh
+if which virtualenvwrapper.sh >/dev/null 2>&1; then
+    export WORK_ON='~/.virtualenvs'
+    export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
+    source $(which virtualenvwrapper.sh)
 fi
 
 # Django ---------------------------------------------------------------------
@@ -19,10 +19,9 @@ alias djr='python manage.py runserver'
 
 # search Djangos source files ------------------------------------------------
 # /via https://code.djangoproject.com/wiki/CookBookScriptsAliases
+export DJROOT=/usr/lib/python2.7/site-packages/django
 if [[ $(uname) == 'Darwin' ]]; then
-    DJROOT=/Library/Python/2.7/site-packages/django
-else
-    DJROOT=/usr/lib/python2.7/site-packages/django
+    export DJROOT=/Library/Python/2.7/site-packages/django
 fi
 fdj() {
     grep -r --include="*.py" --include="*.html" $* $DJROOT
