@@ -49,6 +49,11 @@ hf() {
 	grep "$@" ~/.bash_history
 }
 
+# search available aliases ---------------------------------------------------
+falias() {
+    alias | grep "alias $@"
+}
+
 # cd to $PROJECTS (i.e. ~/code) subdirectories -------------------------------
 c() {
 	cd "${PROJECTS}/${1}";
