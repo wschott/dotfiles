@@ -58,7 +58,6 @@ alias v='vim'
 
 # Mac OS X aliases -----------------------------------------------------------
 alias o='open .' 				# open this folder in Finder.app
-alias m='mate'					# TextMate
 
 # Show/hide hidden files in Finder
 # /via https://github.com/mathiasbynens/dotfiles/blob/master/.aliases
