@@ -18,6 +18,11 @@ Don't worry, all your old files will be backed up!
     git clone git://github.com/wschott/dotfiles.git ~/.dotfiles
     ~/.dotfiles/install.sh
 
+### Add requirements
+
+    git submodule init
+    git submodule update
+
 
 ## Update every now and then
 
@@ -30,57 +35,57 @@ by running:
 
 ### General
 
-- `,inv` Toggle invisibles.
-- `,e` Opens an edit command with current file's path as directory.
-- `te` Opens an edit commend for a new tab.
-- `,t` Duplicate current tab.
-- `,d` Open directory of current file in current tab.
-- `,dt` Open directory of current file in new tab.
-- `,cd` Open current file's directory.
-- `,ls` Show buffers (same as `:buffers`).
-- `,,` Toggle search highlight.
-- `H` Go to start of line.
-- `L` Go to end of line.
-- `,ss` Strip trailing whitespace.
-- `,S` Strip trailing whitespace.
-- `Y` Yank from cursor to end of line (same as `y$`).
-- `,*` Replace word under cursor.
-- `>` Indent current block.
-- `<` Outdent current block.
-- `zj` Insert a newline below.
-- `zk` Insert a newline above.
-- `,ve` Edit .vimrc in a new tab.
-- `,vu` Source .vimrc.
-- `Q` Reformat paragraph.
+- `,inv` — Toggle invisibles.
+- `,e` — Opens an edit command with current file's path as directory.
+- `te` — Opens an edit commend for a new tab.
+- `,t` — Duplicate current tab.
+- `,d` — Open directory of current file in current tab.
+- `,dt` — Open directory of current file in new tab.
+- `,cd` — Open current file's directory.
+- `,ls` — Show buffers (same as `:buffers`).
+- `,,` — Toggle search highlight.
+- `H` — Go to start of line.
+- `L` — Go to end of line.
+- `,ss` — Strip trailing whitespace.
+- `,S` — Strip trailing whitespace.
+- `Y` — Yank from cursor to end of line (same as `y$`).
+- `,*` — Replace word under cursor.
+- `>` — Indent current block.
+- `<` — Outdent current block.
+- `zj` — Insert a newline below.
+- `zk` — Insert a newline above.
+- `,ve` — Edit .vimrc in a new tab.
+- `,vu` — Source .vimrc.
+- `Q` — Reformat paragraph.
 
 ### Tabs
 
-- `tn` Go to next tab.
-- `tp` Go to previous tab.
+- `tn` — Go to next tab.
+- `tp` — Go to previous tab.
 
 ### Splits
 
-- `+` Increase split size.
-- `-` Decrease split size.
-- `;+` Increase split size.
-- `;-` Decrease split size.
-- `⌃j` Go to split below.
-- `⌃k` Go to split above.
-- `⌃h` Go to split left.
-- `⌃l` Go to split right.
-- `,←` Create a split on the left side.
-- `,→` Create a split on the right side.
-- `,↑` Create a split above.
-- `,↓` Create a split below.
+- `+` — Increase split size.
+- `-` — Decrease split size.
+- `;+` — Increase split size.
+- `;-` — Decrease split size.
+- `⌃j` — Go to split below.
+- `⌃k` — Go to split above.
+- `⌃h` — Go to split left.
+- `⌃l` — Go to split right.
+- `,←` — Create a split on the left side.
+- `,→` — Create a split on the right side.
+- `,↑` — Create a split above.
+- `,↓` — Create a split below.
 
 ### Commands
 
-- `:W` Alias to `:w`
+- `:W` — Alias to `:w`
 
 
 ## VIM plugins
 
-- [PyFlakes](https://github.com/kevinw/pyflakes-vim) checks code for errors
+- <strike>[PyFlakes](https://github.com/kevinw/pyflakes-vim) checks code for errors</strike>
 - [vim git](https://github.com/tpope/vim-git)
 
 
