@@ -10,7 +10,7 @@ USE_SVN_PROMPT=0                            # show SVN repo info? [0|1]
 
 # open either a given folder or the current in Sublime Text
 subl() {
-    command subl -n ${1:-"."}
+    command subl -n "${1:-'.'}"
 }
 # export EDITOR='subl'
 
