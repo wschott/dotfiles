@@ -30,13 +30,13 @@ alias back='cd -'               # jump to last working directory
 if [[ $(uname) == 'Darwin' ]]; then
     # G = enable colors
     #export CLICOLOR=1
-    alias ls='ls -AFhG'             # overwrite default ls
+    alias ls='ls -AFhG'                     # overwrite default ls
+    alias l='ls -A -1'                      # as list w/o details
 else
-    #alias ls="ls -AFh --color=auto"    # overwrite default ls
-    alias ls="ls -AFh $LS_OPTIONS"  # overwrite default ls
+    #alias ls="ls -AFh --color=auto"        # overwrite default ls
+    alias ls="ls -AFh $LS_OPTIONS"          # overwrite default ls
+    alias l='ls -A -1 --ignore "*.pyc"'     # as list w/o details
 fi
-
-alias l='ls -A -1'              # as list w/o details
 alias ll='ls -lA'               # as list w/ details
 alias la='ls -A'                # everything
 alias lsd='ls -lA | grep "^d"'  # only folders
