@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Helper ---------------------------------------------------------------------
 alias h='history 25'                    # show last 25 commands
 alias df='df -h'                        # human sizes
