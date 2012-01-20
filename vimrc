@@ -78,10 +78,6 @@ vnoremap ; :
 "nnoremap ; :
 "nnoremap : ;
 inoremap jk <ESC>           " exit to normal mode the easy way
-" nnoremap j gj               " move by screen line instead file line
-" nnoremap k gk               " move by screen line instead file line
-" vnoremap j gj               " move by screen line instead file line
-" vnoremap k gk               " move by screen line instead file line
 nnoremap H ^                " jump to start of line (instead of top of screen)
 nnoremap L g_               " jump to end of line (instead of bottom of screen)
 noremap <C-h> <C-w>h        " go to split left
@@ -375,10 +371,6 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 "imap <silent> <expr> <buffer> <CR> pumvisible() ? "<CR><C-R>=(col('.')-1&&match(getline(line('.')), '\\.',
 "      \ col('.')-2) == col('.')-2)?\"\<lt>C-X>\<lt>C-O>\":\"\"<CR>"
 "      \ : "<CR>"
-
-
-
-
 
 " Fugitive -------------------------------------------------------------------
 " /via https://bitbucket.org/sjl/dotfiles/src/b5e60ade957d/vim/.vimrc
