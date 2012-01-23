@@ -12,7 +12,9 @@ help_git_prompt() {
     echo "unstaged (*), staged (+), stashed ($), untracked (%), behind (<), ahead (>), divergent (<>)"
 }
 
-export PS1='\u@\h \[\e[1;34m\]\w\[\e[m\]\[\e[0;35m\]$(ps1_scm)\[\e[m\] \[\e[0;31m\]\$\[\e[m\] '
+# 0;31 : regular red
+# 1;31 : bold red
+export PS1='\u@\h \[\e[1;31m\]\w\[\e[m\]\[\e[0;35m\]$(ps1_scm)\[\e[m\] \[\e[0;31m\]\$\[\e[m\] '
 
 
 # combines SVN & Git branch information for prompt
@@ -25,11 +27,6 @@ ps1_scm() {
         #s="$(ps1_git)"
         s="$(__git_ps1 "(%s)")"
     fi
-    #if [[ "$s" == '' ]]; then
-    #   echo -n ''
-    #else
-    #   echo -n " $s"
-    #fi
     if [[ "$s" != '' ]]; then
         s=" $s"
     fi
@@ -83,12 +80,10 @@ parse_git_dirty() {
     if [[ $(echo ${gitstat} | grep -v '^$' | wc -l | tr -d ' ') == 0 ]]; then
         s="${s}"
     fi
-
-    if [[ $s != '' ]]; then
-        echo -n "[$s]"
-    else
-        echo -n ''
+    if [[ "$s" != '' ]]; then
+        s="[$s]"
     fi
+    echo -n "$s"
 }
 
 # Checks if there are commits ahead from remote

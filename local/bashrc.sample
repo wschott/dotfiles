@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Private
+
+# Options --------------------------------------------------------------------
+USE_GIT_PROMPT=1                # show GIT repo info? [0|1]
+USE_SVN_PROMPT=0                # show SVN repo info? [0|1]
+
+
+# Default editor -------------------------------------------------------------
+#alias vim='mvim'               # set vim [gvim|mvim]
+#export EDITOR='vim'            # set default editor [vim|gvim|mvim|mate|subl]
+
+
+# Path Aliases ---------------------------------------------------------------
+# alias p='cd ~/Projects/'
+# alias d='cd ~/Dropbox/'
+
+# your project folder that we can `c [tab]` to
+export PROJECTS="$HOME/code"
+
+
+################################## PRIVATE ###################################

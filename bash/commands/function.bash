@@ -46,14 +46,20 @@ mcd() {
     mkdir -p "$1" && cd "$1"
 }
 
-# search the history file ----------------------------------------------------
-fhistory() {
-    grep "$@" ~/.bash_history
+# show last 25 commands or search the history --------------------------------
+h() {
+    local COUNT=${COUNT:-25}
+
+    if [[ -z "$@" ]]; then
+        history $COUNT
+    else
+        history | ack "$@" | tail -n $COUNT
+    fi
 }
 
 # search available aliases ---------------------------------------------------
 falias() {
-    alias | grep "alias $@"
+    alias | ack "alias $@"
 }
 
 # cd to $PROJECTS (i.e. ~/code) subdirectories -------------------------------
@@ -62,7 +68,7 @@ c() {
 }
 
 # auto completion for $PROJECTS (i.e. ~/code) subdirectories
-complete -C ~/.dotfiles/completion/project_completion -o default c
+complete -C ~/.dotfiles/bin/project_completion -o default c
 
 # jump to directory and list all files ---------------------------------------
 cl() {

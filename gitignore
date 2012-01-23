@@ -5,8 +5,8 @@
 target/
 *.pyc
 
-*localrc*
-!localrc.sample
+*local/bash*
+!local/bashrc.sample
 
-*local.vimrc*
-!local.vimrc.sample
+*local/vim*
+!local/vimrc.sample

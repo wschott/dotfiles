@@ -7,15 +7,14 @@ fi
 # Set default prompt -----------------------------------------------------
 export PS1='\[\e[0;31m\]\u@\h\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[0;31m\]\$\[\e[m\] '
 
-if [ -f ~/.dotfiles/bash_prompt ]; then
-    source ~/.dotfiles/bash_prompt          # setup custom prompt if exists
-fi
+source ~/.dotfiles/bash_prompt          # setup custom prompt
+
 
 if [[ $(uname) != 'Darwin' ]]; then
     setterm -blength                        # turn beeps off on a non OSX OS
 fi
 
-# PATHs --------------------------------------------------------------------
+# PATHs ----------------------------------------------------------------------
 export PATH="/usr/local/bin:$PATH"  # expand default PATH
 export PATH="/usr/local/sbin:$PATH" # expand default PATH
 export PATH="~/bin:$PATH"           # add users ~/bin to PATH
@@ -29,23 +28,28 @@ export EDITOR='vim'                 # set default editor
 export INPUTRC=~/.inputrc           # overwrite default bash shortcuts
 shopt -s cmdhist                    # save multi-line commands in history as single line
 shopt -s checkwinsize               # after each command & update LINES & COLUMNS
-complete -cf sudo                   # sudo auto completion
+
+
+# vi mode in bash ------------------------------------------------------------
+set -o vi
+bind -m vi-insert "\C-a":beginning-of-line
+bind -m vi-insert "\C-e":end-of-line
 
 
 # Import private .localrc ----------------------------------------------------
 # It's important to import .localrc before other aliases in order to overwrite
 # the default editor
-if [[ -f ~/.localrc ]]; then
-    source ~/.localrc
+if [[ -f ~/.local/bashrc ]]; then
+    source ~/.local/bashrc
 fi
 
 # import alias files ---------------------------------------------------------
-for file in ~/.dotfiles/aliases/*.sh; do
+for file in ~/.dotfiles/bash/commands/*.bash; do
     source $file
 done
 
 # import completion files ----------------------------------------------------
-for file in ~/.dotfiles/completion/*.bash; do
+for file in ~/.dotfiles/bash/completion/*.bash; do
     source $file
 done
 

@@ -3,7 +3,7 @@
 # assumes ~/.dotfiles is *ours*
 
 # specify files to symlink ---------------------------------------------------
-FILES='.bash_profile .bashrc .gitconfig .gitignore .inputrc .vim .vimrc bin'
+FILES='.bash_profile .bashrc .gitconfig .gitignore .inputrc .vim .vimrc .gvimrc bin'
 
 
 # global vars ----------------------------------------------------------------
@@ -42,12 +42,14 @@ _installation() {
     done
 
     # copy .localrc sample file if user has none
-    if [[ ! -f ~/.localrc ]]; then
-        cp ~/.dotfiles/localrc.sample ~/.localrc
+    if [[ ! -f ~/.local/bashrc ]]; then
+        mkdir -p ~/.local/
+        cp ~/.dotfiles/local/bashrc.sample ~/.local/bashrc
     fi
     # copy .local.vimrc sample file if user has none
-    if [[ ! -f ~/.local.vimrc ]]; then
-        cp ~/.dotfiles/local.vimrc.sample ~/.local.vimrc
+    if [[ ! -f ~/.local/vimrc ]]; then
+        mkdir -p ~/.local/
+        cp ~/.dotfiles/local/vimrc.sample ~/.local/vimrc
     fi
 }
 

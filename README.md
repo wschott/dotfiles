@@ -9,26 +9,26 @@ My bash configuration files with a couple of useful aliases.
 
 Fire up your terminal and type the following in it:
 
-    curl https://raw.github.com/wschott/dotfiles/master/install.sh | sh
+    $ curl https://raw.github.com/wschott/dotfiles/master/install.sh | sh
 
 Don't worry, all your old files will be backed up!
 
 ### Manual way
 
-    git clone git://github.com/wschott/dotfiles.git ~/.dotfiles
-    ~/.dotfiles/install.sh
+    $ git clone git://github.com/wschott/dotfiles.git ~/.dotfiles
+    $ ~/.dotfiles/install.sh
 
 ### Add requirements
 
-    git submodule init
-    git submodule update
+    $ git submodule init
+    $ git submodule update
 
 
 ## Update every now and then
 
 by running:
 
-    ~/.dotfiles/install.sh
+    $ ~/.dotfiles/install.sh
 
 
 ## VIM Mappings
@@ -42,37 +42,32 @@ by running:
 - `,d` — Open directory of current file in current tab.
 - `,dt` — Open directory of current file in new tab.
 - `,cd` — Open current file's directory.
-- `,ls` — Show buffers (same as `:buffers`).
 - `,,` — Toggle search highlight.
-- `H` — Go to start of line.
-- `L` — Go to end of line.
-- `,ss` — Strip trailing whitespace.
-- `,S` — Strip trailing whitespace.
+- `H` — go to start of line
+- `L` — go to end of line
 - `Y` — Yank from cursor to end of line (same as `y$`).
 - `,*` — Replace word under cursor.
-- `>` — Indent current block.
-- `<` — Outdent current block.
-- `zj` — Insert a newline below.
-- `zk` — Insert a newline above.
+- `>` — indent current block
+- `<` — unindent current block
+- `zj` — insert a newline below
+- `zk` — insert a newline above
 - `,ve` — Edit .vimrc in a new tab.
 - `,vu` — Source .vimrc.
-- `Q` — Reformat paragraph.
+- `Q` — reformat paragraph
 
 ### Tabs
 
-- `tn` — Go to next tab.
-- `tp` — Go to previous tab.
+- `⌃j` — go to previous tab
+- `⌃k` — go to next tab
 
 ### Splits
 
-- `+` — Increase split size.
-- `-` — Decrease split size.
-- `;+` — Increase split size.
-- `;-` — Decrease split size.
-- `⌃j` — Go to split below.
-- `⌃k` — Go to split above.
-- `⌃h` — Go to split left.
-- `⌃l` — Go to split right.
+- `+` — increase split size
+- `-` — decrease split size
+- `;+` — increase split size
+- `;-` — decrease split size
+- `⌃h` — go to left split
+- `⌃l` — go to right split
 - `,←` — Create a split on the left side.
 - `,→` — Create a split on the right side.
 - `,↑` — Create a split above.
@@ -86,7 +81,13 @@ by running:
 ## VIM plugins
 
 - <strike>[PyFlakes](https://github.com/kevinw/pyflakes-vim) checks code for errors</strike>
+- [SnipMate](http://www.vim.org/scripts/script.php?script_id=2540)
 - [vim git](https://github.com/tpope/vim-git)
+- [PyRef](https://github.com/xolox/vim-pyref)
+    - `` — show python reference in browser
+- Python (by Sergei Matusevich)
+    - `%` — jump to the end of the indented block and back
+    - `FN-F5` — execute current file
 
 
 ## Thanks to...
