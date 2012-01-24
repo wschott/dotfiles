@@ -419,6 +419,7 @@ map <leader>tc :call ToggleTabCompletion()<CR>
 
 
 " import local .vimrc file ---------------------------------------------------
-if filereadable($HOME.'/.local.dotfiles/vimrc')
+"if filereadable($HOME.'/.local.dotfiles/vimrc')
+if filereadable(expand('~/.local.dotfiles/vimrc'))
     source ~/.local.dotfiles/vimrc
 endif

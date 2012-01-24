@@ -1,0 +1,5 @@
+set lines=65
+set columns=100
+
+"let g:molokai_original=1
+"colorscheme molokai

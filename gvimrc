@@ -5,15 +5,20 @@ set noerrorbells                    " turn error bells off
 " turn beeps off
 set vb t_vb=
 
-set guioptions-=T                   " remove ugly toolbar
+" remove ugly toolbar
+set guioptions-=T
 
 set lines=65
 set columns=100
 
 set background=light
 
-"let g:solarized_termcolors=256
-"colorscheme solarized
+try
+    let g:solarized_termcolors=256
+    colorscheme solarized
+catch /E185:/
+endtry
 
-let g:molokai_original=1
-colorscheme molokai
+if filereadable(expand('~/.local.dotfiles/gvimrc'))
+    source ~/.local.dotfiles/gvimrc
+endif
