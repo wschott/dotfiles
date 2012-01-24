@@ -1,11 +1,10 @@
 [user]
     name = Waldemar Schott
-    email = code@waldemarschott.com
+    email = info@waldemarschott.com
 [color]
     ui = auto
 [core]
     quotepath = false
-#   editor = mate -w
     editor = vim
     excludesfile = ~/.gitignore
 [alias]
