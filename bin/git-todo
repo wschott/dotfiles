@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# /via http://nnutter.com/2012/01/git-todo/
+
+OS=$(uname -s)
+if [ "$OS" == "Darwin" ]; then
+    SED_OPT="-E"
+fi
+if [ "$OS" == "Linux" ]; then
+    SED_OPT="-r"
+fi
+GIT_DIR=$(git rev-parse --git-dir)
+if ! (( $? )); then
+    GIT_DIR=$(echo "$GIT_DIR" | sed $SED_OPT 's/\/?\.git$//')
+    if [ -z "$GIT_DIR" ]; then
+        GIT_DIR=.
+    fi
+    vim $GIT_DIR/TODO.taskpaper
+fi
