@@ -2,7 +2,7 @@
 
 # Python ---------------------------------------------------------------------
 alias py='python'
-alias i='ipython'
+alias ipy='ipython'
 
 # virtualenvwrapper support --------------------------------------------------
 if which virtualenvwrapper.sh >/dev/null 2>&1; then
