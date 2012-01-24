@@ -36,9 +36,9 @@ by running:
 ### General
 
 - `,inv` — Toggle invisibles.
+- `,tc` — toggle completion with tab key
 - `,e` — Opens an edit command with current file's path as directory.
 - `te` — Opens an edit commend for a new tab.
-- `,t` — Duplicate current tab.
 - `,d` — Open directory of current file in current tab.
 - `,dt` — Open directory of current file in new tab.
 - `,cd` — Open current file's directory.
@@ -51,7 +51,6 @@ by running:
 - `<` — unindent current block
 - `zj` — insert a newline below
 - `zk` — insert a newline above
-- `,ve` — Edit .vimrc in a new tab.
 - `,vu` — Source .vimrc.
 - `Q` — reformat paragraph
 
@@ -64,14 +63,12 @@ by running:
 
 - `+` — increase split size
 - `-` — decrease split size
-- `;+` — increase split size
-- `;-` — decrease split size
 - `⌃h` — go to left split
 - `⌃l` — go to right split
-- `,←` — Create a split on the left side.
-- `,→` — Create a split on the right side.
-- `,↑` — Create a split above.
-- `,↓` — Create a split below.
+- `,h` — create a split on the left side
+- `,l` — create a split on the right side
+- `,k` — create a split above
+- `,j` — create a split below
 
 ### Commands
 

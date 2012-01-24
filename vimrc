@@ -1,14 +1,17 @@
 " Credits --------------------------------------------------------------------
-" /via https://github.com/gf3/dotfiles/blob/master/.vimrc
-" /via http://www.jukie.net/~bart/conf/vimrc
-" /via https://github.com/challendy/vim_bash_setup/blob/master/vim_setup/keybindings.gui.vim
-" /via https://github.com/holman/dotfiles/blob/master/vim/gvimrc.symlink
-" /via http://stackoverflow.com/questions/164847/what-is-in-your-vimrc/171558#171558
-" /via https://github.com/yodiaditya/vim-pydjango/blob/master/.vimrc
+" https://github.com/gf3/dotfiles/blob/master/.vimrc
+" http://www.jukie.net/~bart/conf/vimrc
+" https://github.com/challendy/vim_bash_setup/blob/master/vim_setup/keybindings.gui.vim
+" https://github.com/holman/dotfiles/blob/master/vim/gvimrc.symlink
+" http://stackoverflow.com/questions/164847/what-is-in-your-vimrc/171558#171558
+" https://github.com/yodiaditya/vim-pydjango/blob/master/.vimrc
+" http://technotales.wordpress.com/2010/04/29/vim-splits-a-guide-to-doing-exactly-what-you-want/
 
 " Help -----------------------------------------------------------------------
 " http://vim.wikia.com/wiki/Best_Vim_Tips
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
+" http://vim.wikia.com/wiki/Smart_mapping_for_tab_completion
+" http://vimdoc.sourceforge.net/htmldoc/change.html#fo-table
 
 :autocmd!
 
@@ -28,7 +31,7 @@ set expandtab                   " tabs -> spaces
 set smarttab                    " make <TAB> and <BS> smarter
 set autoindent                  " turn on auto indenting (match prev line)
 set smartindent                 " turn on smart indenting
-set textwidth=78                " wrap text on this column
+"set textwidth=78               " wrap text on this column
 set showmatch                   " show matching brackets
 set number                      " show line numbers
 set title                       " show filename in console title bar
@@ -42,19 +45,18 @@ set smartcase                   " …unless phrase includes uppercase
 set gdefault                    " add g flag to search/replace by default
 set novisualbell                " turn visual error bells off
 set noerrorbells                " turn error bells off
-set vb t_vb=                    " turn beeps off
+" turn beeps off
+set vb t_vb=
 set nowrap                      " turn wrapping off
 set linebreak                   " wrap only on word boundaries
 set autochdir                   " set working directory to the current file
 set scrolloff=5                 " keep at least 5 lines above/below cursor
 set sidescrolloff=5             " keep at least 5 columns left/right of cursor
-set splitbelow                  " split new windows below current window
-set splitright                  " split new windows on the right side of current window
+"set splitbelow                  " split new windows below current window
+"set splitright                  " split new windows on the right side of current window
 set laststatus=2                " always show the statusline, even if there is only one window
-set undofile                    " undo history between sessions
-set undodir=~/.vim/backup       " directory for undo files
-set backupdir=~/.vim/backup     " directory for swp files
-set directory=~/.vim/backup     " directory for swp files
+set backupdir=~/.vim/tmp//      " directory for swp files
+set directory=~/.vim/tmp//      " directory for swp files
 set clipboard=unnamed           " Clipboard support
 set backspace=eol,start,indent  " allow backspacing over EOL, ...
 set wildmenu                    " : menu has tab completion
@@ -67,6 +69,17 @@ set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:·,extends:❯,precedes:❮
 "set cursorline                 " highlight current line
 "set list!                      " show invisible characters
 syntax on                       " syntax highlighting
+
+if exists('&undofile')                                              " VIM 7.3
+    set undofile                    " undo history between sessions
+    set undodir=~/.vim/tmp/undo/    " directory for undo files
+    set undoreload=10000            " maximum number lines to save for undo on a buffer reload
+endif
+
+"if version >= 730
+"else
+"endif
+
 
 " Statusline -----------------------------------------------------------------
 " %< : truncation point
@@ -111,9 +124,13 @@ nnoremap L g_
 "map H <C-o>
 "map L <C-i>
 
+"nnoremap j gj
+"nnoremap k gk
+
 " auto completion: CTRL-SPACE
-"inoremap <TAB> <C-x><C-o>
 inoremap <C-space> <C-x><C-o>
+
+nnoremap <Tab> %
 
 " don't move on * (and center view)
 nnoremap * *<C-o>
@@ -121,14 +138,13 @@ nnoremap * *<C-o>
 
 " reformat paragraph
 nnoremap Q gqap
-"nnoremap Q gqip
 vnoremap Q gq
 
-" yank from cursor to $
+" yank from cursor to $ (default: Y yanks whole line)
 map Y y$
 
-" delete from cursor to $
-map D d$
+" delete from cursor to $ (default: D does the same?)
+"map D d$
 
 " search next/previous & center view
 nmap n nzz
@@ -137,8 +153,6 @@ nmap N Nzz
 " (de)indent
 nmap > >>
 nmap < <<
-nmap <tab> >>
-nmap <S-tab> <<
 
 " insert a newline below/above
 nnoremap <silent> zj o<ESC>
@@ -168,7 +182,7 @@ noremap  <C-l> <C-w>l
 " switch tabs with CTRL-{j,k}
 noremap  <C-j> :tabnext<CR>
 noremap  <C-k> :tabprevious<CR>
-inoremap <C-j> <C-o>:tabext<CR>
+inoremap <C-j> <C-o>:tabnext<CR>
 inoremap <C-k> <C-o>:tabprevious<CR>
 
 " edit file in new tab
@@ -187,27 +201,6 @@ vnoremap ;k :m'<-2<CR>gv=`>my`<mzgv`yo`z
 
 " easy filetype switching
 nnoremap _md :set ft=markdown<CR>
-
-" Split/Join
-" /via https://bitbucket.org/sjl/dotfiles/src/b5e60ade957d/vim/.vimrc
-"
-" Basically this splits the current line into two new ones at the cursor position,
-" then joins the second one with whatever comes next.
-"
-" Example:                      Cursor Here
-"                                    |
-"                                    V
-" foo = ('hello', 'world', 'a', 'b', 'c',
-"        'd', 'e')
-"
-"            becomes
-"
-" foo = ('hello', 'world', 'a', 'b',
-"        'c', 'd', 'e')
-"
-" Especially useful for adding items in the middle of long lists/tuples in Python
-" while maintaining a sane text width.
-nnoremap K h/[^ ]<cr>"zd$jyyP^v$h"zpJk:s/\v +$//<cr>:noh<cr>j^
 
 
 " Mac OS X specific key mappings ---------------------------------------------
@@ -255,6 +248,7 @@ noremap <leader>dt :tabnew %:h/<CR>
 
 " clear last search
 noremap <silent> <leader><leader> <ESC>:noh<CR>
+noremap <silent> <leader><space> <ESC>:noh<CR>
 nnoremap <silent> <leader>/ :noh<CR>
 nnoremap <silent> <ESC> :noh<CR>
 
@@ -280,11 +274,11 @@ map <leader>fc /\v^[<=>]{7}( .*\|$)<CR>
 " search and replace word under cursor (,*)
 nnoremap <leader>* :%s/\<<C-r><C-w>\>//<left>
 
-" Create a split on the given side.
-" /via https://github.com/henrik/dotfiles/blob/master/vimrc
-" From http://technotales.wordpress.com/2010/04/29/vim-splits-a-guide-to-doing-exactly-what-you-want/ via joakimk.
-nnoremap swj :leftabove  vsp<CR>
-nnoremap swk :rightbelow vsp<CR>
+" create splits
+nnoremap <leader>h :topleft vsp<CR>
+nnoremap <leader>j :botright sp<CR>
+nnoremap <leader>k :topleft sp<CR>
+nnoremap <leader>l :botright vsp<CR>
 
 
 " OS-wide clipboard support (if vim is compiled w/ +clipboard option)
@@ -312,9 +306,6 @@ nmap <silent> <leader>\ :set wrap!<CR>
 " toggle invisibles
 nmap <silent> <leader>inv :set list!<CR>
 
-" Space will toggle folds
-"nnoremap <space> za
-
 
 " Enable filetype plugin & indention files detection -------------------------
 filetype plugin indent on
@@ -323,16 +314,19 @@ filetype plugin indent on
 " Auto Commands --------------------------------------------------------------
 
 " auto reload .vimrc
-autocmd BufWritePost .vimrc source $MYVIMRC
-autocmd BufWritePost vimrc source $MYVIMRC
+autocmd BufWritePost .vimrc,vimrc source $MYVIMRC
 
 " show wrap column
-if exists('+colorcolumn')
+if hlexists('ColorColumn')
+else
+    highlight ColorColumn ctermbg=grey guibg=grey
+endif
+
+if exists('+colorcolumn')                                           " VIM 7.3
     set colorcolumn=78
-    highlight ColorColumn ctermbg=gray
 else
     " highlight chars over the wrap column
-    autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>78v.\%<81v', -1)
+    autocmd BufWinEnter * let w:m2=matchadd('ColorColumn', '\%>78v.\%<81v', -1)
 endif
 
 " remove trailing whitespace on save
@@ -361,20 +355,22 @@ autocmd FileType php        set omnifunc=phpcomplete#CompletePHP
 " Enable completion of hexadecimal color codes in CSS style sheets.
 autocmd FileType css setlocal iskeyword+=#
 
-" Disable text wrapping and folds in quick-fix lists, HTML files and tags files.
-autocmd FileType help,qf,tags,html,strace setlocal nowrap nofoldenable nospell
+
+autocmd BufRead *.txt set textwidth=78 formatoptions=tcroqn2l
+autocmd BufRead *.tex set textwidth=78 formatoptions=tcroqn2l
+autocmd FileType markdown set textwidth=78 formatoptions=tcroqn2l
 
 
 " Python ---------------------------------------------------------------------
 
 " execute Python file
-nnoremap <S-e> :!python %<CR>
+nnoremap E :!python %<CR>
 
 augroup lang_python
     autocmd FileType python setlocal
     \   shiftwidth=4 tabstop=4 softtabstop=4 expandtab
     \   nowrap
-    \   formatoptions+=croq " c+r+o+q
+    \   formatoptions+=croq
     \   cinwords=if,elif,else,for,while,try,except,finally,def,class,with
     \   complete+=k~/.vim/syntax/python.vim isk+=.,(
     let python_highlight_all = 1
@@ -384,24 +380,45 @@ augroup lang_python
 augroup END
 
 
-" Execute python tests -------------------------------------------------------
-" /via https://github.com/nureineide/dotvim/blob/master/vimrc
-"map <silent>tf <Esc>:Pytest file<CR>
-"map <silent>tc <Esc>:Pytest class<CR>
-"map <silent>tm <Esc>:Pytest method<CR>
-" cycle through test errors
-"nmap <silent>tn <Esc>:Pytest next<CR>
-"nmap <silent>tp <Esc>:Pytest previous<CR>
-"nmap <silent>te <Esc>:Pytest error<CR>
-"nmap <silent>tee <Esc>:Pytest end<CR>
+" Functions ------------------------------------------------------------------
+
+" Auto completion with <TAB> if not after whitespace
+function! InsertTabWrapper(direction)
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    elseif "backward" == a:direction
+        return "\<c-p>"
+    elseif "forward" == a:direction
+        return "\<c-n>"
+    "elseif "omni" == a:direction
+    "    return "\<c-x>\<c-o>"
+    endif
+endfunction
+
+inoremap <tab> <c-r>=InsertTabWrapper("forward")<CR>
+inoremap <S-tab> <c-r>=InsertTabWrapper("backward")<CR>
+inoremap <C-tab> <c-r>=InsertTabWrapper("omni")<CR>
+
+" toggle tab completion
+function! ToggleTabCompletion()
+    if mapcheck("\<tab>", "i") != ""
+        :iunmap <tab>
+        :iunmap <s-tab>
+        :iunmap <c-tab>
+        echo "tab completion off"
+    else
+        :imap <tab> <c-n>
+        :imap <s-tab> <c-p>
+        :imap <c-tab> <c-x><c-l>
+        echo "tab completion on"
+    endif
+endfunction
+
+map <leader>tc :call ToggleTabCompletion()<CR>
 
 
 " import local .vimrc file ---------------------------------------------------
 if filereadable($HOME.'/.local.dotfiles/vimrc')
     source ~/.local.dotfiles/vimrc
 endif
-
-
-" TODO: test this on Linux ---------------------------------------------------
-" don't redraw during macros
-set lazyredraw
