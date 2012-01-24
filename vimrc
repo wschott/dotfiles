@@ -6,6 +6,7 @@
 " http://stackoverflow.com/questions/164847/what-is-in-your-vimrc/171558#171558
 " https://github.com/yodiaditya/vim-pydjango/blob/master/.vimrc
 " http://technotales.wordpress.com/2010/04/29/vim-splits-a-guide-to-doing-exactly-what-you-want/
+" https://github.com/carlhuda/janus/blob/master/janus/vim/core/before/plugin/mappings.vim
 
 " Help -----------------------------------------------------------------------
 " http://vim.wikia.com/wiki/Best_Vim_Tips
@@ -129,6 +130,7 @@ nnoremap L g_
 
 " auto completion: CTRL-SPACE
 inoremap <C-space> <C-x><C-o>
+inoremap <C-F> <C-x><C-o>
 
 nnoremap <Tab> %
 
@@ -139,6 +141,8 @@ nnoremap * *<C-o>
 " reformat paragraph
 nnoremap Q gqap
 vnoremap Q gq
+" format the entire file
+nmap <leader>Q ggVG=
 
 " yank from cursor to $ (default: Y yanks whole line)
 map Y y$
@@ -174,6 +178,7 @@ nmap + <C-W>>
 nmap - <C-W><
 nmap <leader>+ 50<C-W>>
 nmap <leader>- 50<C-W><
+nmap <leader>= <C-W>=
 
 " switch split windows: CTRL-{h,l}
 noremap  <C-h> <C-w>h
@@ -181,15 +186,21 @@ noremap  <C-l> <C-w>l
 
 " switch tabs with CTRL-{j,k}
 noremap  <C-j> :tabnext<CR>
-noremap  <C-k> :tabprevious<CR>
+noremap  <C-k> :tabprev<CR>
 inoremap <C-j> <C-o>:tabnext<CR>
-inoremap <C-k> <C-o>:tabprevious<CR>
+inoremap <C-k> <C-o>:tabprev<CR>
 
-" edit file in new tab
-nmap te :tabedit <C-R>=expand("%:p:h") . "/" <CR>
+cnoremap %% <C-R>=expand('%:h').'/'<CR>
+map <leader>ew :e %%
+map <leader>es :s %%
+map <leader>ev :vsp %%
+map <leader>et :tabedit %%
 
-" edit command with the path of the currently edited file filled in
-map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+nmap te :tabedit %%
+
+" upper/lower first char of word
+nmap <leader>U mQgewvU`Q
+nmap <leader>L mQgewvu`Q
 
 " move lines up or down
 nnoremap ;j mz:m+<CR>`z==
@@ -209,11 +220,11 @@ nnoremap _md :set ft=markdown<CR>
 if has("mac")
     " switch tabs with CMD-{j,k}
     nmap <D-j> :tabnext<CR>
-    nmap <D-k> :tabprevious<CR>
+    nmap <D-k> :tabprev<CR>
     vmap <D-]> :tabnext<CR>
-    vmap <D-[> :tabprevious<CR>
+    vmap <D-[> :tabprev<CR>
     imap <D-]> <C-O>:tabnext<CR>
-    imap <D-[> <C-O>:tabprevious<CR>
+    imap <D-[> <C-O>:tabprev<CR>
 
     " CMD-# switches to tab #
     nmap <D-1> 1gt
@@ -250,7 +261,6 @@ noremap <leader>dt :tabnew %:h/<CR>
 noremap <silent> <leader><leader> <ESC>:noh<CR>
 noremap <silent> <leader><space> <ESC>:noh<CR>
 nnoremap <silent> <leader>/ :noh<CR>
-nnoremap <silent> <ESC> :noh<CR>
 
 " re-source .[g]vimrc
 if has('gui_running')
@@ -398,7 +408,7 @@ endfunction
 
 inoremap <tab> <c-r>=InsertTabWrapper("forward")<CR>
 inoremap <S-tab> <c-r>=InsertTabWrapper("backward")<CR>
-inoremap <C-tab> <c-r>=InsertTabWrapper("omni")<CR>
+"inoremap <C-tab> <c-r>=InsertTabWrapper("omni")<CR>
 
 " toggle tab completion
 function! ToggleTabCompletion()
