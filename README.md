@@ -74,12 +74,22 @@ by running:
 
 - `:W` — Alias to `:w`
 
+### Plugin Mappings
+
+- Taskpaper
+    - `,td` — mark as done
+    - `,tx` — mark as cancelled
+    - `,tp` — fold all projects
+    - `,ta` — show all projects
+    - `,tc` — show all tasks with context under cursor
+
 
 ## VIM plugins
 
 - <strike>[PyFlakes](https://github.com/kevinw/pyflakes-vim) checks code for errors</strike>
 - [SnipMate](http://www.vim.org/scripts/script.php?script_id=2540)
 - [vim git](https://github.com/tpope/vim-git)
+- [taskpaper](https://github.com/davidoc/taskpaper.vim)
 - [PyRef](https://github.com/xolox/vim-pyref)
     - `` — show python reference in browser
 - Python (by Sergei Matusevich)
