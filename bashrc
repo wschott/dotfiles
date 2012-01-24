@@ -39,8 +39,8 @@ bind -m vi-insert "\C-e":end-of-line
 # Import private .localrc ----------------------------------------------------
 # It's important to import .localrc before other aliases in order to overwrite
 # the default editor
-if [[ -f ~/.local/bashrc ]]; then
-    source ~/.local/bashrc
+if [[ -f ~/.local.dotfiles/bashrc ]]; then
+    source ~/.local.dotfiles/bashrc
 fi
 
 # import alias files ---------------------------------------------------------

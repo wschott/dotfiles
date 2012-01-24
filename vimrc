@@ -397,8 +397,8 @@ augroup END
 
 
 " import local .vimrc file ---------------------------------------------------
-if filereadable($HOME."/.local/vimrc")
-    source ~/.local/vimrc
+if filereadable($HOME.'/.local.dotfiles/vimrc')
+    source ~/.local.dotfiles/vimrc
 endif
 
 

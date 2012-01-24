@@ -41,15 +41,15 @@ _installation() {
         ln -s ~/.dotfiles/$short ~/$long
     done
 
-    # copy .localrc sample file if user has none
-    if [[ ! -f ~/.local/bashrc ]]; then
-        mkdir -p ~/.local/
-        cp ~/.dotfiles/local/bashrc.sample ~/.local/bashrc
+    mkdir -p ~/.local.dotfiles/
+
+    # copy local .bashrc sample file if user has none
+    if [[ ! -f ~/.local.dotfiles/bashrc ]]; then
+        cp ~/.dotfiles/local/bashrc.sample ~/.local.dotfiles/bashrc
     fi
-    # copy .local.vimrc sample file if user has none
-    if [[ ! -f ~/.local/vimrc ]]; then
-        mkdir -p ~/.local/
-        cp ~/.dotfiles/local/vimrc.sample ~/.local/vimrc
+    # copy local .vimrc sample file if user has none
+    if [[ ! -f ~/.local.dotfiles/vimrc ]]; then
+        cp ~/.dotfiles/local/vimrc.sample ~/.local.dotfiles/vimrc
     fi
 }
 
