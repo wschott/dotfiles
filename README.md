@@ -35,34 +35,59 @@ by running:
 
 ### General
 
-- `,inv` — Toggle invisibles.
-- `,tc` — toggle completion with tab key
-- `,e` — Opens an edit command with current file's path as directory.
-- `te` — Opens an edit commend for a new tab.
-- `,d` — Open directory of current file in current tab.
-- `,dt` — Open directory of current file in new tab.
-- `,cd` — Open current file's directory.
-- `,,` — Toggle search highlight.
+- `,vs` — reload .vimrc
+- `;` = `:` — easier command typing
+- `jk` — exit to normal mode
 - `H` — go to start of line
-- `L` — go to end of line
-- `Y` — Yank from cursor to end of line (same as `y$`).
-- `,*` — Replace word under cursor.
+- `L` — go to EOL (end of line)
+- `Y` — yank to EOL
+- `⇥` — go to corresponding bracket
+- `,d` — open directory of current file in current tab
+- `,dt` — open directory of current file in new tab
+- `,cd` — open current file's directory
+- `Y` — copy (yank) from cursor to EOL
+- `,*` — replace word under cursor
 - `>` — indent current block
-- `<` — unindent current block
+- `<` — deindent current block
+- `,,`, `,␣`, `,/` — toggle search highlight
+- `Q` — reformat paragraph
+- `,Q` — reformat file
+- `⌃␣` — omni completion
+- `⇥`, `⇧⇥` — dictionary completion
+- `;;` — add a semi colon at EOL
+- `::` — add a colon at EOL
+- `,U` — upper first char of word
+- `,L` — lower first char of word
 - `zj` — insert a newline below
 - `zk` — insert a newline above
-- `,vu` — Source .vimrc.
-- `Q` — reformat paragraph
+- `;j` — move line down
+- `;k` — move line up
+- `gw` — swap word
+- `gc` — swap character
+- `fc` — find merge conflict marker
+- `,y`, `,Y` — copy to OS clipboard
+- `,p`, `,P`, `,v`, `⌃v` — paste from OS clipboard
+- `␣` — page down
+- `⇧␣`, `⌫` — page up
 
 ### Tabs
 
 - `⌃j` — go to previous tab
 - `⌃k` — go to next tab
+- `⌃t` — new tab
+- `te` — tabedit
+- `,ew` — edit
+- `,et` — tabedit
+- `,es` — split
+- `,ev` — vsplit
 
 ### Splits
 
 - `+` — increase split size
 - `-` — decrease split size
+- `,+` — increase split size (50 times)
+- `,-` — decrease split size (50 times)
+- `,=` — set width of all splits to equal size
 - `⌃h` — go to left split
 - `⌃l` — go to right split
 - `,h` — create a split on the left side
@@ -70,28 +95,40 @@ by running:
 - `,k` — create a split above
 - `,j` — create a split below
 
+### Toggles
+
+- `,inv` — toggle invisibles
+- `,pp` — toggle paste mode
+- `,\` — toggle line wrapping
+- `,tc` — toggle completion with tab key
+
 ### Commands
 
 - `:W` — Alias to `:w`
 
-### Plugin Mappings
+### Python
 
-- Taskpaper
+- `E` — execute in python
+
+### Mac OS X
+
+- `⌘j`, `⌘}` — go to next tab
+- `⌘k`, `⌘{` — go to previous tab
+- `⌘1` – `⌘9` — switch to tab #
+
+
+## VIM plugins
+
+- [SnipMate](http://www.vim.org/scripts/script.php?script_id=2540)
+- [vim git](https://github.com/tpope/vim-git)
+- [taskpaper](https://github.com/davidoc/taskpaper.vim)
     - `,td` — mark as done
     - `,tx` — mark as cancelled
     - `,tp` — fold all projects
     - `,ta` — show all projects
     - `,tc` — show all tasks with context under cursor
-
-
-## VIM plugins
-
-- <strike>[PyFlakes](https://github.com/kevinw/pyflakes-vim) checks code for errors</strike>
-- [SnipMate](http://www.vim.org/scripts/script.php?script_id=2540)
-- [vim git](https://github.com/tpope/vim-git)
-- [taskpaper](https://github.com/davidoc/taskpaper.vim)
 - [PyRef](https://github.com/xolox/vim-pyref)
-    - `` — show python reference in browser
+    - `K` — show python reference in browser
 - Python (by Sergei Matusevich)
     - `%` — jump to the end of the indented block and back
     - `FN-F5` — execute current file

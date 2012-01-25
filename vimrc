@@ -132,6 +132,7 @@ nnoremap L g_
 inoremap <C-space> <C-x><C-o>
 inoremap <C-F> <C-x><C-o>
 
+" go to corresponding bracket
 nnoremap <Tab> %
 
 " don't move on * (and center view)
@@ -162,7 +163,7 @@ nmap < <<
 nnoremap <silent> zj o<ESC>
 nnoremap <silent> zk O<ESC>
 
-" quickly add a comma/semi colon, colon at the end of the string
+" quickly add a comma, semi colon, colon at EOL
 "inoremap ,, <END>,
 inoremap ;; <END>;
 inoremap :: <END>:
@@ -221,10 +222,10 @@ if has("mac")
     " switch tabs with CMD-{j,k}
     nmap <D-j> :tabnext<CR>
     nmap <D-k> :tabprev<CR>
-    vmap <D-]> :tabnext<CR>
-    vmap <D-[> :tabprev<CR>
-    imap <D-]> <C-O>:tabnext<CR>
-    imap <D-[> <C-O>:tabprev<CR>
+    vmap <D-}> :tabnext<CR>
+    vmap <D-{> :tabprev<CR>
+    imap <D-}> <C-O>:tabnext<CR>
+    imap <D-{> <C-O>:tabprev<CR>
 
     " CMD-# switches to tab #
     nmap <D-1> 1gt
@@ -238,12 +239,12 @@ if has("mac")
     nmap <D-9> 9gt
 
     " TextMate like indent: CMD-] , CMD-[
-    nmap <D-]> >>
-    nmap <D-[> <<
-    vmap <D-]> >>
-    vmap <D-[> <<
-    imap <D-]> <C-O>>>
-    imap <D-[> <C-O><<
+    "nmap <D-]> >>
+    "nmap <D-[> <<
+    "vmap <D-]> >>
+    "vmap <D-[> <<
+    "imap <D-]> <C-O>>>
+    "imap <D-[> <C-O><<
 endif
 
 
@@ -281,7 +282,7 @@ nnoremap <leader>s :%s//<left>
 " find merge conflict markers
 map <leader>fc /\v^[<=>]{7}( .*\|$)<CR>
 
-" search and replace word under cursor (,*)
+" search and replace word under cursor
 nnoremap <leader>* :%s/\<<C-r><C-w>\>//<left>
 
 " create splits
@@ -303,6 +304,7 @@ inoremap <C-v> <ESC>:set paste<CR>"+gp<ESC>:set nopaste<CR>i<RIGHT>
 
 " page down with <SPACE>, pageup with - or <BkSpc>
 noremap <Space> <PageDown>
+noremap <S-Space> <PageUp>
 noremap <BS> <PageUp>
 
 
@@ -310,7 +312,7 @@ noremap <BS> <PageUp>
 " toggle paste mode
 nmap <leader>pp :set paste!<CR>
 
-" toggle line wrapping on/off
+" toggle line wrapping
 nmap <silent> <leader>\ :set wrap!<CR>
 
 " toggle invisibles
