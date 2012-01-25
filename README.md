@@ -143,3 +143,17 @@ by running:
 - [Mathias Bynens (mathiasbynens)](https://github.com/mathiasbynens/dotfiles)
 - [Jan Moesen (janmoesen)](https://github.com/janmoesen/tilde)
 - [Steve Losh (sjl)](https://bitbucket.org/sjl/dotfiles)
+
+- [challendy](https://github.com/challendy/vim_bash_setup)
+- [carlhuda](https://github.com/carlhuda/janus)
+- [yodiaditya](https://github.com/yodiaditya/vim-pydjango)
+- [http://www.jukie.net/~bart/conf/vimrc]()
+- [http://stackoverflow.com/questions/164847/what-is-in-your-vimrc/171558#171558]()
+- [http://technotales.wordpress.com/2010/04/29/vim-splits-a-guide-to-doing-exactly-what-you-want/]()
+
+## Help
+
+- [http://vim.wikia.com/wiki/Best_Vim_Tips]()
+- [http://vim.wikia.com/wiki/Remove_unwanted_spaces]()
+- [http://vim.wikia.com/wiki/Smart_mapping_for_tab_completion]()
+- [http://vimdoc.sourceforge.net/htmldoc/change.html#fo-table]()

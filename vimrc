@@ -1,19 +1,3 @@
-" Credits --------------------------------------------------------------------
-" https://github.com/gf3/dotfiles/blob/master/.vimrc
-" http://www.jukie.net/~bart/conf/vimrc
-" https://github.com/challendy/vim_bash_setup/blob/master/vim_setup/keybindings.gui.vim
-" https://github.com/holman/dotfiles/blob/master/vim/gvimrc.symlink
-" http://stackoverflow.com/questions/164847/what-is-in-your-vimrc/171558#171558
-" https://github.com/yodiaditya/vim-pydjango/blob/master/.vimrc
-" http://technotales.wordpress.com/2010/04/29/vim-splits-a-guide-to-doing-exactly-what-you-want/
-" https://github.com/carlhuda/janus/blob/master/janus/vim/core/before/plugin/mappings.vim
-
-" Help -----------------------------------------------------------------------
-" http://vim.wikia.com/wiki/Best_Vim_Tips
-" http://vim.wikia.com/wiki/Remove_unwanted_spaces
-" http://vim.wikia.com/wiki/Smart_mapping_for_tab_completion
-" http://vimdoc.sourceforge.net/htmldoc/change.html#fo-table
-
 :autocmd!
 
 " Pathogen (plugin loader) ---------------------------------------------------
