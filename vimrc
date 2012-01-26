@@ -113,8 +113,9 @@ nnoremap L g_
 "map H <C-o>
 "map L <C-i>
 
-"nnoremap j gj
-"nnoremap k gk
+" move by screen line instead of actual line
+nnoremap j gj
+nnoremap k gk
 
 " auto completion: CTRL-SPACE
 inoremap <C-space> <C-x><C-o>
@@ -175,10 +176,10 @@ noremap  <C-h> <C-w>h
 noremap  <C-l> <C-w>l
 
 " switch tabs with CTRL-{j,k}
-noremap  <C-j> :tabnext<CR>
-noremap  <C-k> :tabprev<CR>
-inoremap <C-j> <C-o>:tabnext<CR>
-inoremap <C-k> <C-o>:tabprev<CR>
+noremap  <C-j> :tabprev<CR>
+noremap  <C-k> :tabnext<CR>
+inoremap <C-j> <C-o>:tabprev<CR>
+inoremap <C-k> <C-o>:tabnext<CR>
 
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
 map <leader>ew :e %%
@@ -209,12 +210,14 @@ nnoremap _md :set ft=markdown<CR>
 " Tab navigation
 if has("mac")
     " switch tabs with CMD-{j,k}
-    nmap <D-j> :tabnext<CR>
-    nmap <D-k> :tabprev<CR>
-    vmap <D-}> :tabnext<CR>
+    nmap <D-j> :tabprev<CR>
+    nmap <D-k> :tabnext<CR>
+    imap <D-j> <C-o>:tabprev<CR>
+    imap <D-k> <C-o>:tabnext<CR>
     vmap <D-{> :tabprev<CR>
-    imap <D-}> <C-O>:tabnext<CR>
+    vmap <D-}> :tabnext<CR>
     imap <D-{> <C-O>:tabprev<CR>
+    imap <D-}> <C-O>:tabnext<CR>
 
     " CMD-# switches to tab #
     nmap <D-1> 1gt
@@ -357,11 +360,6 @@ autocmd FileType xml        set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php        set omnifunc=phpcomplete#CompletePHP
 
 
-"autocmd FileType python set complete+=k~/.vim/dict/python " isk+=.,(
-
-" Hide # comment markers from folded text in Python scripts.
-"autocmd FileType python set commentstring=#%s
-
 " Enable completion of hexadecimal color codes in CSS style sheets.
 autocmd FileType css setlocal iskeyword+=#
 
@@ -384,6 +382,9 @@ augroup lang_python
     \   cinwords=if,elif,else,for,while,try,except,finally,def,class,with
     \   complete+=k~/.vim/syntax/python.vim isk+=.,(
     let python_highlight_all = 1
+
+    " Hide # comment markers from folded text in Python scripts.
+    "autocmd FileType python set commentstring=#%s
 
     " PyRef shortcut
     let g:pyref_mapping = 'K'

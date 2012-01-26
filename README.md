@@ -37,7 +37,7 @@ by running:
 
 - `,vs` — reload .vimrc
 - `;` = `:` — easier command typing
-- `jk` — exit to normal mode
+- `jj`, `jk` — exit to normal mode
 - `H` — go to start of line
 - `L` — go to EOL (end of line)
 - `Y` — yank to EOL
@@ -115,8 +115,8 @@ by running:
 
 ### Mac OS X
 
-- `⌘j`, `⌘}` — go to next tab
 - `⌘k`, `⌘{` — go to previous tab
+- `⌘j`, `⌘}` — go to next tab
 - `⌘1` – `⌘9` — switch to tab #
 
 
