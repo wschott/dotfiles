@@ -30,6 +30,7 @@
     who = shortlog -s -n --no-merges
     standup = shortlog --since=yesterday
     today = shortlog --since=midnight
+    sub-update = submodule foreach git pull origin master
 [pretty]
     format1 = %C(red)%h%C(reset) - %s %C(green)(%cr) %C(blue)<%an>%C(reset) %C(bold yellow)%d%C(reset)
     format2 = %C(yellow)%h%C(reset) %s %C(bold black)(%an, %ar)%C(reset)%C(bold blue)%d%C(reset)
