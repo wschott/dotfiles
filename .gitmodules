@@ -1,18 +1,18 @@
 [submodule "vim/bundle/colors-solarized"]
-    path = vim/bundle/colors-solarized
-    url = https://github.com/altercation/vim-colors-solarized.git
+	path = vim/bundle/colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "vim/bundle/fugitive"]
-    path = vim/bundle/fugitive
-    url = https://github.com/tpope/vim-fugitive.git
+	path = vim/bundle/fugitive
+	url = https://github.com/tpope/vim-fugitive.git
 [submodule "vim/bundle/git"]
-    path = vim/bundle/git
-    url = https://github.com/tpope/vim-git.git
+	path = vim/bundle/git
+	url = https://github.com/tpope/vim-git.git
 [submodule "vim/bundle/markdown"]
-    path = vim/bundle/markdown
-    url = https://github.com/tpope/vim-markdown.git
+	path = vim/bundle/markdown
+	url = https://github.com/tpope/vim-markdown.git
 [submodule "vim/bundle/pydoc"]
-    path = vim/bundle/pydoc
-    url = https://github.com/fs111/pydoc.vim.git
+	path = vim/bundle/pydoc
+	url = https://github.com/fs111/pydoc.vim.git
 [submodule "vim/bundle/taskpaper"]
 	path = vim/bundle/taskpaper
 	url = https://github.com/davidoc/taskpaper.vim.git
