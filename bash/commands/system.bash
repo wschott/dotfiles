@@ -37,15 +37,16 @@ alias .....='cd ../../../..'
 if [[ $(uname) == 'Darwin' ]]; then
     # G = enable colors
     #export CLICOLOR=1
-    alias ls='ls -AFhG'                     # overwrite default ls
-    alias l='ls -A -1'                      # as list w/o details
+    alias ls='ls -FhG'                     # overwrite default ls
+    alias l='ls -1'                      # as list w/o details
 else
     #alias ls="ls -AFh --color=auto"        # overwrite default ls
-    alias ls="ls -AFh $LS_OPTIONS"          # overwrite default ls
-    alias l='ls -A -1 --ignore "*.pyc"'     # as list w/o details
+    alias ls="ls -Fh $LS_OPTIONS"          # overwrite default ls
+    alias l='ls -1 --ignore "*.pyc"'     # as list w/o details
 fi
-alias ll='ls -lA'               # as list w/ details
-alias la='ls -A'                # everything
+alias ll='ls -A1'               # everythin as list w/o details
+alias la='ls -lA'                # everything as list w/ details
+alias lla='ls -lA'                # everything as list w/ details
 alias lsdir='ls -lA | grep "^d"'  # only folders
 alias l.='ls -lAd .*'           # only files/folders starting with a . (dot)
 
