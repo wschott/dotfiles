@@ -49,6 +49,9 @@ by running:
 - `,*` — replace word under cursor
 - `>` — indent current block
 - `<` — deindent current block
+- `.` — repeat last command
+    - `>`, `.` — indent many times
+    - `<`, `.` — deindent many times
 - `,,`, `,␣`, `,/` — toggle search highlight
 - `Q` — reformat paragraph
 - `,Q` — reformat file
