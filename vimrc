@@ -27,7 +27,7 @@ set hlsearch                    " highlight search results
 set incsearch                   " search-as-you-type
 set ignorecase                  " case-insensitive…
 set smartcase                   " …unless phrase includes uppercase
-set gdefault                    " add g flag to search/replace by default
+set gdefault                    " search/replace by default globally on lines
 set novisualbell                " turn visual error bells off
 set noerrorbells                " turn error bells off
 " turn beeps off
@@ -98,8 +98,12 @@ vnoremap ; :
 "nnoremap ; :
 "nnoremap : ;
 
+nnoremap / /\v
+vnoremap / /\v
+
 " exit to normal mode the easy way
 inoremap jk <ESC>
+inoremap jj <ESC>
 
 " jump to start/end of line (instead of top/bottom of screen)
 nnoremap H ^
@@ -118,6 +122,7 @@ inoremap <C-F> <C-x><C-o>
 
 " go to corresponding bracket
 nnoremap <Tab> %
+vnoremap <Tab> %
 
 " don't move on * (and center view)
 nnoremap * *<C-o>
@@ -290,6 +295,15 @@ inoremap <C-v> <ESC>:set paste<CR>"+gp<ESC>:set nopaste<CR>i<RIGHT>
 noremap <Space> <PageDown>
 noremap <S-Space> <PageUp>
 noremap <BS> <PageUp>
+
+" fold a HTML tag (,ft)
+nnoremap <leader>ft Vatzf
+
+" sort CSS properties (,S)
+nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
+
+" select the just pasted text (,v)
+nnoremap <leader>v V`]
 
 
 " Toggles --------------------------------------------------------------------
