@@ -5,7 +5,7 @@ alias py='python'
 alias ipy='ipython'
 
 # virtualenvwrapper support --------------------------------------------------
-if [[ ! -z $(which virtualenvwrapper.sh) ]]; then
+if which virtualenvwrapper.sh >/dev/null 2>&1; then
     export WORK_ON='~/.virtualenvs'
     export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
     source $(which virtualenvwrapper.sh)
