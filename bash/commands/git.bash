@@ -41,3 +41,7 @@ complete -o default -o nospace -F _git_diff gd
 complete -o default -o nospace -F _git_log gl
 complete -o default -o nospace -F _git_pull gpl
 complete -o default -o nospace -F _git_push gps
+
+
+# ----------------------------------------------------------------------------
+alias gh='github'
