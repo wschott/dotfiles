@@ -1,10 +1,12 @@
+set nocompatible                " turn vi compatibility off
+
+" turn existing autocommands off (-> necessary for .vimrc auto-reloads)
 :autocmd!
 
 " Pathogen (plugin loader) ---------------------------------------------------
 call pathogen#infect()
 
 " VIM settings ---------------------------------------------------------------
-set nocompatible                " turn vi compatibility off
 set encoding=utf-8              " UTF-8 encoding
 set t_Co=256                    " 256 colors
 set history=1000                " command line history
@@ -12,9 +14,10 @@ set undolevels=1000             " undo history
 set tabstop=4                   " tab display width
 set softtabstop=4               " tab width
 set shiftwidth=4                " <TAB> indents this width
+set shiftround                  " use multiple of shiftwidth when indenting with '<' and '>'
 set expandtab                   " tabs -> spaces
 set smarttab                    " make <TAB> and <BS> smarter
-set autoindent                  " turn on auto indenting (match prev line)
+set autoindent                  " turn on auto indenting (match previous line)
 set smartindent                 " turn on smart indenting
 "set textwidth=78               " wrap text on this column
 set showmatch                   " show matching brackets
@@ -39,6 +42,7 @@ set scrolloff=5                 " keep at least 5 lines above/below cursor
 set sidescrolloff=5             " keep at least 5 columns left/right of cursor
 "set splitbelow                  " split new windows below current window
 "set splitright                  " split new windows on the right side of current window
+"set cmdheight=2
 set laststatus=2                " always show the statusline, even if there is only one window
 set backupdir=~/.vim/tmp//      " directory for swp files
 set directory=~/.vim/tmp//      " directory for swp files
@@ -48,11 +52,21 @@ set wildmenu                    " : menu has tab completion
 set wildmode=list:longest       " behave like in shell: show options
 set wildignore+=.DS_Store,*.o,*.obj,*.pyc,*.png,*.jpg,.git,.aux
 set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:·,extends:❯,precedes:❮
+
+"set foldenable                  " enable folding
+"set foldcolumn=2                " add a fold column
+"set foldmethod=marker           " detect triple-{ style fold markers
+"set foldlevelstart=0            " start out with everything folded
+"set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
+                                " which commands trigger auto-unfold
 "set foldmethod=marker
 "set foldopen=all,insert
 "set foldclose=all
+
 "set cursorline                 " highlight current line
 "set list!                      " show invisible characters
+
+"set tildeop                     " ~ acts as a operator (e.g. ~w)
 syntax on                       " syntax highlighting
 
 if exists('&undofile')                                              " VIM 7.3
@@ -61,7 +75,7 @@ if exists('&undofile')                                              " VIM 7.3
     set undoreload=10000            " maximum number lines to save for undo on a buffer reload
 endif
 
-"if version >= 730
+"if v:version >= 730
 "else
 "endif
 
@@ -69,6 +83,7 @@ endif
 " Statusline -----------------------------------------------------------------
 " %< : truncation point
 " \  : space
+" %n : buffer number
 " %f : relative path to file
 " %F : absolute path to file
 " %m : modified flag [+] (modified), [-] (unmodifiable) or nothing
@@ -77,11 +92,18 @@ endif
 " %= : split point for left and right justification
 " %-14.( %) :  block of fixed width 14 characters
 " %l : current line
+" %L : number of lines in buffer
 " %c : current column
 " %V : current virtual column as -{num} if different from %c
 " %P : percentage through buffer
 " %p : percentage through buffer
-set statusline=%#warningmsg#%*%<\ %F\ %m%r%y\ %=%-14.(%l,%c%V%)\ %P\ %v
+" %{&ff} : linebreaks
+set statusline=%#warningmsg#%*%<
+set statusline+=\ %F\ %m%r%y\ %h%w
+set statusline+=%=
+set statusline+=%{fugitive#statusline()}
+set statusline+=\ [%{strlen(&fenc)?&fenc:&enc}]
+set statusline+=\ %4l/%L\ :\ %3c\ /\ %P
 
 
 " Mouse ----------------------------------------------------------------------
@@ -123,7 +145,7 @@ inoremap <C-F> <C-x><C-o>
 
 " go to corresponding bracket
 nnoremap <Tab> %
-vnoremap <Tab> %
+"vnoremap <Tab> %
 
 " don't move on * (and center view)
 nnoremap * *<C-o>
@@ -148,6 +170,10 @@ nmap N Nzz
 " (de)indent
 nmap > >>
 nmap < <<
+vnoremap > >gv
+vnoremap < <gv
+vmap <tab> >gv
+vmap <s-tab> <gv
 
 " insert a newline below/above
 nnoremap <silent> zj o<ESC>
@@ -203,6 +229,21 @@ vnoremap ;k :m'<-2<CR>gv=`>my`<mzgv`yo`z
 
 " easy filetype switching
 nnoremap _md :set ft=markdown<CR>
+
+
+
+" make p in Visual mode replace the selected text with the "" register
+"vnoremap p <Esc>:let current_reg = @"<CR>gvs<C-R>=current_reg<CR><Esc>
+
+" select all
+"map <c-a> ggVG
+
+" undo in insert mode
+"imap <c-z> <c-o>u
+
+" folding
+"nnoremap <Space> za
+"vnoremap <Space> za
 
 
 " Mac OS X specific key mappings ---------------------------------------------
@@ -274,6 +315,9 @@ nnoremap <leader>s :%s//<left>
 " find merge conflict markers
 map <leader>fc /\v^[<=>]{7}( .*\|$)<CR>
 
+" shortcut to jump to next conflict marker
+nmap <silent> <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
+
 " search and replace word under cursor
 nnoremap <leader>* :%s/\<<C-r><C-w>\>//<left>
 
@@ -329,6 +373,9 @@ filetype plugin indent on
 " auto reload .vimrc
 autocmd BufWritePost .vimrc,vimrc source $MYVIMRC
 
+" highlight conflict markers
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
 " show wrap column
 if hlexists('ColorColumn')
 else
@@ -376,11 +423,11 @@ nnoremap E :!python %<CR>
 
 augroup lang_python
     autocmd FileType python setlocal
-    \   shiftwidth=4 tabstop=4 softtabstop=4 expandtab
-    \   nowrap
-    \   formatoptions+=croq
+    \   shiftwidth=4 tabstop=4 softtabstop=4 expandtab nowrap
+    \   formatoptions+=croq " c+r+o+q
     \   cinwords=if,elif,else,for,while,try,except,finally,def,class,with
     \   complete+=k~/.vim/syntax/python.vim isk+=.,(
+
     let python_highlight_all = 1
 
     " Hide # comment markers from folded text in Python scripts.
