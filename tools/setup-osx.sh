@@ -42,5 +42,9 @@ defaults write com.apple.Dock showhidden -bool true
 # show folder previews in quicklook
 #defaults write com.apple.finder QLEnableXRayFolders 1
 
+# Enable copy and paste in Quicklook windows
+defaults write com.apple.finder QLEnableTextSelection -bool TRUE
+defaults write com.apple.Mail QLEnableTextSelection -bool TRUE
+
 # Kill affected applications
 for app in Safari Finder Dock Mail; do killall "$app"; done
