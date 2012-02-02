@@ -102,8 +102,8 @@ set statusline=%#warningmsg#%*%<
 set statusline+=\ %F\ %m%r%y\ %h%w
 set statusline+=%=
 set statusline+=%{fugitive#statusline()}
-set statusline+=\ [%{strlen(&fenc)?&fenc:&enc}]
-set statusline+=\ %4l/%L\ :\ %3c\ /\ %P
+set statusline+=\ \|\ %{strlen(&fenc)?&fenc:&enc}
+set statusline+=\ \|\ %3l/%L\ :\ %2c\ \|\ %P
 
 
 " Mouse ----------------------------------------------------------------------
