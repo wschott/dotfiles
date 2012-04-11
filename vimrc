@@ -338,11 +338,6 @@ nnoremap <leader>v "+P
 " In insert mode, you can paste from clipboard using CTRL+v
 inoremap <C-v> <ESC>:set paste<CR>"+gp<ESC>:set nopaste<CR>i<RIGHT>
 
-" page down with <SPACE>, pageup with - or <BkSpc>
-noremap <Space> <PageDown>
-noremap <S-Space> <PageUp>
-noremap <BS> <PageUp>
-
 " fold a HTML tag (,ft)
 nnoremap <leader>ft Vatzf
 
