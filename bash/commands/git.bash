@@ -7,8 +7,8 @@ alias grm='git rm'
 alias ga='git add -A'
 alias gaa='git add -A && git status --short --branch'
 alias gc='git commit'   # -v = verbose
-alias gd="git diff | $EDITOR -"             # What's changed but not yet added?
-alias gdc="git diff --cached | $EDITOR -"   # What's added but not yet committed?
+alias gd="git diff"                         # What's changed but not yet added?
+alias gdc="git diff --cached"               # What's added but not yet committed?
 alias gl="git log --graph --pretty=format1 --abbrev-commit --date=relative"
 alias gpl='git pull'
 alias gps='git push'
