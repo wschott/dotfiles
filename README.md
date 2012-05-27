@@ -13,10 +13,12 @@ Fire up your terminal and type the following in it:
 
 Don't worry, all your old files will be backed up!
 
+
 ### Manual way
 
     $ git clone git://github.com/wschott/dotfiles.git ~/.dotfiles
     $ ~/.dotfiles/install.sh
+
 
 ### Add requirements
 
@@ -35,8 +37,9 @@ by running:
 
 ### General
 
-- `,vs` — reload .vimrc
 - `;` = `:` — easier command typing
+- `U` — redo
+- `,vs` — reload .vimrc
 - `jj`, `jk` — exit to normal mode
 - `H` — go to start of line
 - `L` — go to EOL (end of line)
@@ -55,10 +58,9 @@ by running:
 - `,,`, `,␣`, `,/` — toggle search highlight
 - `Q` — reformat paragraph
 - `,Q` — reformat file
+- `S` — split line
 - `⌃␣` — omni completion
 - `⇥`, `⇧⇥` — dictionary completion
-- `;;` — add a semi colon at EOL
-- `::` — add a colon at EOL
 - `,U` — upper first char of word
 - `,L` — lower first char of word
 - `zj` — insert a newline below
@@ -66,12 +68,12 @@ by running:
 - `;j` — move line down
 - `;k` — move line up
 - `gw` — swap word
-- `gc` — swap character
+- `vaa` — select all
+- `Vaa` — select all (line mode)
 - `fc` — find merge conflict marker
 - `,y`, `,Y` — copy to OS clipboard
 - `,p`, `,P`, `,v`, `⌃v` — paste from OS clipboard
-- `␣` — page down
-- `⇧␣`, `⌫` — page up
+
 
 ### Tabs
 
@@ -83,6 +85,7 @@ by running:
 - `,et` — tabedit
 - `,es` — split
 - `,ev` — vsplit
+
 
 ### Splits
 
@@ -98,20 +101,26 @@ by running:
 - `,k` — create a split above
 - `,j` — create a split below
 
+
 ### Toggles
 
 - `,inv` — toggle invisibles
 - `,pp` — toggle paste mode
 - `,\` — toggle line wrapping
+- `,num` — toggle line numbers
+- `,C` — toggle "keep current line in the center of the screen" mode
 - `,tc` — toggle completion with tab key
+
 
 ### Commands
 
 - `:W` — Alias to `:w`
 
+
 ### Python
 
 - `E` — execute in python
+
 
 ### Mac OS X
 
@@ -122,7 +131,6 @@ by running:
 
 ## VIM plugins
 
-- [SnipMate](http://www.vim.org/scripts/script.php?script_id=2540)
 - [vim git](https://github.com/tpope/vim-git)
 - [taskpaper](https://github.com/davidoc/taskpaper.vim)
     - `,td` — mark as done
@@ -153,6 +161,7 @@ by running:
 - [http://www.jukie.net/~bart/conf/vimrc]()
 - [http://stackoverflow.com/questions/164847/what-is-in-your-vimrc/171558#171558]()
 - [http://technotales.wordpress.com/2010/04/29/vim-splits-a-guide-to-doing-exactly-what-you-want/]()
+
 
 ## Help
 

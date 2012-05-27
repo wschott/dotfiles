@@ -40,8 +40,8 @@ set linebreak                   " wrap only on word boundaries
 set autochdir                   " set working directory to the current file
 set scrolloff=5                 " keep at least 5 lines above/below cursor
 set sidescrolloff=5             " keep at least 5 columns left/right of cursor
-"set splitbelow                  " split new windows below current window
-"set splitright                  " split new windows on the right side of current window
+set splitbelow                  " split new windows below current window
+set splitright                  " split new windows on the right side of current window
 "set cmdheight=2
 set laststatus=2                " always show the statusline, even if there is only one window
 set backupdir=~/.vim/tmp//      " directory for swp files
@@ -50,7 +50,7 @@ set clipboard=unnamed           " Clipboard support
 set backspace=eol,start,indent  " allow backspacing over EOL, ...
 set wildmenu                    " : menu has tab completion
 set wildmode=list:longest       " behave like in shell: show options
-set wildignore+=.DS_Store,*.o,*.obj,*.pyc,*.png,*.jpg,.git,.aux
+set wildignore+=.DS_Store,*.o,*.obj,*.pyc,*.png,*.jpg,*.aux,.git
 set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:·,extends:❯,precedes:❮
 
 "set foldenable                  " enable folding
@@ -116,10 +116,10 @@ endif
 nnoremap ; :
 vnoremap ; :
 
-" Swap ; and :
-"nnoremap ; :
-"nnoremap : ;
+" Redo with U & undo with u
+nnoremap U <C-R>
 
+" Use sane regexes
 nnoremap / /\v
 vnoremap / /\v
 
@@ -154,7 +154,7 @@ nnoremap * *<C-o>
 " reformat paragraph
 nnoremap Q gqap
 vnoremap Q gq
-" format the entire file
+" format entire file
 nmap <leader>Q ggVG=
 
 " yank from cursor to $ (default: Y yanks whole line)
@@ -179,14 +179,6 @@ vmap <s-tab> <gv
 nnoremap <silent> zj o<ESC>
 nnoremap <silent> zk O<ESC>
 
-" quickly add a comma, semi colon, colon at EOL
-"inoremap ,, <END>,
-inoremap ;; <END>;
-inoremap :: <END>:
-
-" Remap :W to :w
-command! W w
-
 " new tab: CTRL-TAB
 nnoremap <silent> <C-t> :tabnew<CR>
 
@@ -209,7 +201,7 @@ inoremap <C-k> <C-o>:tabnext<CR>
 
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
 map <leader>ew :e %%
-map <leader>es :s %%
+map <leader>es :sp %%
 map <leader>ev :vsp %%
 map <leader>et :tabedit %%
 
@@ -228,15 +220,18 @@ vnoremap ;j :m'>+<CR>gv=`<my`>mzgv`yo`z
 vnoremap ;k :m'<-2<CR>gv=`>my`<mzgv`yo`z
 
 " easy filetype switching
+nnoremap _d  :set ft=diff<CR>
 nnoremap _md :set ft=markdown<CR>
-
+nnoremap _pd :set ft=python.django<CR>
+nnoremap _dt :set ft=htmldjango<CR>
 
 
 " make p in Visual mode replace the selected text with the "" register
 "vnoremap p <Esc>:let current_reg = @"<CR>gvs<C-R>=current_reg<CR><Esc>
 
 " select all
-"map <c-a> ggVG
+nnoremap vaa ggvGg_
+nnoremap Vaa ggVG
 
 " undo in insert mode
 "imap <c-z> <c-o>u
@@ -306,10 +301,7 @@ endif
 " word swapping
 nmap <silent> gw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<cr><c-o><c-l>
 
-" char swapping
-nmap <silent> gc xph
-
-" substitute
+" substitute (search & replace)
 nnoremap <leader>s :%s//<left>
 
 " find merge conflict markers
@@ -347,16 +339,47 @@ nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
 " select the just pasted text (,v)
 nnoremap <leader>v V`]
 
+" Keep the cursor in place while joining limes
+"nnoremap J mzJ`z
+
+" Split line (sister to [J]oin lines)
+" The normal use of S is covered by cc, so don't worry about shadowing it.
+nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
+
+
+" TODO
+"nnoremap <leader>a :Ack!<space>
+
+
 
 " Toggles --------------------------------------------------------------------
 " toggle paste mode
-nmap <leader>pp :set paste!<CR>
+nnoremap <leader>pp :set paste!<CR>
 
 " toggle line wrapping
-nmap <silent> <leader>\ :set wrap!<CR>
+" TODO remap to ,wrap?
+nnoremap <leader>\ :set wrap!<CR>
 
 " toggle invisibles
-nmap <silent> <leader>inv :set list!<CR>
+nnoremap <leader>inv :set list!<CR>
+
+" toggle line numbers
+nnoremap <leader>num :setlocal number!<CR>
+
+" toggle "keep current line in the center of the screen" mode
+nnoremap <leader>C :let &scrolloff=999-&scrolloff<cr>
+
+
+" Command Mode ---------------------------------------------------------------
+" Remap :W to :w
+command! W w
+
+" Sudo to write
+cnoremap w!! w !sudo tee % >/dev/null
+
+" Emacs bindings in command line mode
+"cnoremap <c-a> <home>
+"cnoremap <c-e> <end>
 
 
 " Enable filetype plugin & indention files detection -------------------------
@@ -368,8 +391,12 @@ filetype plugin indent on
 " auto reload .vimrc
 autocmd BufWritePost .vimrc,vimrc source $MYVIMRC
 
-" highlight conflict markers
+" highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
+
+"highlight SpellBad term=underline gui=undercurl guisp=Orange
+
 
 " show wrap column
 if hlexists('ColorColumn')
@@ -408,7 +435,7 @@ autocmd FileType css setlocal iskeyword+=#
 
 autocmd BufRead *.txt set textwidth=78 formatoptions=tcroqn2l
 autocmd BufRead *.tex set textwidth=78 formatoptions=tcroqn2l
-autocmd FileType markdown set textwidth=78 formatoptions=tcroqn2l
+autocmd BufRead *.md set textwidth=78 formatoptions=tcroqn2l
 
 
 " Python ---------------------------------------------------------------------
