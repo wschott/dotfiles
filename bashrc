@@ -55,3 +55,10 @@ done
 
 # remove duplicates from PATH at last
 export PATH=$(awk -F: '{for(i=1;i<=NF;i++){if(!($i in a)){a[$i];printf s$i;s=":"}}}'<<<$PATH)
+
+# Import private .localrc again ----------------------------------------------
+# It's important to import .localrc at the end again in order to overwrite
+# the aliases with custom the user's aliases
+if [[ -f ~/.local.dotfiles/bashrc ]]; then
+    source ~/.local.dotfiles/bashrc
+fi
