@@ -16,3 +16,6 @@
 [submodule "vim/bundle/taskpaper"]
 	path = vim/bundle/taskpaper
 	url = https://github.com/davidoc/taskpaper.vim.git
+[submodule "vim/bundle/surround"]
+	path = vim/bundle/surround
+	url = https://github.com/tpope/vim-surround.git
