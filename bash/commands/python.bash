@@ -40,3 +40,15 @@ alias pep8scan='pep8 --repeat --show-source --statistics'
 serve() {
     python -m SimpleHTTPServer ${1:-8000}
 }
+
+# open module in editor
+opm() {
+    echo $EDITOR
+    $EDITOR "$(python -c "import os.path, ${1}; print os.path.realpath(${1}.__file__[:-1])")"
+}
+
+# cd to module path
+cpm() {
+    cd "$(python -c "import os.path, ${1}; print os.path.dirname(os.path.realpath(${1}.__file__[:-1]))")"
+}
+
