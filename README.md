@@ -35,91 +35,85 @@ by running:
 
 ## VIM Mappings
 
+Hints: `⎋` = ESC, `⌃` = CTRL, `␣` = SPACE, `⌘` = CMD on OSX
+
 ### General
 
-- `;` = `:` — easier command typing
+- `;;` = `:` — easier command typing
+- `jj`, `jk`, `;;` — exit to normal mode
+- `H`, `L` — go to start/end of line (EOL)
 - `U` — redo
-- `,vs` — reload .vimrc
-- `jj`, `jk` — exit to normal mode
-- `H` — go to start of line
-- `L` — go to EOL (end of line)
-- `Y` — yank to EOL
-- `⇥` — go to corresponding bracket
-- `,d` — open directory of current file in current tab
-- `,dt` — open directory of current file in new tab
-- `,cd` — open current file's directory
-- `Y` — copy (yank) from cursor to EOL
-- `,*` — replace word under cursor
-- `>` — indent current block
-- `<` — deindent current block
+- `Y` — yank (copy) from cursor to EOL
+- `⎋⎋` — hide search highlights
+- `Q` — reformat paragraph
+- `S` — split line (opposite of `J` to join lines)
+- `>`, `<` — indent/deindent current block
 - `.` — repeat last command
     - `>`, `.` — indent many times
     - `<`, `.` — deindent many times
-- `,,`, `,␣`, `,/` — toggle search highlight
-- `Q` — reformat paragraph
-- `,Q` — reformat file
-- `S` — split line
-- `⌃␣` — omni completion
-- `⇥`, `⇧⇥` — dictionary completion
-- `,U` — upper first char of word
-- `,L` — lower first char of word
-- `zj` — insert a newline below
-- `zk` — insert a newline above
-- `;j` — move line down
-- `;k` — move line up
-- `gw` — swap word
-- `vaa` — select all
-- `Vaa` — select all (line mode)
-- `fc` — find merge conflict marker
-- `,y`, `,Y` — copy to OS clipboard
-- `,p`, `,P`, `,v`, `⌃v` — paste from OS clipboard
+- `gw` — swap words
+- `⌃h`, `⌃l` — insert a new line below/above
+- {normal|visual} `⌃n`, `⌃p` — move line down/up
+- {insert} `⌃F` — omni completion
+- `␣` — fold/unfold current folding
+- `;s` — substitute (search & replace)
+- `;*` — replace word under cursor
+- `;c` — find VCS merge conflict marker
+- `;v` — select the just pasted text
+- {insert} `⌃v` — paste from OS clipboard
+- `;y`, `;Y` — copy to OS clipboard
+- `;p`, `;P` — paste from OS clipboard
+- `;vs` — reload .vimrc
+- `%%` — puts the current path to the command line
+- `;ft` — fold html tag
+- `;S` — sort CSS properties
+
+
+### Open/Save/Close files
+
+- `;e` — edit
+- `;t` — tabedit
+- `;es` — split
+- `;ev` — vsplit
+- `;w` — save
+- `;W`, `;x`  — save and close file
+- `;q` — close file
+- `;Q` — close all files
+- `;d` — open directory of current file in current tab
+- `;dt` — open directory of current file in new tab
 
 
 ### Tabs
 
-- `⌃j` — go to previous tab
-- `⌃k` — go to next tab
+- `⌃j`, `⌃k` — go to previous/next tab
 - `⌃t` — new tab
-- `te` — tabedit
-- `,ew` — edit
-- `,et` — tabedit
-- `,es` — split
-- `,ev` — vsplit
 
 
 ### Splits
 
-- `+` — increase split size
-- `-` — decrease split size
-- `,+` — increase split size (50 times)
-- `,-` — decrease split size (50 times)
-- `,=` — set width of all splits to equal size
-- `⌃h` — go to left split
-- `⌃l` — go to right split
-- `,h` — create a split on the left side
-- `,l` — create a split on the right side
-- `,k` — create a split above
-- `,j` — create a split below
+- `;h`, `;l` — go to left/right split
+- `;k`, `;j` — go to left/right split
+- `;H`, `;L` — create a split on the left/right side
+- `;K`, `;J` — create a split above/below
+- `+`, `-` = `_` — increase/decrease split size
+- `;=` — set width of all splits to equal size
 
 
 ### Toggles
 
-- `,inv` — toggle invisibles
-- `,pp` — toggle paste mode
-- `,\` — toggle line wrapping
-- `,num` — toggle line numbers
-- `,C` — toggle "keep current line in the center of the screen" mode
-- `,tc` — toggle completion with tab key
+- `;pp` — toggle paste mode
+- `;\` — toggle line wrapping
+- `;inv` — toggle invisibles
+- `;num` — toggle line numbers
+- `;C` — toggle "keep current line in the center of the screen" mode
 
 
-### Commands
+### Set Filetype
 
-- `:W` — Alias to `:w`
-
-
-### Python
-
-- `E` — execute in python
+- `_d` — diff
+- `_md` — markdown
+- `_dp` — django python
+- `_dh` — django html
 
 
 ### Mac OS X
@@ -129,8 +123,29 @@ by running:
 - `⌘1` – `⌘9` — switch to tab #
 
 
+### Python
+
+- `E` — execute in python
+
+
 ## VIM plugins
 
+- [vim surround](https://github.com/tpope/vim-surround)
+    - change, delete, add surroundings
+    - possible surroundings: ", ', \`, (, ), {, }, [, ] or even \<q\> for html tags, etc.
+        - { adds a space, } doesn't
+    - normal mode
+        - `cs<oldc><newc>` [ `cs"(` ] — **c**hange **s**urround from \<oldc\> to \<newc\>
+        - `ds<c>` [ `ds"` ] — **d**elete **s**urrounding \<c\>
+        - `ys<object><c>` [ `ysiw]` ] — add [] around text object (*inner word*)
+        - `yss<c>` [ `yss)` ] — add () around entire line
+    - surround selection with quotes, parentheses, braces, etc..
+        1. select something in visual mode
+        2. `S(`, `S)`, `S[`, `S]`, `S{`, `S}`, `S"`, `S'`, `` S` ``
+        - useful for example with the following:
+            1. type some text
+            2. `;v` to select the recently typed text (;v is no vim default, defined before)
+            3. `S"` to make a quote
 - [vim git](https://github.com/tpope/vim-git)
 - [taskpaper](https://github.com/davidoc/taskpaper.vim)
     - `,td` — mark as done
@@ -147,6 +162,7 @@ by running:
 
 ## Thanks to...
 
+- [Tommy Morgan](https://github.com/duwanis/vim_config)
 - [Gianni Chiappetta (gf3)](https://github.com/gf3/dotfiles)
 - [Zach Holman (holman)](https://github.com/holman/dotfiles)
 - [Ryan Tomayko (rtomayko)](https://github.com/rtomayko/dotfiles)
@@ -161,6 +177,7 @@ by running:
 - [http://www.jukie.net/~bart/conf/vimrc]()
 - [http://stackoverflow.com/questions/164847/what-is-in-your-vimrc/171558#171558]()
 - [http://technotales.wordpress.com/2010/04/29/vim-splits-a-guide-to-doing-exactly-what-you-want/]()
+- [http://concisionandconcinnity.blogspot.de/2009/07/vim-part-ii-matching-pairs.html]()
 
 
 ## Help

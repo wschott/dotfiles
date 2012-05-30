@@ -28,8 +28,8 @@ set showcmd                     " display incomplete commands
 set showmode                    " show current mode
 set hlsearch                    " highlight search results
 set incsearch                   " search-as-you-type
-set ignorecase                  " case-insensitive…
-set smartcase                   " …unless phrase includes uppercase
+set ignorecase                  " ignore case in searches...
+set smartcase                   " ...unless phrase includes uppercase
 set gdefault                    " search/replace by default globally on lines
 set novisualbell                " turn visual error bells off
 set noerrorbells                " turn error bells off
@@ -52,6 +52,8 @@ set wildmenu                    " : menu has tab completion
 set wildmode=list:longest       " behave like in shell: show options
 set wildignore+=.DS_Store,*.o,*.obj,*.pyc,*.png,*.jpg,*.aux,.git
 set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:·,extends:❯,precedes:❮
+" for html
+set matchpairs+=<:>
 
 "set foldenable                  " enable folding
 "set foldcolumn=2                " add a fold column
@@ -63,8 +65,8 @@ set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:·,extends:❯,precedes:❮
 "set foldopen=all,insert
 "set foldclose=all
 
-"set cursorline                 " highlight current line
-"set list!                      " show invisible characters
+"set cursorline                  " highlight current line
+"set list!                       " show invisible characters
 
 "set tildeop                     " ~ acts as a operator (e.g. ~w)
 syntax on                       " syntax highlighting
@@ -75,29 +77,16 @@ if exists('&undofile')                                              " VIM 7.3
     set undoreload=10000            " maximum number lines to save for undo on a buffer reload
 endif
 
-"if v:version >= 730
-"else
-"endif
+if version >= 703                                                   " VIM 7.3
+    set relativenumber              " show by default relative line numbers (for vim startup)
+
+    " absolute line numbers in insert mode, relative otherwise for easy movement
+    autocmd InsertEnter * :set number
+    autocmd InsertLeave * :set relativenumber
+endif
 
 
 " Statusline -----------------------------------------------------------------
-" %< : truncation point
-" \  : space
-" %n : buffer number
-" %f : relative path to file
-" %F : absolute path to file
-" %m : modified flag [+] (modified), [-] (unmodifiable) or nothing
-" %r : readonly flag [RO]
-" %y : filetype [ruby]
-" %= : split point for left and right justification
-" %-14.( %) :  block of fixed width 14 characters
-" %l : current line
-" %L : number of lines in buffer
-" %c : current column
-" %V : current virtual column as -{num} if different from %c
-" %P : percentage through buffer
-" %p : percentage through buffer
-" %{&ff} : linebreaks
 set statusline=%#warningmsg#%*%<
 set statusline+=\ %F\ %m%r%y\ %h%w
 set statusline+=%=
@@ -112,50 +101,21 @@ if has('mouse')
 endif
 
 " Key Mappings ---------------------------------------------------------------
-" easier command typing
-nnoremap ; :
-vnoremap ; :
-
-" Redo with U & undo with u
-nnoremap U <C-R>
-
-" Use sane regexes
-nnoremap / /\v
-vnoremap / /\v
+" move by screen line instead of actual line
+nnoremap j gj
+nnoremap k gk
 
 " exit to normal mode the easy way
-inoremap jk <ESC>
+inoremap ;; <ESC>
 inoremap jj <ESC>
+inoremap jk <ESC>
 
 " jump to start/end of line (instead of top/bottom of screen)
 nnoremap H ^
 nnoremap L g_
 
-" jump back and forth in cursor position history
-"map H <C-o>
-"map L <C-i>
-
-" move by screen line instead of actual line
-nnoremap j gj
-nnoremap k gk
-
-" auto completion: CTRL-SPACE
-inoremap <C-space> <C-x><C-o>
-inoremap <C-F> <C-x><C-o>
-
-" go to corresponding bracket
-nnoremap <Tab> %
-"vnoremap <Tab> %
-
-" don't move on * (and center view)
-nnoremap * *<C-o>
-"nnoremap * *<C-o>zz
-
-" reformat paragraph
-nnoremap Q gqap
-vnoremap Q gq
-" format entire file
-nmap <leader>Q ggVG=
+" Redo with U & undo with u
+nnoremap U <C-R>
 
 " yank from cursor to $ (default: Y yanks whole line)
 map Y y$
@@ -163,35 +123,45 @@ map Y y$
 " delete from cursor to $ (default: D does the same?)
 "map D d$
 
+" Use sane regexes
+nnoremap / /\v
+vnoremap / /\v
+
+" don't move on * (search for word under cursor)
+nnoremap * *<C-o>
+
 " search next/previous & center view
 nmap n nzz
 nmap N Nzz
+
+" clear search highlights
+noremap <silent> <ESC><ESC> :nohls<CR>
+
+" reformat paragraph
+nnoremap Q gqap
+vnoremap Q gq
+
+" Keep the cursor in place while joining limes
+" TODO
+"nnoremap J mzJ`z
+
+" Split line (sister to [J]oin lines)
+" The normal use of S is covered by cc, so don't worry about shadowing it.
+nnoremap S i<CR><ESC>^mzgk:silent! s/\v +$//<CR>:nohls<CR>`w
 
 " (de)indent
 nmap > >>
 nmap < <<
 vnoremap > >gv
 vnoremap < <gv
-vmap <tab> >gv
-vmap <s-tab> <gv
-
-" insert a newline below/above
-nnoremap <silent> zj o<ESC>
-nnoremap <silent> zk O<ESC>
 
 " new tab: CTRL-TAB
 nnoremap <silent> <C-t> :tabnew<CR>
 
 " split resizing: {+,-}
-nmap + <C-W>>
-nmap - <C-W><
-nmap <leader>+ 50<C-W>>
-nmap <leader>- 50<C-W><
-nmap <leader>= <C-W>=
-
-" switch split windows: CTRL-{h,l}
-noremap  <C-h> <C-w>h
-noremap  <C-l> <C-w>l
+nmap + 20<C-W>>
+nmap - 20<C-W><
+nmap _ 20<C-W><
 
 " switch tabs with CTRL-{j,k}
 noremap  <C-j> :tabprev<CR>
@@ -199,53 +169,153 @@ noremap  <C-k> :tabnext<CR>
 inoremap <C-j> <C-o>:tabprev<CR>
 inoremap <C-k> <C-o>:tabnext<CR>
 
+" swap words
+nmap <silent> gw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<cr><c-o><c-l>
+
+" insert a new line below/above
+nnoremap <silent> <C-h> mzo<ESC>`z
+nnoremap <silent> <C-l> mzO<ESC>`z
+vnoremap <silent> <C-h> <ESC>mzo<ESC>`zgv
+vnoremap <silent> <C-l> <ESC>mzO<ESC>`zgv
+
+" move lines up/down (doen't shadow ⌃N, ⌃P in {insert} mode (autocompletion)
+nnoremap <C-n> mz:m+<CR>`z==
+nnoremap <C-p> mz:m-2<CR>`z==
+vnoremap <C-n> :m'>+<CR>gv=`<my`>mzgv`yo`z
+vnoremap <C-p> :m'<-2<CR>gv=`>my`<mzgv`yo`z
+
+" omni autocompletion: ⌃F
+inoremap <C-f> <C-x><C-o>
+
+" folding
+nnoremap <Space> za
+vnoremap <Space> za
+
+" %% puts the current path in command mode
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
-map <leader>ew :e %%
-map <leader>es :sp %%
-map <leader>ev :vsp %%
-map <leader>et :tabedit %%
-
-nmap te :tabedit %%
-
-" upper/lower first char of word
-nmap <leader>U mQgewvU`Q
-nmap <leader>L mQgewvu`Q
-
-" move lines up or down
-nnoremap ;j mz:m+<CR>`z==
-nnoremap ;k mz:m-2<CR>`z==
-inoremap ;j <ESC>:m+<CR>==gi
-inoremap ;k <ESC>:m-2<CR>==gi
-vnoremap ;j :m'>+<CR>gv=`<my`>mzgv`yo`z
-vnoremap ;k :m'<-2<CR>gv=`>my`<mzgv`yo`z
 
 " easy filetype switching
 nnoremap _d  :set ft=diff<CR>
 nnoremap _md :set ft=markdown<CR>
-nnoremap _pd :set ft=python.django<CR>
-nnoremap _dt :set ft=htmldjango<CR>
+nnoremap _dp :set ft=python.django<CR>
+nnoremap _dh :set ft=htmldjango<CR>
 
 
-" make p in Visual mode replace the selected text with the "" register
-"vnoremap p <Esc>:let current_reg = @"<CR>gvs<C-R>=current_reg<CR><Esc>
+" Leader Key Mappings --------------------------------------------------------
+" start macros with ; (you might like \ or ,)
+let mapleader=';'
 
-" select all
-nnoremap vaa ggvGg_
-nnoremap Vaa ggVG
+nnoremap <leader><leader> :
 
-" undo in insert mode
-"imap <c-z> <c-o>u
+" save file
+map <leader>w :w<CR>
 
-" folding
-"nnoremap <Space> za
-"vnoremap <Space> za
+" save and close file
+map <leader>W :wq<CR>
+map <leader>x :x<CR>
+
+" close file
+map <leader>q :q<CR>
+
+" close all files
+map <leader>Q :qa<CR>
+
+" open files
+map <leader>e :e %%
+map <leader>t :tabedit %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+
+" create splits
+nnoremap <leader>H :topleft vsp<CR>
+nnoremap <leader>J :botright sp<CR>
+nnoremap <leader>K :topleft sp<CR>
+nnoremap <leader>L :botright vsp<CR>
+
+" switch split windows: CTRL-{h,l}
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
+
+" open directory of current file in current tab
+" TODO
+noremap <leader>d :e %:h/<CR>
+
+" open directory of current file in new tab
+" TODO
+noremap <leader>dt :tabedit %:h/<CR>
+
+" resize all splits equally
+nmap <leader>= <C-W>=
+
+" re-source .[g]vimrc
+if has('gui_running')
+    map <leader>vs :source ~/.gvimrc<CR>
+else
+    map <leader>vs :source ~/.vimrc<CR>
+endif
+
+" substitute (search & replace)
+nnoremap <leader>s :%s//<left>
+
+" search & replace word under cursor
+nnoremap <leader>* :%s/\<<C-r><C-w>\>//<left>
+
+" find VCS merge conflict markers
+map <leader>c /\v^[<=>]{7}( .*\|$)<CR>
+
+" select the just pasted text
+nnoremap <leader>v V`]
+
+" paste from clipboard using ⌃v in insert mode
+inoremap <C-v> <ESC>:set paste<CR>"+gp<ESC>:set nopaste<CR>i<RIGHT>
+
+" OS-wide clipboard support (works if vim is compiled w/ +clipboard option)
+" TODO
+nnoremap <silent> <leader>y "+y
+nnoremap <silent> <leader>Y "+yy
+nnoremap <silent> <leader>p "+p
+nnoremap <silent> <leader>P "+P
+
+" fold a HTML tag
+nnoremap <leader>ft Vatzf
+
+" sort CSS properties
+nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:nohls<CR>
+
+
+" Toggles --------------------------------------------------------------------
+" toggle paste mode
+nnoremap <leader>pp :set paste!<CR>
+
+" toggle line wrapping
+nnoremap <leader>\ :set wrap!<CR>
+
+" toggle invisibles
+nnoremap <leader>inv :set list!<CR>
+
+" toggle line numbers
+nnoremap <leader>num :setlocal number!<CR>
+
+" toggle "keep current line in the center of the screen" mode
+nnoremap <leader>C :let &scrolloff=999-&scrolloff<cr>
+
+
+" Command Mode ---------------------------------------------------------------
+" Sudo to write
+cnoremap w!! w !sudo tee % >/dev/null
+
+" Emacs bindings in command line mode
+" TODO
+"cnoremap <c-a> <home>
+"cnoremap <c-e> <end>
 
 
 " Mac OS X specific key mappings ---------------------------------------------
-
 " Tab navigation
 if has("mac")
-    " switch tabs with CMD-{j,k}
+    " switch tabs with CMD-{j,k}, CMD-{ and CMD-}
     nmap <D-j> :tabprev<CR>
     nmap <D-k> :tabnext<CR>
     imap <D-j> <C-o>:tabprev<CR>
@@ -265,121 +335,7 @@ if has("mac")
     nmap <D-7> 7gt
     nmap <D-8> 8gt
     nmap <D-9> 9gt
-
-    " TextMate like indent: CMD-] , CMD-[
-    "nmap <D-]> >>
-    "nmap <D-[> <<
-    "vmap <D-]> >>
-    "vmap <D-[> <<
-    "imap <D-]> <C-O>>>
-    "imap <D-[> <C-O><<
 endif
-
-
-" Leader Key Mappings --------------------------------------------------------
-" start macros with ,
-let mapleader=','
-
-" open directory of current file in current tab
-noremap <leader>d :e %:h/<CR>
-
-" open directory of current file in new tab
-noremap <leader>dt :tabnew %:h/<CR>
-
-" clear last search
-noremap <silent> <leader><leader> <ESC>:noh<CR>
-noremap <silent> <leader><space> <ESC>:noh<CR>
-nnoremap <silent> <leader>/ :noh<CR>
-
-" re-source .[g]vimrc
-if has('gui_running')
-    map <leader>vs :source ~/.gvimrc<CR>
-else
-    map <leader>vs :source ~/.vimrc<CR>
-endif
-
-" word swapping
-nmap <silent> gw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<cr><c-o><c-l>
-
-" substitute (search & replace)
-nnoremap <leader>s :%s//<left>
-
-" find merge conflict markers
-map <leader>fc /\v^[<=>]{7}( .*\|$)<CR>
-
-" shortcut to jump to next conflict marker
-nmap <silent> <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
-
-" search and replace word under cursor
-nnoremap <leader>* :%s/\<<C-r><C-w>\>//<left>
-
-" create splits
-nnoremap <leader>h :topleft vsp<CR>
-nnoremap <leader>j :botright sp<CR>
-nnoremap <leader>k :topleft sp<CR>
-nnoremap <leader>l :botright vsp<CR>
-
-
-" OS-wide clipboard support (if vim is compiled w/ +clipboard option)
-nnoremap <silent> <leader>y "+y
-nnoremap <silent> <leader>Y "+yy
-nnoremap <silent> <leader>p "+p
-nnoremap <silent> <leader>P "+P
-nnoremap <leader>v "+P
-
-" In insert mode, you can paste from clipboard using CTRL+v
-inoremap <C-v> <ESC>:set paste<CR>"+gp<ESC>:set nopaste<CR>i<RIGHT>
-
-" fold a HTML tag (,ft)
-nnoremap <leader>ft Vatzf
-
-" sort CSS properties (,S)
-nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
-
-" select the just pasted text (,v)
-nnoremap <leader>v V`]
-
-" Keep the cursor in place while joining limes
-"nnoremap J mzJ`z
-
-" Split line (sister to [J]oin lines)
-" The normal use of S is covered by cc, so don't worry about shadowing it.
-nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
-
-
-" TODO
-"nnoremap <leader>a :Ack!<space>
-
-
-
-" Toggles --------------------------------------------------------------------
-" toggle paste mode
-nnoremap <leader>pp :set paste!<CR>
-
-" toggle line wrapping
-" TODO remap to ,wrap?
-nnoremap <leader>\ :set wrap!<CR>
-
-" toggle invisibles
-nnoremap <leader>inv :set list!<CR>
-
-" toggle line numbers
-nnoremap <leader>num :setlocal number!<CR>
-
-" toggle "keep current line in the center of the screen" mode
-nnoremap <leader>C :let &scrolloff=999-&scrolloff<cr>
-
-
-" Command Mode ---------------------------------------------------------------
-" Remap :W to :w
-command! W w
-
-" Sudo to write
-cnoremap w!! w !sudo tee % >/dev/null
-
-" Emacs bindings in command line mode
-"cnoremap <c-a> <home>
-"cnoremap <c-e> <end>
 
 
 " Enable filetype plugin & indention files detection -------------------------
@@ -391,10 +347,7 @@ filetype plugin indent on
 " auto reload .vimrc
 autocmd BufWritePost .vimrc,vimrc source $MYVIMRC
 
-" highlight VCS conflict markers
-match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
-
-
+" TODO
 "highlight SpellBad term=underline gui=undercurl guisp=Orange
 
 
@@ -428,14 +381,13 @@ autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml        set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php        set omnifunc=phpcomplete#CompletePHP
 
+" enable completion of hexadecimal color codes in CSS style sheets.
+autocmd FileType css        setlocal iskeyword+=#
 
-" Enable completion of hexadecimal color codes in CSS style sheets.
-autocmd FileType css setlocal iskeyword+=#
-
-
-autocmd BufRead *.txt set textwidth=78 formatoptions=tcroqn2l
-autocmd BufRead *.tex set textwidth=78 formatoptions=tcroqn2l
-autocmd BufRead *.md set textwidth=78 formatoptions=tcroqn2l
+" format options for documents
+autocmd BufRead *.txt       set textwidth=78 formatoptions=tcroqn2l
+autocmd BufRead *.tex       set textwidth=78 formatoptions=tcroqn2l
+autocmd BufRead *.md        set textwidth=78 formatoptions=tcroqn2l
 
 
 " Python ---------------------------------------------------------------------
@@ -453,6 +405,7 @@ augroup lang_python
     let python_highlight_all = 1
 
     " Hide # comment markers from folded text in Python scripts.
+    " TODO
     "autocmd FileType python set commentstring=#%s
 
     " PyRef shortcut
@@ -460,42 +413,29 @@ augroup lang_python
 augroup END
 
 
+" Plugins --------------------------------------------------------------------
+
+" TODO
+"nnoremap <leader>a :Ack!<space>
+
+
 " Functions ------------------------------------------------------------------
+" remove an empty pair of parentheses, braces or quotes
+function! BackSpaceEmptyPair()
+    let between = strpart(getline('.'), col('.')-2, 2)
+    let rightof = strpart(getline('.'), col('.')-3, 2)
+    for pair in (split(&matchpairs, ',') + ["':'", '":"', '`:`'])
+        let emptypair = join(split(pair, ':'), '')
+        if between == emptypair
+            return "\<right>\<BS>\<BS>"
+        elseif rightof == emptypair
+            return "\<BS>\<BS>"
+        endif
+    endfor
+    return "\<BS>"
+endfunc
 
-" Auto completion with <TAB> if not after whitespace
-function! InsertTabWrapper(direction)
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    elseif "backward" == a:direction
-        return "\<c-p>"
-    elseif "forward" == a:direction
-        return "\<c-n>"
-    "elseif "omni" == a:direction
-    "    return "\<c-x>\<c-o>"
-    endif
-endfunction
-
-inoremap <tab> <c-r>=InsertTabWrapper("forward")<CR>
-inoremap <S-tab> <c-r>=InsertTabWrapper("backward")<CR>
-"inoremap <C-tab> <c-r>=InsertTabWrapper("omni")<CR>
-
-" toggle tab completion
-function! ToggleTabCompletion()
-    if mapcheck("\<tab>", "i") != ""
-        :iunmap <tab>
-        :iunmap <s-tab>
-        :iunmap <c-tab>
-        echo "tab completion off"
-    else
-        :imap <tab> <c-n>
-        :imap <s-tab> <c-p>
-        :imap <c-tab> <c-x><c-l>
-        echo "tab completion on"
-    endif
-endfunction
-
-map <leader>tc :call ToggleTabCompletion()<CR>
+inoremap <expr> <BS> BackSpaceEmptyPair()
 
 
 " import local .vimrc file ---------------------------------------------------
@@ -503,3 +443,42 @@ map <leader>tc :call ToggleTabCompletion()<CR>
 if filereadable(expand('~/.local.dotfiles/vimrc'))
     source ~/.local.dotfiles/vimrc
 endif
+
+
+" Statusline -----------------------------------------------------------------
+" %< : truncation point
+" \  : space
+" %n : buffer number
+" %f : relative path to file
+" %F : absolute path to file
+" %m : modified flag [+] (modified), [-] (unmodifiable) or nothing
+" %r : readonly flag [RO]
+" %y : filetype [ruby]
+" %= : split point for left and right justification
+" %-14.( %) :  block of fixed width 14 characters
+" %l : current line
+" %L : number of lines in buffer
+" %c : current column
+" %V : current virtual column as -{num} if different from %c
+" %P : percentage through buffer
+" %p : percentage through buffer
+" %{&ff} : linebreaks
+
+" Text Formatting Options ----------------------------------------------------
+" t - wrap text using textwidth
+" c - wrap comments using textwidth (and auto insert comment leader)
+" r - auto insert comment leader when pressing <return> in insert mode
+" o - auto insert comment leader when pressing 'o' or 'O'.
+" q - allow formatting of comments with "gq"
+" a - auto formatting for paragraphs
+" n - auto wrap numbered lists
+
+
+" Possible key mapping shortcuts ---------------------------------------------
+" TODO
+"noremap <leader><space>
+"noremap <leader>/
+
+" TODO
+" ;e — ;e, ;es, ;ev (edit, edit in split, edit in vsplit)
+" ;d — ;d, ;dt (open dir in window, open dir in tab)

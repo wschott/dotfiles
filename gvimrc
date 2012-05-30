@@ -8,8 +8,8 @@ set vb t_vb=
 " remove ugly toolbar
 set guioptions-=T
 
-set lines=65
-set columns=100
+"set lines=65
+"set columns=100
 
 if filereadable(expand('~/.local.dotfiles/gvimrc'))
     source ~/.local.dotfiles/gvimrc
