@@ -146,6 +146,9 @@ Hints: `⎋` = ESC, `⌃` = CTRL, `␣` = SPACE, `⌘` = CMD on OSX
             1. type some text
             2. `;v` to select the recently typed text (;v is no vim default, defined before)
             3. `S"` to make a quote
+- [Comma Object](https://github.com/austintaylor/vim-commaobject)
+    - change/delete arguments in function calls (or simply comma delimited (), [] or {} lists)
+    - `da,`, `di,`, `ca,`, `ci,` — delete/change a comma/inner comma
 - [vim git](https://github.com/tpope/vim-git)
 - [taskpaper](https://github.com/davidoc/taskpaper.vim)
     - `,td` — mark as done
