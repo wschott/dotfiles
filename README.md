@@ -59,6 +59,7 @@ Hints: `⎋` = ESC, `⌃` = CTRL, `␣` = SPACE, `⌘` = CMD on OSX
 - `;s` — substitute (search & replace)
 - `;*` — replace word under cursor
 - `;c` — find VCS merge conflict marker
+- `;1` — add a Markdown H1 below current line
 - `;v` — select the just pasted text
 - {insert} `⌃v` — paste from OS clipboard
 - `;y`, `;Y` — copy to OS clipboard

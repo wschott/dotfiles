@@ -265,6 +265,9 @@ nnoremap <leader>* :%s/\<<C-r><C-w>\>//<left>
 " find VCS merge conflict markers
 map <leader>c /\v^[<=>]{7}( .*\|$)<CR>
 
+" add Markdown H1 under current line
+nnoremap <leader>1 yypVr=
+
 " select the just pasted text
 nnoremap <leader>v V`]
 
