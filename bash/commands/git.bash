@@ -29,6 +29,8 @@ alias gwho='git shortlog -s -n --no-merges'
 alias gstandup='git shortlog --since=yesterday'
 alias gtoday='git shortlog --since=midnight'
 alias changelog='git log `git log -1 --format=%H -- CHANGELOG*`..; cat CHANGELOG*'
+alias gsl='git stash list'
+alias gstashunstaged='git stash --keep-index'
 
 
 # Add git aliases to bash completion -----------------------------------------

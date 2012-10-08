@@ -1,0 +1,11 @@
+# Show the first stash or a specific one
+#
+# Author: Waldemar Schott <info AT waldemarschott DOT com>
+
+# default stash number is 0
+num=0
+if [[ $# > 0 ]]; then
+    num=$1
+fi
+
+git stash show -p stash@{$num}
