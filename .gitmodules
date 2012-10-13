@@ -22,3 +22,6 @@
 [submodule "vim/bundle/commaobject"]
 	path = vim/bundle/commaobject
 	url = https://github.com/austintaylor/vim-commaobject.git
+[submodule "vim/bundle/syntastic"]
+	path = vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
