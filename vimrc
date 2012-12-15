@@ -155,8 +155,8 @@ nmap < <<
 vnoremap > >gv
 vnoremap < <gv
 
-" new tab: CTRL-TAB
-nnoremap <silent> <C-t> :tabnew<CR>
+" move split window into new tab
+nnoremap T <C-w>T
 
 " split resizing: {+,-}
 nmap + 20<C-W>>
@@ -417,6 +417,9 @@ augroup END
 
 
 " Plugins --------------------------------------------------------------------
+
+" show Tagbar outline viewer
+nnoremap <silent> <C-t> :TagbarToggle<CR>
 
 " TODO
 "nnoremap <leader>a :Ack!<space>
