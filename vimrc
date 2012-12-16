@@ -164,10 +164,10 @@ nmap - 20<C-W><
 nmap _ 20<C-W><
 
 " switch tabs with CTRL-{j,k}
-noremap  <C-j> :tabprev<CR>
-noremap  <C-k> :tabnext<CR>
-inoremap <C-j> <C-o>:tabprev<CR>
-inoremap <C-k> <C-o>:tabnext<CR>
+noremap  <C-j> <C-PageUp>
+noremap  <C-k> <C-PageDown>
+inoremap <C-j> <C-PageUp>
+inoremap <C-k> <C-PageDown>
 
 " swap words
 nmap <silent> gw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<cr><c-o><c-l>
@@ -319,14 +319,14 @@ cnoremap w!! w !sudo tee % >/dev/null
 " Tab navigation
 if has("mac")
     " switch tabs with CMD-{j,k}, CMD-{ and CMD-}
-    nmap <D-j> :tabprev<CR>
-    nmap <D-k> :tabnext<CR>
-    imap <D-j> <C-o>:tabprev<CR>
-    imap <D-k> <C-o>:tabnext<CR>
-    vmap <D-{> :tabprev<CR>
-    vmap <D-}> :tabnext<CR>
-    imap <D-{> <C-O>:tabprev<CR>
-    imap <D-}> <C-O>:tabnext<CR>
+    nmap <D-j> <C-PageUp>
+    nmap <D-k> <C-PageDown>
+    imap <D-j> <C-PageUp>
+    imap <D-k> <C-PageDown>
+    vmap <D-{> <C-PageUp>
+    vmap <D-}> <C-PageDown>
+    imap <D-{> <C-PageUp>
+    imap <D-}> <C-PageDown>
 
     " CMD-# switches to tab #
     nmap <D-1> 1gt
