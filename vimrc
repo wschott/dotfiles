@@ -111,8 +111,8 @@ inoremap jj <ESC>
 inoremap jk <ESC>
 
 " jump to start/end of line (instead of top/bottom of screen)
-nnoremap H ^
-nnoremap L g_
+noremap H ^
+noremap L g_
 
 " Redo with U & undo with u
 nnoremap U <C-R>
@@ -202,7 +202,7 @@ nnoremap _dh :set ft=htmldjango<CR>
 
 " go with smartindent if there is no plugin indent file.
 " but don't outdent hashes
-inoremap # X#
+inoremap # X<BS>#
 
 " Leader Key Mappings --------------------------------------------------------
 " start macros with ; (you might like \ or ,)
