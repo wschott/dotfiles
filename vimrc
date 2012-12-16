@@ -265,7 +265,7 @@ nnoremap <leader>* :%s/\<<C-r><C-w>\>//<left>
 " find VCS merge conflict markers
 map <leader>c /\v^[<=>]{7}( .*\|$)<CR>
 
-" add Markdown H1 under current line
+" add Markdown H1
 nnoremap <leader>1 yypVr=
 
 " select the just pasted text
@@ -310,9 +310,8 @@ nnoremap <leader>C :let &scrolloff=999-&scrolloff<cr>
 cnoremap w!! w !sudo tee % >/dev/null
 
 " Emacs bindings in command line mode
-" TODO
-"cnoremap <c-a> <home>
-"cnoremap <c-e> <end>
+cnoremap <c-a> <home>
+cnoremap <c-e> <end>
 
 
 " Mac OS X specific key mappings ---------------------------------------------
