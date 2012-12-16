@@ -421,6 +421,14 @@ augroup END
 " Plugins --------------------------------------------------------------------
 let g:Powerline_symbols = 'fancy'
 
+" NERDTree --------------------------------------------------------------- {{{
+" show NERDTree file browser
+nnoremap <silent> <C-w> :NERDTreeToggle<CR>
+
+" auto close NERDTree split window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" }}}
+
 " show Tagbar outline viewer
 nnoremap <silent> <C-t> :TagbarToggle<CR>
 

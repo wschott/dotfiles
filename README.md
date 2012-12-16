@@ -133,6 +133,8 @@ Hints: `⎋` = ESC, `⌃` = CTRL, `␣` = SPACE, `⌘` = CMD on OSX
 
 - [Powerline statusline](https://github.com/Lokaltog/vim-powerline)
     - Powerline needs a [patched font](https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts).
+- [NERDTree](https://github.com/scrooloose/nerdtree)
+    - `⌃w` — show NERDTree file browser
 - [CtrlP](http://kien.github.com/ctrlp.vim/)
     - Commands and help
         1. run `:helptags ~/.vim/bundle/ctrlp/doc` in vims command mode
@@ -193,6 +195,7 @@ Hints: `⎋` = ESC, `⌃` = CTRL, `␣` = SPACE, `⌘` = CMD on OSX
 - [How I boosted my Vim » nvie.com](http://nvie.com/posts/how-i-boosted-my-vim/)
 - [http://www.jukie.net/~bart/conf/vimrc]()
 - [http://stackoverflow.com/questions/164847/what-is-in-your-vimrc/171558#171558]()
+- [http://stackoverflow.com/questions/2586984/how-can-i-swap-positions-of-two-open-files-in-splits-in-vim/4903681#4903681]
 - [http://technotales.wordpress.com/2010/04/29/vim-splits-a-guide-to-doing-exactly-what-you-want/]()
 - [http://concisionandconcinnity.blogspot.de/2009/07/vim-part-ii-matching-pairs.html]()
 
