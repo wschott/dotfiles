@@ -95,6 +95,9 @@ Hints: `⎋` = ESC, `⌃` = CTRL, `␣` = SPACE, `⌘` = CMD on OSX
 - `+`, `-` = `_` — increase/decrease split size
 - `;=` — set width of all splits to equal size
 - `T` — move split window into new tab
+- `;mw` and `;pw` — swap split windows
+    1. `;mw` — mark first window for swap
+    2. `;pw` — swap current window with the previously marked one
 
 
 ### Toggles
