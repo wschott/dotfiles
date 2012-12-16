@@ -419,6 +419,7 @@ augroup END
 
 
 " Plugins --------------------------------------------------------------------
+let g:Powerline_symbols = 'fancy'
 
 " show Tagbar outline viewer
 nnoremap <silent> <C-t> :TagbarToggle<CR>

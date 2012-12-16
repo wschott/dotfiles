@@ -128,6 +128,8 @@ Hints: `⎋` = ESC, `⌃` = CTRL, `␣` = SPACE, `⌘` = CMD on OSX
 
 ## VIM plugins
 
+- [Powerline statusline](https://github.com/Lokaltog/vim-powerline)
+    - Powerline needs a [patched font](https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts).
 - [CtrlP](http://kien.github.com/ctrlp.vim/)
     - Commands and help
         1. run `:helptags ~/.vim/bundle/ctrlp/doc` in vims command mode
