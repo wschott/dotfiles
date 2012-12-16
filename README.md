@@ -131,6 +131,17 @@ Hints: `⎋` = ESC, `⌃` = CTRL, `␣` = SPACE, `⌘` = CMD on OSX
 
 ## VIM plugins
 
+- [CtrlP](http://kien.github.com/ctrlp.vim/)
+    - Commands and help
+        1. run `:helptags ~/.vim/bundle/ctrlp/doc` in vims command mode
+        2. open CtrlP with `:CtrlP` or `⌃p` and type `?` to show the help
+    - `⌃p` — show CtrlP fuzzy file/buffer/MRU finder
+    - `⌃n`, `⌃p` — select next/previous search from history
+    - `⌃f`, `⌃b` — switch between search modes (file/buffer/MRU)
+    - `⌃r` — switch to regex search
+    - `⌃d` — switch to filename/full path search
+- [Tagbar](http://majutsushi.github.com/tagbar/)
+    - `⌃t` — show Tagbar outline viewer
 - [vim surround](https://github.com/tpope/vim-surround)
     - change, delete, add surroundings
     - possible surroundings: ", ', \`, (, ), {, }, [, ] or even \<q\> for html tags, etc.
