@@ -52,8 +52,6 @@ Hints: `⎋` = ESC, `⌃` = CTRL, `␣` = SPACE, `⌘` = CMD on OSX
     - `>`, `.` — indent many times
     - `<`, `.` — deindent many times
 - `gw` — swap words
-- `⌃h`, `⌃l` — insert a new line below/above
-- {normal|visual} `⌃n`, `⌃p` — move line down/up
 - {insert} `⌃F` — omni completion
 - `␣` — fold/unfold current folding
 - `;s` — substitute (search & replace)
@@ -87,17 +85,16 @@ Hints: `⎋` = ESC, `⌃` = CTRL, `␣` = SPACE, `⌘` = CMD on OSX
 ### Tabs
 
 - `⌃j`, `⌃k` — go to previous/next tab
-- `⌃t` — new tab
 
 
 ### Splits
 
-- `;h`, `;l` — go to left/right split
-- `;k`, `;j` — go to left/right split
+- `⌃h`, `⌃l` — go to left/right split
 - `;H`, `;L` — create a split on the left/right side
 - `;K`, `;J` — create a split above/below
 - `+`, `-` = `_` — increase/decrease split size
 - `;=` — set width of all splits to equal size
+- `T` — move split window into new tab
 
 
 ### Toggles
@@ -163,11 +160,11 @@ Hints: `⎋` = ESC, `⌃` = CTRL, `␣` = SPACE, `⌘` = CMD on OSX
     - `da,`, `di,`, `ca,`, `ci,` — delete/change a comma/inner comma
 - [vim git](https://github.com/tpope/vim-git)
 - [taskpaper](https://github.com/davidoc/taskpaper.vim)
-    - `,td` — mark as done
-    - `,tx` — mark as cancelled
-    - `,tp` — fold all projects
-    - `,ta` — show all projects
-    - `,tc` — show all tasks with context under cursor
+    - `;td` — mark as done
+    - `;tx` — mark as cancelled
+    - `;tp` — fold all projects
+    - `;ta` — show all projects
+    - `;tc` — show all tasks with context under cursor
 - [PyRef](https://github.com/xolox/vim-pyref)
     - `K` — show python reference in browser
 - Python (by Sergei Matusevich)

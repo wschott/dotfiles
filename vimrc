@@ -173,16 +173,16 @@ inoremap <C-k> <C-PageDown>
 nmap <silent> gw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<cr><c-o><c-l>
 
 " insert a new line below/above
-nnoremap <silent> <C-h> mzo<ESC>`z
-nnoremap <silent> <C-l> mzO<ESC>`z
-vnoremap <silent> <C-h> <ESC>mzo<ESC>`zgv
-vnoremap <silent> <C-l> <ESC>mzO<ESC>`zgv
+"nnoremap <silent> <C-h> mzo<ESC>`z
+"nnoremap <silent> <C-l> mzO<ESC>`z
+"vnoremap <silent> <C-h> <ESC>mzo<ESC>`zgv
+"vnoremap <silent> <C-l> <ESC>mzO<ESC>`zgv
 
 " move lines up/down (doen't shadow ⌃N, ⌃P in {insert} mode (autocompletion)
-nnoremap <C-n> mz:m+<CR>`z==
-nnoremap <C-p> mz:m-2<CR>`z==
-vnoremap <C-n> :m'>+<CR>gv=`<my`>mzgv`yo`z
-vnoremap <C-p> :m'<-2<CR>gv=`>my`<mzgv`yo`z
+"nnoremap <C-n> mz:m+<CR>`z==
+"nnoremap <C-p> mz:m-2<CR>`z==
+"vnoremap <C-n> :m'>+<CR>gv=`<my`>mzgv`yo`z
+"vnoremap <C-p> :m'<-2<CR>gv=`>my`<mzgv`yo`z
 
 " omni autocompletion: ⌃F
 inoremap <C-f> <C-x><C-o>
@@ -200,6 +200,9 @@ nnoremap _md :set ft=markdown<CR>
 nnoremap _dp :set ft=python.django<CR>
 nnoremap _dh :set ft=htmldjango<CR>
 
+" go with smartindent if there is no plugin indent file.
+" but don't outdent hashes
+inoremap # X#
 
 " Leader Key Mappings --------------------------------------------------------
 " start macros with ; (you might like \ or ,)
@@ -233,10 +236,10 @@ nnoremap <leader>K :topleft sp<CR>
 nnoremap <leader>L :botright vsp<CR>
 
 " switch split windows: CTRL-{h,l}
-nnoremap <leader>h <C-w>h
-nnoremap <leader>j <C-w>j
-nnoremap <leader>k <C-w>k
-nnoremap <leader>l <C-w>l
+nnoremap <C-h> <C-w>h
+"nnoremap <leader>j <C-w>j
+"nnoremap <leader>k <C-w>k
+nnoremap <C-l> <C-w>l
 
 " open directory of current file in current tab
 " TODO
