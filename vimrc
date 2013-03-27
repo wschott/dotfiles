@@ -436,6 +436,10 @@ nnoremap <silent> <C-t> :TagbarToggle<CR>
 nnoremap <silent> <C-g> :GundoToggle<CR>
 " }}}
 
+" Supertab --------------------------------------------------------------- {{{
+let g:SuperTabDefaultCompletionType = "<c-n>"
+" }}}
+
 " TODO
 "nnoremap <leader>a :Ack!<space>
 
