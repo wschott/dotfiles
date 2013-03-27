@@ -431,6 +431,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 " show Tagbar outline viewer
 nnoremap <silent> <C-t> :TagbarToggle<CR>
+" Gundo ------------------------------------------------------------------ {{{
+" show Gundo outline viewer
+nnoremap <silent> <C-g> :GundoToggle<CR>
+" }}}
 
 " TODO
 "nnoremap <leader>a :Ack!<space>
