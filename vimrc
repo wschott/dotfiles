@@ -437,6 +437,9 @@ nnoremap <silent> <C-g> :GundoToggle<CR>
 " }}}
 
 " Supertab --------------------------------------------------------------- {{{
+" TODO
+let g:SuperTabMappingForward = '<S-space>'
+"let g:SuperTabMappingBackward = '<s-tab>'
 let g:SuperTabDefaultCompletionType = "<c-n>"
 " }}}
 
