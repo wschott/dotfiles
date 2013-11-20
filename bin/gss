@@ -1,4 +1,6 @@
-# Show the first stash or a specific one
+#!/bin/bash
+#
+# Either show the first stash or a specific one
 #
 # Author: Waldemar Schott <info AT waldemarschott DOT com>
 
