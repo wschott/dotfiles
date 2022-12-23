@@ -1,7 +1,8 @@
 # see https://formulae.brew.sh/
 
-# formulae
+git
 ack
+direnv
 podman
 
 ffmpeg
