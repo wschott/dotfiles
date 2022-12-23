@@ -2,11 +2,11 @@
 
 # remove all symlinks to these dotfiles
 
-FILES='.ackrc .bash_profile .bashrc .gitconfig .gitignore .inputrc .vim .vimrc .gvimrc bin'
+FILES='.ackrc .gitconfig .gitignore .vim .vimrc .gvimrc .zshrc bin'
 
 for file in $FILES; do
     # is file a symlink?
-    if [[ -L ~/$file ]]; then
-        rm ~/$file
+    if [[ -L $HOME/$file ]]; then
+        rm $HOME/$file
     fi
 done

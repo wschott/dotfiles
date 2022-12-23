@@ -1,0 +1,25 @@
+# see https://formulae.brew.sh/
+
+# formulae
+ack
+podman
+
+ffmpeg
+# rtmpdump
+
+exiftool
+smartmontools
+
+python
+# pipx
+
+node@16
+
+# maven
+# openjdk
+# openjdk@11
+
+# pandoc
+
+# for vim
+#ctags

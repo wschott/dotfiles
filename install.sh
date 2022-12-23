@@ -3,14 +3,10 @@
 # assumes ~/.dotfiles is *ours*
 
 # specify files to symlink ---------------------------------------------------
-FILES='.ackrc .bash_profile .bashrc .gitconfig .gitignore .inputrc .vim .vimrc .gvimrc bin'
+FILES='.ackrc .gitconfig .gitignore .vim .vimrc .gvimrc .zshrc bin'
 
-
-# global vars ----------------------------------------------------------------
-NOW=$(date +"%Y-%m-%d_%H-%M-%S")
-
-# backup old .dotfiles -------------------------------------------------------
 _backup() {
+    local NOW=$(date +"%Y-%m-%d_%H-%M-%S")
     if [[ -d ~/.dotfiles ]]; then
         local ZIPFILE=".dotfiles-backup-$NOW.zip"
         echo "  to file: $ZIPFILE"
@@ -43,10 +39,6 @@ _installation() {
 
     mkdir -p ~/.local.dotfiles/
 
-    # copy local .bashrc sample file if user has none
-    if [[ ! -f ~/.local.dotfiles/bashrc ]]; then
-        cp ~/.dotfiles/local/bashrc.sample ~/.local.dotfiles/bashrc
-    fi
     # copy local .vimrc sample file if user has none
     if [[ ! -f ~/.local.dotfiles/vimrc ]]; then
         cp ~/.dotfiles/local/vimrc.sample ~/.local.dotfiles/vimrc
@@ -57,7 +49,6 @@ _installation() {
     fi
 }
 
-# Installation steps ---------------------------------------------------------
 current_pwd=$(pwd)
 
 if [[ -d ~/.dotfiles ]]; then
@@ -80,4 +71,4 @@ _installation
 
 cd $current_pwd
 echo 'Done'
-echo "  don't forget to 'source ~/.bashrc'"
+echo "  don't forget to 'source ~/.zshrc'"
