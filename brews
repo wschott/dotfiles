@@ -13,11 +13,10 @@ smartmontools
 python
 # pipx
 
-node@16
+node@18
 
 # maven
-# openjdk
-# openjdk@11
+openjdk@17
 
 # pandoc
 
