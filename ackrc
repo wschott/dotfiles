@@ -1,7 +1,2 @@
---type-set
-django=.py,.html
---type-set
-md=.md,.mkd,.mdown,.markdown
---type-set
-docs=.md,.mkd,.mdown,.markdown,.rst
---ignore-dir=cache
+--smart-case
+--sort-files
