@@ -3,9 +3,6 @@ set nocompatible                " turn vi compatibility off
 " turn existing autocommands off (-> necessary for .vimrc auto-reloads)
 :autocmd!
 
-" Pathogen (plugin loader) ---------------------------------------------------
-call pathogen#infect()
-
 " VIM settings ---------------------------------------------------------------
 set encoding=utf-8              " UTF-8 encoding
 set t_Co=256                    " 256 colors
@@ -44,8 +41,8 @@ set splitbelow                  " split new windows below current window
 set splitright                  " split new windows on the right side of current window
 "set cmdheight=2
 set laststatus=2                " always show the statusline, even if there is only one window
-set backupdir=~/.vim/tmp//      " directory for swp files
-set directory=~/.vim/tmp//      " directory for swp files
+set backupdir=/tmp//            " directory for swp files
+set directory=/tmp//            " directory for swp files
 set clipboard=unnamed           " Clipboard support
 set backspace=eol,start,indent  " allow backspacing over EOL, ...
 set wildmenu                    " : menu has tab completion
@@ -90,7 +87,6 @@ endif
 set statusline=%#warningmsg#%*%<
 set statusline+=\ %F\ %m%r%y\ %h%w
 set statusline+=%=
-set statusline+=%{fugitive#statusline()}
 set statusline+=\ \|\ %{strlen(&fenc)?&fenc:&enc}
 set statusline+=\ \|\ %3l/%L\ :\ %2c\ \|\ %P
 
@@ -141,7 +137,7 @@ noremap <silent> <ESC><ESC> :nohls<CR>
 nnoremap Q gqap
 vnoremap Q gq
 
-" Keep the cursor in place while joining limes
+" Keep the cursor in place while joining lines
 " TODO
 "nnoremap J mzJ`z
 
@@ -197,8 +193,6 @@ cnoremap %% <C-R>=expand('%:h').'/'<CR>
 " easy filetype switching
 nnoremap _d  :set ft=diff<CR>
 nnoremap _md :set ft=markdown<CR>
-nnoremap _dp :set ft=python.django<CR>
-nnoremap _dh :set ft=htmldjango<CR>
 
 " go with smartindent if there is no plugin indent file.
 " but don't outdent hashes
@@ -395,31 +389,7 @@ autocmd BufRead *.tex       set textwidth=78 formatoptions=tcroqn2l
 autocmd BufRead *.md        set textwidth=78 formatoptions=tcroqn2l
 
 
-" Python ---------------------------------------------------------------------
-
-" execute Python file
-nnoremap E :!python %<CR>
-
-augroup lang_python
-    autocmd FileType python setlocal
-    \   shiftwidth=4 tabstop=4 softtabstop=4 expandtab nowrap
-    \   formatoptions+=croq " c+r+o+q
-    \   cinwords=if,elif,else,for,while,try,except,finally,def,class,with
-    \   complete+=k~/.vim/syntax/python.vim isk+=.,(
-
-    let python_highlight_all = 1
-
-    " Hide # comment markers from folded text in Python scripts.
-    " TODO
-    "autocmd FileType python set commentstring=#%s
-
-    " PyRef shortcut
-    let g:pyref_mapping = 'K'
-augroup END
-
-
 " Plugins --------------------------------------------------------------------
-let g:Powerline_symbols = 'fancy'
 
 " NERDTree --------------------------------------------------------------- {{{
 " show NERDTree file browser
@@ -429,18 +399,9 @@ nnoremap <silent> <C-w> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " }}}
 
-" show Tagbar outline viewer
-nnoremap <silent> <C-t> :TagbarToggle<CR>
 " Gundo ------------------------------------------------------------------ {{{
 " show Gundo outline viewer
 nnoremap <silent> <C-g> :GundoToggle<CR>
-" }}}
-
-" Supertab --------------------------------------------------------------- {{{
-" TODO
-let g:SuperTabMappingForward = '<S-space>'
-"let g:SuperTabMappingBackward = '<s-tab>'
-let g:SuperTabDefaultCompletionType = "<c-n>"
 " }}}
 
 " TODO

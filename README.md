@@ -20,12 +20,6 @@ Don't worry, all your old files will be backed up!
     $ ~/.dotfiles/install.sh
 
 
-### Add requirements
-
-    $ git submodule init
-    $ git submodule update
-
-
 ## Update every now and then
 
 by running:
@@ -113,8 +107,6 @@ Hints: `⎋` = ESC, `⌃` = CTRL, `␣` = SPACE, `⌘` = CMD on OSX
 
 - `_d` — diff
 - `_md` — markdown
-- `_dp` — django python
-- `_dh` — django html
 
 
 ### Mac OS X
@@ -122,61 +114,6 @@ Hints: `⎋` = ESC, `⌃` = CTRL, `␣` = SPACE, `⌘` = CMD on OSX
 - `⌘k`, `⌘{` — go to previous tab
 - `⌘j`, `⌘}` — go to next tab
 - `⌘1` – `⌘9` — switch to tab #
-
-
-### Python
-
-- `E` — execute in python
-
-
-## VIM plugins
-
-- [Powerline statusline](https://github.com/Lokaltog/vim-powerline)
-    - Powerline needs a [patched font](https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts).
-- [NERDTree](https://github.com/scrooloose/nerdtree)
-    - `⌃w` — show NERDTree file browser
-- [CtrlP](http://kien.github.com/ctrlp.vim/)
-    - Commands and help
-        1. run `:helptags ~/.vim/bundle/ctrlp/doc` in vims command mode
-        2. open CtrlP with `:CtrlP` or `⌃p` and type `?` to show the help
-    - `⌃p` — show CtrlP fuzzy file/buffer/MRU finder
-    - `⌃n`, `⌃p` — select next/previous search from history
-    - `⌃f`, `⌃b` — switch between search modes (file/buffer/MRU)
-    - `⌃r` — switch to regex search
-    - `⌃d` — switch to filename/full path search
-- [Tagbar](http://majutsushi.github.com/tagbar/)
-    - `⌃t` — show Tagbar outline viewer
-- [vim surround](https://github.com/tpope/vim-surround)
-    - change, delete, add surroundings
-    - possible surroundings: ", ', \`, (, ), {, }, [, ] or even \<q\> for html tags, etc.
-        - { adds a space, } doesn't
-    - normal mode
-        - `cs<oldc><newc>` [ `cs"(` ] — **c**hange **s**urround from \<oldc\> to \<newc\>
-        - `ds<c>` [ `ds"` ] — **d**elete **s**urrounding \<c\>
-        - `ys<object><c>` [ `ysiw]` ] — add [] around text object (*inner word*)
-        - `yss<c>` [ `yss)` ] — add () around entire line
-    - surround selection with quotes, parentheses, braces, etc..
-        1. select something in visual mode
-        2. `S(`, `S)`, `S[`, `S]`, `S{`, `S}`, `S"`, `S'`, `` S` ``
-        - useful for example with the following:
-            1. type some text
-            2. `;v` to select the recently typed text (;v is no vim default, defined before)
-            3. `S"` to make a quote
-- [Comma Object](https://github.com/austintaylor/vim-commaobject)
-    - change/delete arguments in function calls (or simply comma delimited (), [] or {} lists)
-    - `da,`, `di,`, `ca,`, `ci,` — delete/change a comma/inner comma
-- [vim git](https://github.com/tpope/vim-git)
-- [taskpaper](https://github.com/davidoc/taskpaper.vim)
-    - `;td` — mark as done
-    - `;tx` — mark as cancelled
-    - `;tp` — fold all projects
-    - `;ta` — show all projects
-    - `;tc` — show all tasks with context under cursor
-- [PyRef](https://github.com/xolox/vim-pyref)
-    - `K` — show python reference in browser
-- Python (by Sergei Matusevich)
-    - `%` — jump to the end of the indented block and back
-    - `FN-F5` — execute current file
 
 
 ## Thanks to...

@@ -1,6 +1,5 @@
 # see https://formulae.brew.sh/cask/
 
-macvim
 karabiner-elements
 virtualbox
 podman-desktop

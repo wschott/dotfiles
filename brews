@@ -20,6 +20,3 @@ node@18
 openjdk@17
 
 # pandoc
-
-# for vim
-#ctags
