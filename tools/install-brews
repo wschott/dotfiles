@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 BREWS_FILE="$HOME/.dotfiles/brews"
 

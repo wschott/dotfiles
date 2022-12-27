@@ -9,7 +9,7 @@ My bash configuration files with a couple of useful aliases.
 
 Fire up your terminal and type the following in it:
 
-    $ curl https://raw.github.com/wschott/dotfiles/master/install.sh | sh
+    $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/wschott/dotfiles/master/install)"
 
 Don't worry, all your old files will be backed up!
 
@@ -17,14 +17,14 @@ Don't worry, all your old files will be backed up!
 ### Manual way
 
     $ git clone git://github.com/wschott/dotfiles.git ~/.dotfiles
-    $ ~/.dotfiles/install.sh
+    $ ~/.dotfiles/install
 
 
 ## Update every now and then
 
 by running:
 
-    $ ~/.dotfiles/install.sh
+    $ ~/.dotfiles/install
 
 
 ## VIM Mappings

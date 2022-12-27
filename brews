@@ -3,6 +3,7 @@
 git
 ack
 direnv
+pre-commit
 podman
 
 ffmpeg
