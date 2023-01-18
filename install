@@ -59,7 +59,7 @@ fi
 if [[ -d ~/.dotfiles/.git ]]; then
     echo 'Updating'
     cd ~/.dotfiles
-    git pull origin master
+    git pull origin main
 else
     echo 'Downloading'
     git clone git://github.com/wschott/dotfiles.git ~/.dotfiles

@@ -9,7 +9,7 @@ My bash configuration files with a couple of useful aliases.
 
 Fire up your terminal and type the following in it:
 
-    $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/wschott/dotfiles/master/install)"
+    $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/wschott/dotfiles/main/install)"
 
 Don't worry, all your old files will be backed up!
 
