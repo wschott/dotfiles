@@ -2,7 +2,7 @@
 
 # remove all symlinks to these dotfiles
 
-FILES='.ackrc .gitconfig .gitignore .vim .vimrc .gvimrc .zshrc bin'
+FILES='.ackrc .gitconfig .gitignore .vim .vimrc .gvimrc .zshrc bin Brewfile'
 
 for file in $FILES; do
     # is file a symlink?

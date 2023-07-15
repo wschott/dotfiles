@@ -3,7 +3,7 @@
 # assumes ~/.dotfiles is *ours*
 
 # specify files to symlink ---------------------------------------------------
-FILES='.ackrc .gitconfig .gitignore .vim .vimrc .gvimrc .zshrc bin'
+FILES='.ackrc .gitconfig .gitignore .vim .vimrc .gvimrc .zshrc bin Brewfile'
 
 _backup() {
     local NOW=$(date +"%Y-%m-%d_%H-%M-%S")
