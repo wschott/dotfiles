@@ -1,12 +1,16 @@
 .DS_Store
 *.swp
-.svn
 
 target/
 *.pyc
 
-*local/bash*
-!local/bashrc.sample
+.envrc
+.direnv/
+.env
+.gitconfig
+
+.idea/
+
 
 *local/vim*
 !local/vimrc.sample
