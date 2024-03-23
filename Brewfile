@@ -16,6 +16,7 @@ brew "smartmontools"
 brew "yt-dlp"
 
 cask "daisydisk"
+cask "espanso"
 cask "fantastical"
 cask "fork"
 cask "google-chrome"
