@@ -1,8 +1,8 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # remove all symlinks to these dotfiles
 
-FILES='.ackrc .gitconfig .gitignore .vim .vimrc .gvimrc .zshrc bin Brewfile'
+FILES=($(cat ./files-to-symlink-in-homedir))
 
 for file in $FILES; do
     # is file a symlink?

@@ -3,7 +3,7 @@
 # assumes ~/.dotfiles is *ours*
 
 # specify files to symlink ---------------------------------------------------
-FILES='.ackrc .gitconfig .gitignore .vim .vimrc .gvimrc .zshrc bin Brewfile'
+FILES=$(cat ./tools/files-to-symlink-in-homedir)
 
 _backup() {
     local NOW=$(date +"%Y-%m-%d_%H-%M-%S")
@@ -15,7 +15,7 @@ _backup() {
 }
 
 # install new .dotfiles ------------------------------------------------------
-_installation() {
+_install() {
     # symlink files
     for long in $FILES; do
         # assume file doesn't start with a dot
@@ -67,7 +67,7 @@ else
 fi
 
 echo 'Installing'
-_installation
+_install
 
 cd $current_pwd
 echo 'Done'
