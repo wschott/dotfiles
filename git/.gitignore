@@ -1,16 +1,10 @@
 .DS_Store
 *.swp
 
-target/
 *.pyc
 
 .envrc
 .direnv/
 .env
+.tool-versions
 .gitconfig
-
-.idea/
-
-
-*local/vim*
-!local/vimrc.sample

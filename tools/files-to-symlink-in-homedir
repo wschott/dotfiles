@@ -1,9 +1,0 @@
-.ackrc
-.gitconfig
-.gitignore
-.vim
-.vimrc
-.gvimrc
-.zshrc
-bin
-.Brewfile

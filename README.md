@@ -1,30 +1,15 @@
 # dotfiles
 
-My bash configuration files with a couple of useful aliases.
+These dotfiles use [GNU Stow](https://www.gnu.org/software/stow/) to symlink all files into the home folder.
 
 
 ## Installation
 
-### Automatic way
-
-Fire up your terminal and type the following in it:
-
-    $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/wschott/dotfiles/main/install)"
-
-Don't worry, all your old files will be backed up!
-
-
-### Manual way
-
-    $ git clone git://github.com/wschott/dotfiles.git ~/.dotfiles
-    $ ~/.dotfiles/install
-
-
-## Update every now and then
-
-by running:
-
-    $ ~/.dotfiles/install
+```shell
+$ git clone git://github.com/wschott/dotfiles.git ~/.dotfiles
+$ cd ~/.dotfiles
+$ make # runs stow
+```
 
 
 ## VIM Mappings
@@ -51,7 +36,6 @@ Hints: `⎋` = ESC, `⌃` = CTRL, `␣` = SPACE, `⌘` = CMD on OSX
 - `;s` — substitute (search & replace)
 - `;*` — replace word under cursor
 - `;c` — find VCS merge conflict marker
-- `;1` — add a Markdown H1 below current line
 - `;v` — select the just pasted text
 - {insert} `⌃v` — paste from OS clipboard
 - `;y`, `;Y` — copy to OS clipboard

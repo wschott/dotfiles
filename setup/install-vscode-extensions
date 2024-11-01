@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+EXTENSIONS=(
+	"EditorConfig.EditorConfig"
+	"ms-python.python"
+	"vscjava.vscode-java-pack"
+	"vscjava.vscode-gradle"
+	"ms-azuretools.vscode-docker"
+	"ms-azuretools.vscode-bicep"
+	"mechatroner.rainbow-csv"
+)
+
+for extension in "${EXTENSIONS[@]}" ; do
+	code --install-extension $extension
+done

@@ -1,3 +1,0 @@
-#!/usr/bin/env zsh
-
-ln -s ~/.dotfiles/espanso/ ~/Library/Application\ Support/espanso

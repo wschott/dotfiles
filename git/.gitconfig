@@ -1,0 +1,14 @@
+[user]
+	useConfigOnly = true
+[pull]
+	rebase = true
+[color]
+	ui = auto
+[diff]
+	colorMoved = zebra
+[core]
+	quotepath = false
+	editor = vim
+	excludesfile = ~/.gitignore
+[commit]
+	cleanup = scissors
