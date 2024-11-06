@@ -8,6 +8,7 @@ EXTENSIONS=(
 	"ms-azuretools.vscode-docker"
 	"ms-azuretools.vscode-bicep"
 	"mechatroner.rainbow-csv"
+    "enkia.tokyo-night"
 )
 
 for extension in "${EXTENSIONS[@]}" ; do
