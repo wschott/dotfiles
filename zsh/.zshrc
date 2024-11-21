@@ -1,3 +1,5 @@
+# docs: https://zsh-manual.netlify.app/the-z-shell-manual
+
 # PATH
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
@@ -11,8 +13,12 @@ autoload -Uz compinit
 compinit
 
 # zsh config
-setopt hist_ignore_all_dups
 setopt hist_reduce_blanks
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt share_history
+HISTORY_IGNORE="ls|l|ll|la|lla|cd|cd ..|cd ../..|..|..."
 
 # zsh addons
 eval "$(starship init zsh)"
