@@ -29,6 +29,7 @@ brew "stow"
 brew "yt-dlp"
 brew "zoxide"
 brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
 
 cask "daisydisk"
 cask "displaylink"

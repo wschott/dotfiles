@@ -19,6 +19,7 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 source <(fzf --zsh)
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # 3rd party apps
 eval "$(direnv hook zsh)"
