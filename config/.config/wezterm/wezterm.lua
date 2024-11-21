@@ -5,8 +5,13 @@ local config = wezterm.config_builder()
 
 -- Appearance
 config.font_size = 13
-config.font = wezterm.font 'JetBrainsMono Nerd Font'
-config.color_scheme = helpers.color_scheme_based_on_os_setting("Tokyo Night", "Tokyo Night Light (Gogh)")
+config.font = wezterm.font('JetBrainsMono Nerd Font')
+-- https://wezfurlong.org/wezterm/colorschemes/index.html
+if helpers.is_dark() then
+  config.color_scheme = "Tokyo Night"
+else
+  config.color_scheme = "Tokyo Night Day"
+end
 config.native_macos_fullscreen_mode = false
 config.hide_tab_bar_if_only_one_tab = true
 config.window_decorations = "RESIZE"
