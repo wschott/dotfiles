@@ -34,7 +34,12 @@ fi
 
 alias ..="cd .."
 alias ...="cd ../.."
+alias ....="cd ../../.."
+
+alias md='mkdir -p'
 alias l="ls -lah"
+alias lt="eza -lT --level=1"
+alias lt2="eza -lT --level=2"
 
 alias config="$EDITOR $HOME/.dotfiles"
 alias reload="source $HOME/.zshrc"
@@ -55,8 +60,9 @@ alias glg="git log --graph --oneline --decorate --all"
 # custom apps
 alias ls="eza"
 alias cat="bat"
+alias cd="z"
 alias vim="nvim"
-alias lg="lazygit"
+alias gg="lazygit"
 alias grep="rg"
 
 # macOS specific
