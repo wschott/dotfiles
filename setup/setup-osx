@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
 
+# docs: https://macos-defaults.com
+
+# Enable tap to click (Trackpad)"
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+
 # Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+# Drag n drop with with three finger
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
 
 # Expand save panel by default
 defaults write -g NSNavPanelExpandedStateForSaveMode -bool true
@@ -9,8 +17,9 @@ defaults write -g NSNavPanelExpandedStateForSaveMode -bool true
 # Expand print panel by default
 defaults write -g PMPrintingExpandedStateForPrint -bool true
 
-# Avoid creating .DS_Store files on network volumes
+# Avoid creating .DS_Store files on network or USB volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
 # Show all filename extensions in Finder
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
@@ -18,11 +27,15 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 # Disable the warning when changing a file extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
-# Show POSIX Path in Finder Window Title
-#defaults write com.apple.finder _FXShowPosixPathInTitle YES
+# Show Status Bar in Finder
+defaults write com.apple.finder ShowStatusBar -bool true
 
 # Show Path Bar in Finder
 defaults write com.apple.finder ShowPathBar -boolean YES
+
+# Use list view in all Finder windows by default
+# Four-letter codes for the other view modes: `Nlsv`, `clmv`, `icnv`, `glyv`
+defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
@@ -31,14 +44,41 @@ defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock minimize-to-application -bool true
 
 # Show up hidden dock faster
-defaults write com.apple.Dock autohide-delay -float 0
+defaults write com.apple.dock autohide-delay -float 0
+
+# Scroll up on a Dock icon to show all Space's opened windows for an app, or open stack.
+defaults write com.apple.dock scroll-to-open -bool true
+
+# Hide recents section
+defaults write com.apple.dock show-recents -bool false
+
+# Don’t automatically rearrange Spaces based on most recent use
+defaults write com.apple.dock mru-spaces -bool false
 
 # Enable copy and paste in Quicklook windows
-defaults write com.apple.finder QLEnableTextSelection -bool TRUE
-defaults write com.apple.Mail QLEnableTextSelection -bool TRUE
+defaults write com.apple.finder QLEnableTextSelection -bool true
+#defaults write com.apple.Mail QLEnableTextSelection -bool true
 
-# Enable tap to click (Trackpad)"
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+# Show full website URL
+#defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
+
+# Show document-proxy icon faster
+defaults write NSGlobalDomain NSToolbarTitleViewRolloverDelay -float 0
+
+# Enable the automatic update check
+defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
+
+# Check for software updates daily, not just once per week
+defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+
+# Download newly available updates in background
+defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
+
+# Install System data files & security updates
+defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
+
+# Use plaintext in TextEdit
+defaults write com.apple.TextEdit RichText -bool false
 
 # Kill affected applications
-for app in Safari Finder Dock Mail; do killall "$app"; done
+for app in Finder Dock TextEdit; do killall "$app"; done
