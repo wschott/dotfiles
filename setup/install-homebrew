@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
 # Homebrew (see https://brew.sh/)
-curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+if [[ -e /opt/homebrew/bin/brew ]]; then
+    # apple silicon cpu
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+    # intel cpu
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
 brew analytics off
