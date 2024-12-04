@@ -1,0 +1,18 @@
+# brew "exiftool"
+brew "ffmpeg"
+brew "yt-dlp"
+# brew "smartmontools"
+
+cask "daisydisk"
+cask "fantastical"
+cask "handbrake"
+cask "keyboard-maestro"
+cask "moom"
+cask "mountain-duck"
+cask "virtualbox"
+cask "xld"
+
+mas "Drafts", id: 1435957248
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Soulver 2", id: 413965349

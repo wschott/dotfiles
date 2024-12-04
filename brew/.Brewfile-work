@@ -1,0 +1,11 @@
+brew "azure-cli"
+brew "docker-compose"
+# brew "gradle"
+brew "openjdk"
+brew "openjdk@21"
+brew "podman"
+
+cask "displaylink"
+cask "intellij-idea"
+
+mas "Toggl Track", id: 1291898086
