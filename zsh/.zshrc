@@ -1,12 +1,20 @@
 # docs: https://zsh-manual.netlify.app/the-z-shell-manual
 
+# Homebrew
+if [[ -e /opt/homebrew/bin/brew ]]; then
+    # apple silicon cpu
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+    # intel cpu
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
+
 # PATH
-export PATH="/usr/local/bin:$PATH"
-export PATH="/usr/local/opt/openjdk/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/openjdk/bin:$PATH"
 
 # homebrew
 # https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
-eval "$(brew shellenv)"
 
 # auto completions
 autoload -Uz compinit
@@ -24,8 +32,8 @@ HISTORY_IGNORE="ls|l|ll|la|lla|cd|cd ..|cd ../..|..|..."
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 source <(fzf --zsh)
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # 3rd party apps
 eval "$(direnv hook zsh)"
