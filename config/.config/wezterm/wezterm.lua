@@ -21,7 +21,30 @@ config.send_composed_key_when_left_alt_is_pressed = true
 -- fix non working tilde (~) char on macOS with a german keyboard
 -- https://github.com/wez/wezterm/issues/5468#issuecomment-2295268118
 config.keys = {
-  { key='n', mods='OPT', action=wezterm.action{SendString="~"} },
+  -- navigate one word backward
+  {
+    key = 'LeftArrow',
+    mods = 'OPT',
+    action = wezterm.action.SendString '\x1bb',
+  },
+  -- navigate one word forward
+  {
+    key = 'RightArrow',
+    mods = 'OPT',
+    action = wezterm.action.SendString '\x1bf',
+  },
+  {
+    key = 'k',
+    mods = 'CMD',
+    action = wezterm.action.ClearScrollback 'ScrollbackAndViewport',
+  },
+  -- fix non working tilde (~) char on macOS with a german keyboard
+  -- https://github.com/wez/wezterm/issues/5468#issuecomment-2295268118
+  {
+    key = 'n',
+    mods = 'OPT',
+    action = wezterm.action.SendString '~',
+  },
 }
 
 return config
