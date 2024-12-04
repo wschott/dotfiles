@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-brew bundle --file ~/.Brewfile
+DOTFILES_ROOT=$(dirname $(dirname $0))
+
+brew bundle --file ${DOTFILES_ROOT}/brew/.Brewfile
