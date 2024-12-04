@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+idea installPlugins com.koxudaxi.ruff de.docs_as_co.intellij.plugin.diagramsnet
